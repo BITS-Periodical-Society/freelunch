@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf.urls import include
 
-from django.urls import path, include
-
+from flapp.views import index
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    path('admin/', admin.site.urls),
-    url(r'^flapp/', include('flapp.urls')),  
-    path('', include('flapp.urls')),    
+   url(r'^$',index),
+   #url(r'^flapp/', include('flapp.urls')),  
+       
 ]
