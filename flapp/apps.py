@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class FlappConfig(AppConfig):
-    name = 'flapp'
+class BlogConfig(AppConfig):
+    name = 'blog'
