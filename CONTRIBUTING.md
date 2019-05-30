@@ -16,8 +16,9 @@ In case you have something to discuss about the current state of code, you can a
 To contact us, send a mail to <freelunchbits@gmail.com>
 
  ### Directly committing an easier change
-- If you are making slight changes in documentation, adding comments or docstrings, changing small pieces of code, fixing minor bugs or doing anything that does not require any further discussion with the mentors, feel free to merge those easier changes all by yourself. :)
+- If you are making slight changes in documentation, adding comments or docstrings, changing small pieces of code, fixing minor bugs or doing anything that does not require any further discussion with the mentors, feel free to send a pull request by creating a new branch. :)
 
+**Note: All PRs must be directed only to the development branch unless instructed otherwise.**
  - You can use the commands below to push a commit after making required changes.
     - Check the status of the files you have changed. Red text corresponds to the unadded changes.
     ```
@@ -55,5 +56,5 @@ We use GitHub [issues](https://github.com/BITS-Periodical-Society/freelunch/issu
  ### Submitting a Fix
 If you are not sure what you are doing or if you need to discuss a change with the mentors make a pull request instead of committing directly.
 Pull requests are the best way to propose changes to the codebase and discuss it with other developers.
-
- All kinds of pull requests are welcome, so don't hesitate and go ahead. You can initiate a pull request [here](https://github.com/BITS-Periodical-Society/freelunch/pulls).
+**Kindly note that all pull requests must be directed to the development branch only unless instructed otherwise.**
+All kinds of pull requests are welcome, so don't hesitate and go ahead. You can initiate a pull request [here](https://github.com/BITS-Periodical-Society/freelunch/pulls).
