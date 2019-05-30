@@ -13,7 +13,7 @@ You can contribute to this project by:
  ### Discussing the current state of the code
 
 In case you have something to discuss about the current state of code, you can always contact the owners of the repository.
-TO contect us, send a mail to <freelunchbits@gmail.com>
+To contact us, send a mail to <freelunchbits@gmail.com>
 
  ### Directly committing an easier change
 - If you are making slight changes in documentation, adding comments or docstrings, changing small pieces of code, fixing minor bugs or doing anything that does not require any further discussion with the mentors, feel free to merge those easier changes all by yourself. :)
