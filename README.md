@@ -15,5 +15,12 @@ The website is built on Django framework with HTML5, CSS3, JS, Jquery and AJAX. 
 ## Contact us
 Email: **freelunch@freelunch.co.in**
 
+## Contributing to the project
+### Installing the project
+You can work on the project by cloning the repository to your local system. The url for the repository is https://github.com/BITS-Periodical-Society/freelunch.git
+1. Make sure that you have Git installed on your system
+2. Open the command line interface and navigate to the directory where you wish to clone the repository
+3. Enter the commmand - 'git clone https://github.com/BITS-Periodical-Society/freelunch.git'
+4. Now you may make changes to the project and push them in strict accordance with the [contribution guidlines](CONTRIBUTING>md)
 ###### If you are interested in contributing to the repository please go through the [contribution guidlines](CONTRIBUTING.md) **carefully**
 
