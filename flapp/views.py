@@ -12,3 +12,7 @@ def Authors(request):
 
 def post_detail(request):
     return render(request, 'blog/post_detail.html')        
+
+# Create your views here.
+def index(request):
+	return render(request,"index.html")
