@@ -28,7 +28,7 @@ You can work on the project by cloning the repository to your local system. The 
 `virtualenv virtualenv`
 `source venv/bin/activate`
 4. Install the necessary dependencies for the project - `pip install -r requirements.txt`
-5. 4. Run Django migrations.
+5. Run Django migrations.
     
     ```bash
     python manage.py makemigrations
