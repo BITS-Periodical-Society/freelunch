@@ -13,7 +13,7 @@ The website is built on Django framework with HTML5, CSS3, JS, Jquery and AJAX. 
 * Aditya Choudhary - [JessePinkman7](https://github.com/JessePinkman7)
 
 ## Contact us
-Email: **freelunch@freelunch.co.in**
+Email: [**freelunch@freelunch.co.in**](mailto:freelunch@freelunch.co.in)
 
 ## Contributing to the project
 If you are interested in contributing to the repository please go through the [contribution guidlines](CONTRIBUTING.md) **carefully**
@@ -26,3 +26,7 @@ You can work on the project by cloning the repository to your local system. The 
 2. Inside the command line interface, navigate to the directory where you wish to clone the repository. eg. - `cd freelunch`
 3. Create a local copy of the repository `git clone https://github.com/BITS-Periodical-Society/freelunch.git`
 4. Now you may make changes to the project and create pull requests on github to have your changes merged in strict accordance with the [contribution guidlines](CONTRIBUTING>md)
+5. Running the website
+    * To run the website, go to the project directory `cd freelunch`
+    * To run the local server `python manage.py runserver`
+  
