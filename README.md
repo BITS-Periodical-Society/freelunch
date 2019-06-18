@@ -23,10 +23,12 @@ You can work on the project by cloning the repository to your local system. The 
 1. Make sure that you have git installed on your system
     * To check if you have git installed, type `git` in your command line. If you see a help menu for git, you are good to go.
     * To install git and understand how to use it briefly, you can use [this](https://www.computerhope.com/issues/ch001927.htm) resource. For a more complete and in-depth understanding, use [this](https://git-scm.com/book).
-2. Inside the command line interface, navigate to the directory where you wish to clone the repository. eg. - `cd freelunch`
-3. Create a local copy of the repository `git clone https://github.com/BITS-Periodical-Society/freelunch.git`
-4. Now you may make changes to the project and create pull requests on github to have your changes merged in strict accordance with the [contribution guidlines](CONTRIBUTING>md)
-5. Running the website
+2. Create a local copy of the repository `git clone https://github.com/BITS-Periodical-Society/freelunch.git`
+3. Create a virtual environment for the project
+`virtualenv virtualenv`
+`source venv/bin/activate`
+4. Install the necessary dependencies for the project - `pip install -r requirements.txt`
+5. Now you may make changes to the project and create pull requests on github to have your changes merged in strict accordance with the [contribution guidlines](CONTRIBUTING>md)
+6. Running the website
     * To run the website, go to the project directory `cd freelunch`
     * To run the local server `python manage.py runserver`
-  
