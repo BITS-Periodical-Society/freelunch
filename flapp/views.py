@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from .models import Post
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .models import Post, Category
 from .forms import PostForm
 
 
@@ -8,9 +9,29 @@ from .forms import PostForm
 def index(request):
 	return render(request,"index.html")
 
-def post_list(request):
-	posts = Post.objects.all()[:4]
-	context = {'posts': posts}
+def post_list(request, **kwargs):
+	try:
+		slug = kwargs['slug']
+		category = Category.objects.get(slug=slug)
+		posts = category.post_set.all().order_by('-published_date')
+	except:
+		posts = Post.objects.all()
+	paginator = Paginator(posts, 1)
+	page_request_var = 'page'
+	page = request.GET.get(page_request_var)
+
+	try:
+		paginated_queryset = paginator.page(page)
+	except PageNotAnInteger:
+		paginated_queryset = paginator.page(1)
+	except EmptyPage:
+		paginated_queryset = paginator.page(paginator.num_pages)
+
+	context = {
+		'posts': paginated_queryset,
+		'page': page_request_var,
+	}
+
 	return render(request, 'blog/post_list.html', context)
 
 def Authors(request):
@@ -20,28 +41,3 @@ def post_detail(request, **kwargs):
 	post = get_object_or_404(Post, slug=kwargs['slug'])
 	context = {'post': post}
 	return render(request, 'blog/post_detail.html', context)
-
-def sciencetechnology(request):
-	posts = Post.objects.filter(category="ST")
-	context = {'posts': posts}
-	return render(request, 'blog/post_list.html', context)
-
-def economicsfinance(request):
-	posts = Post.objects.filter(category="EF")
-	context = {'posts': posts}
-	return render(request, 'blog/post_list.html', context)
-
-def worldaffairs(request):
-	posts = Post.objects.filter(category="WA")
-	context = {'posts': posts}
-	return render(request, 'blog/post_list.html', context)
-
-def editorial(request):
-	posts = Post.objects.filter(category="E")
-	context = {'posts': posts}
-	return render(request, 'blog/post_list.html', context)
-
-def bookreviews(request):
-	posts = Post.objects.filter(category="BR")
-	context = {'posts': posts}
-	return render(request, 'blog/post_list.html', context)
