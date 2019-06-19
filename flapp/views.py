@@ -20,3 +20,28 @@ def post_detail(request, **kwargs):
 	post = get_object_or_404(Post, slug=kwargs['slug'])
 	context = {'post': post}
 	return render(request, 'blog/post_detail.html', context)
+
+def sciencetechnology(request):
+	posts = Post.objects.filter(category="ST")
+	context = {'posts': posts}
+	return render(request, 'blog/post_list.html', context)
+
+def economicsfinance(request):
+	posts = Post.objects.filter(category="EF")
+	context = {'posts': posts}
+	return render(request, 'blog/post_list.html', context)
+
+def worldaffairs(request):
+	posts = Post.objects.filter(category="WA")
+	context = {'posts': posts}
+	return render(request, 'blog/post_list.html', context)
+
+def editorial(request):
+	posts = Post.objects.filter(category="E")
+	context = {'posts': posts}
+	return render(request, 'blog/post_list.html', context)
+
+def bookreviews(request):
+	posts = Post.objects.filter(category="BR")
+	context = {'posts': posts}
+	return render(request, 'blog/post_list.html', context)
