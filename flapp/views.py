@@ -4,15 +4,19 @@ from .models import Post
 from .forms import PostForm
 
 
-def post_list(request):
-    return render(request, 'blog/post_list.html')
 
-def Authors(request):
-    return render(request, 'blog/Authors.html')
-
-def post_detail(request):
-    return render(request, 'blog/post_detail.html')        
-
-# Create your views here.
 def index(request):
 	return render(request,"index.html")
+
+def post_list(request):
+	posts = Post.objects.all()[:4]
+	context = {'posts': posts}
+	return render(request, 'blog/post_list.html', context)
+
+def Authors(request):
+	return render(request, 'blog/Authors.html')
+
+def post_detail(request, **kwargs):
+	post = get_object_or_404(Post, slug=kwargs['slug'])
+	context = {'post': post}
+	return render(request, 'blog/post_detail.html', context)
