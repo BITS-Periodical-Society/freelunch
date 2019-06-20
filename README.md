@@ -8,6 +8,7 @@ The website is built on Django framework with HTML5, CSS3, JS, Jquery and AJAX. 
 ## Development Team
 * Abhishek Gaur - [abhishekspeer](https://github.com/abhishekspeer)
 * Indraneel Ghosh - [ighosh98](https://github.com/ighosh98)
+* Akshay Mittal - [Ak-shay](https://github.com/Ak-shay)
 * Himanshu Agarwal - [HimanshuAgarwal022](https://github.com/HimanshuAgarwal022)
 * Saransh Jindal - [UnlaxedNeurotic](https://github.com/UnlaxedNeurotic)
 * Aditya Choudhary - [JessePinkman7](https://github.com/JessePinkman7)
