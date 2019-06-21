@@ -25,7 +25,7 @@ You can work on the project by cloning the repository to your local system. The 
     * To install git and understand how to use it briefly, you can use [this](https://www.computerhope.com/issues/ch001927.htm) resource. For a more complete and in-depth understanding, use [this](https://git-scm.com/book).
 2. Create a local copy of the repository `git clone https://github.com/BITS-Periodical-Society/freelunch.git`
 3. Create a virtual environment for the project
-`virtualenv venv`\\
+`virtualenv venv`\
 `source venv/bin/activate`
 4. Install the necessary dependencies for the project - `pip install -r requirements.txt`
 5. Now you may make changes to the project and create pull requests on github to have your changes merged in strict accordance with the [contribution guidlines](CONTRIBUTING>md)
