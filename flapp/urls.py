@@ -1,20 +1,10 @@
-from django.conf.urls import url
-
+from django.urls import path
 from . import views
-# urlpatterns
-app_name = 'flapp'
+
 urlpatterns = [
-
- url(r'^about', views.about , name="about"),
-    url(r'^contributors', views.contributors, name = "contributors" ),
-    url(r'^contribute', views.contribute, name= "contribute" ),
-    url(r'^science-technology', views.sciencetechnology, name= "sciencetechnology" ),
-    url(r'^economics-finanace', views.economicsfinance, name= "economicsfinance" ),
-    url(r'^world-affairs', views.worldaffairs, name= "worldaffairs" ),
-    url(r'^editorial', views.editorial, name= "editorial" ),
-    url(r'^book-reviews', views.bookreviews, name= "book-reviews" ),
+	path('', views.PostListView.as_view(), name='post_list'),
+    path('', views.PostListView.as_view(), name='Home'),
+    path('Authors/', views.AuthorListView.as_view(), name='Authors'),
+    path('<slug:slug>/', views.PostDetailView.as_view(), name='post_detail'),
+    path('category/<slug:slug>/', views.PostListView.as_view(), name="category_post" ),
 ]
-
-
-
- 
