@@ -426,10 +426,9 @@ footer .copyright {
     }
   }	
   .image {
-	vertical-align: middle;
-  width: 390px;
-  height: 390px;
-  border-radius: 50%;
+  display: block;
+  width: 100%;
+  height: 350px;
 }
 
 .overlay {

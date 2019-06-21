@@ -15,6 +15,9 @@ def post_list(request):
 
 def Authors(request):
 	return render(request, 'blog/Authors.html')
+	
+def profile_page(request):
+	return render(request, 'blog/Authors/profile_page.html')	
 
 def post_detail(request, **kwargs):
 	post = get_object_or_404(Post, slug=kwargs['slug'])
