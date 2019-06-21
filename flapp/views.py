@@ -23,7 +23,6 @@ class PostListView(ListView):
 			posts = Post.objects.all()
 		return posts
 
-
 class PostDetailView(DetailView):
 	"""
 	Detail view for a post.
@@ -32,7 +31,6 @@ class PostDetailView(DetailView):
 	context_object_name = 'post'
 	template_name = 'blog/post_detail.html'
 	slug_url_kwarg = 'slug'
-
 
 class AuthorListView(ListView):
 	model = User
