@@ -171,9 +171,9 @@
 <h2 style="margin-top:30px;">Development Team</h2>
 </div><hr/>
 
-<div class="row">
+<div class="row"><!--need to add this in for for loop, after 3 cycles-->
   {% for dev in developers %}
-  <div class="column1">
+  <div class="{% cycle 'column1' 'column2' 'column3' %}">
     <div class="card">
       <div class="container overlay1">
   <img src="{{ dev.pic.url }}" alt="Avatar" class="image">
