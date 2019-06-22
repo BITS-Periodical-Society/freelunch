@@ -21,7 +21,6 @@ class PostListView(ListView):
 			posts = Post.objects.all()
 		return posts
 
-
 class PostDetailView(DetailView):
 	"""
 	Detail view for a post.
