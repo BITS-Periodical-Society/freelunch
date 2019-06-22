@@ -1,9 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.models import User
 from django.utils import timezone
 from django.views.generic import ListView, DetailView
-from .models import Post, Category
-from .forms import PostForm
+from .models import Post, Section, Writer, Developer, Editor
 
 
 class PostListView(ListView):
@@ -17,11 +15,12 @@ class PostListView(ListView):
 	def get_queryset(self):
 		try:
 			slug = self.kwargs['slug']
-			category = Category.objects.get(slug=slug)
-			posts = category.post_set.all().order_by('-published_date')
+			section = Section.objects.get(slug=slug)
+			posts = section.post_set.all().order_by('-published_date')
 		except:
 			posts = Post.objects.all()
 		return posts
+
 
 class PostDetailView(DetailView):
 	"""
@@ -32,6 +31,23 @@ class PostDetailView(DetailView):
 	template_name = 'blog/post_detail.html'
 	slug_url_kwarg = 'slug'
 
-class AuthorListView(ListView):
-	model = User
-	template_name = 'blog/Authors.html'
+
+def author(request):
+	developers = Developer.objects.all()
+	editors = Editor.objects.all()
+
+	return render(request, 'blog/Authors.html', {'developers': developers, 'editors': editors})
+
+
+class EdiorView(DetailView):
+	model = Editor
+	template_name = 'blog/profile_page.html'
+	context_object_name = 'me'
+	slug_url_kwarg = 'slug'
+
+
+class DeveloperView(DetailView):
+	model = Developer
+	template_name = 'blog/profile_page.html'
+	context_object_name = 'me'
+	slug_url_kwarg = 'slug'

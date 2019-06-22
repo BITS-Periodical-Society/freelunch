@@ -1,11 +1,19 @@
+from django.conf.urls.static import static
+from django.conf import settings
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
 	path('', views.PostListView.as_view(), name='post_list'),
-    path('', views.PostListView.as_view(), name='Home'),
-    path('Authors/', views.AuthorListView.as_view(), name='Authors'),
-    path('<slug:slug>/', views.PostDetailView.as_view(), name='post_detail'),
-    path('category/<slug:slug>/', views.PostListView.as_view(), name="category_post" ),
+	path('', views.PostListView.as_view(), name='home'),
+	path('post/<slug:slug>/', views.PostDetailView.as_view(), name='post_detail'),
+	path('authors/', views.author, name='author_list'),
+	path('editor/<slug:slug>/', views.EdiorView.as_view(), name='editor_info'),
+	path('developer/<slug:slug>/', views.DeveloperView.as_view(), name='developer_info'),
+	path('section/<slug:slug>/', views.PostListView.as_view(), name="section-post" ),
 
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
