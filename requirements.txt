@@ -1,4 +1,5 @@
 Django==2.2.2
 Sphinx==2.1.2
 Pillow==6.0.0
-django-tinymce==2.8.0
+django-markdown-deux==1.0.5
+django-pagedown==1.0.6

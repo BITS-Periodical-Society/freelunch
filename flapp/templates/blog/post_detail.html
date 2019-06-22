@@ -25,7 +25,9 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          {{ post.content|safe }}
+          <div class="post-detail-item">
+            {{ post.get_markdown }}  
+          </div>
         </div>
       </div>
     </div>

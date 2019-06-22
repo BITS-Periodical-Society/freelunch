@@ -3,7 +3,9 @@ from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
 from django.urls import reverse
-from tinymce import models as tinymce_models
+from django.utils.safestring import mark_safe
+from markdown_deux import markdown
+
 
 Developer_Designation = [
     ('D', 'Developer'),
@@ -48,7 +50,7 @@ class Post(models.Model):
     post_editor = models.ForeignKey('Editor', related_name='editor', on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     synopsis = models.CharField(max_length=640)
-    content = tinymce_models.HTMLField()
+    content = models.TextField()
     sections = models.ManyToManyField(Section)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
@@ -56,6 +58,10 @@ class Post(models.Model):
 
     class Meta:
         ordering = ('-published_date',)
+
+    def get_markdown(self):
+        content = self.content
+        return mark_safe(markdown(content))
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)

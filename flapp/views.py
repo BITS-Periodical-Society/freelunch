@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.views.generic import ListView, DetailView
 from .models import Post, Section, Writer, Developer, Editor
-
+from .forms import PostForm
 
 class PostListView(ListView):
 	"""
