@@ -10,8 +10,10 @@
             <h1>{{ post.title }}</h1>
             <h2 class="subheading">{{ post.synopsis }}</h2>
             <span class="meta">Posted by
-              <a href="#">{{ post.author }}</a>
-              on {{ post.published_date|date }}</span>
+            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name.capitalize }}</a>
+            Written by
+            <a href="{{ post.author.get_absolute_url }}">{{ post.author.name.capitalize }}</a>
+            on {{ post.published_date|date }}</span>
           </div>
         </div>
       </div>
