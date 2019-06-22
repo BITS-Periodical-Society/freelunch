@@ -96,7 +96,7 @@ class Developer(models.Model):
 class Editor(models.Model):
     name = models.CharField(max_length=30)
     pic = models.ImageField(upload_to='editor/', default='default.png')
-    desination = models.CharField(max_length=3, choices=Editor_Designation, default=Editor_Designation[0][0])
+    designation = models.CharField(max_length=3, choices=Editor_Designation, default=Editor_Designation[0][0])
     linkedin_url = models.URLField(blank=True)
     email = models.EmailField(blank=True)
     bio = models.CharField(max_length=600)
