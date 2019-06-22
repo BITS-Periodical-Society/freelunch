@@ -19,7 +19,7 @@ Author_Designation = [
 
 Editor_Designation = [
     ('E', 'Editor'),
-    ('EC', 'Editor-in-Cheif'),
+    ('EC', 'Editor-in-Chief'),
     ('STE', 'Section Editor: Science & Technology Editor'),
     ('EFE', 'Section Editor: Economics & Finance Editor'),
     ('WAE', 'Section Editor: World Affairs Editor'),
