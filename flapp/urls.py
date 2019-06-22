@@ -7,4 +7,5 @@ urlpatterns = [
     path('Authors/', views.AuthorListView.as_view(), name='Authors'),
     path('<slug:slug>/', views.PostDetailView.as_view(), name='post_detail'),
     path('category/<slug:slug>/', views.PostListView.as_view(), name="category_post" ),
+
 ]
