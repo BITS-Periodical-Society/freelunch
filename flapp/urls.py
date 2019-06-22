@@ -8,9 +8,10 @@ urlpatterns = [
 	path('', views.PostListView.as_view(), name='post_list'),
 	path('', views.PostListView.as_view(), name='home'),
 	path('post/<slug:slug>/', views.PostDetailView.as_view(), name='post_detail'),
-	path('authors/', views.author, name='author_list'),
+	path('authors/', views.contributor, name='contributor_list'),
 	path('editor/<slug:slug>/', views.EdiorView.as_view(), name='editor_info'),
 	path('developer/<slug:slug>/', views.DeveloperView.as_view(), name='developer_info'),
+	path('writer/<slug:slug>/', views.WriterView.as_view(), name='writer_info'),
 	path('section/<slug:slug>/', views.PostListView.as_view(), name="section-post" ),
 
 ]

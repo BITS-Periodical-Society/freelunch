@@ -41,21 +41,20 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'home' %}">Home</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'section-post' slug='economics-finance' %}">Economics & Finance</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'author_list' %}">Authors</a>
+            <a class="nav-link" href="{% url 'section-post' slug='editorial' %}">Editorial</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'section-post' slug='science-technology' %}">Science & Technology</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'section-post' slug='economics-finance' %}">Economics & Finance</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="{% url 'section-post' slug='world-affairs' %}">World Affairs</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'section-post' slug='editorial' %}">Editorial</a>
+            <a class="nav-link" href="{% url 'contributor_list' %}">Contributors</a>
           </li>
         </ul>
       </div>

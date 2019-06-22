@@ -32,7 +32,9 @@
             {% endif %}
           </a>
           <p class="post-meta">Posted by
-            <a href="#">{{ post.author.username.capitalize }}</a>
+            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name.capitalize }}</a>
+            Written by
+            <a href="{{ post.author.get_absolute_url }}">{{ post.author.name.capitalize }}</a>
             on {{ post.published_date|date }}</p>
         </div>
         <hr>

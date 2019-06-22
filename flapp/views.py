@@ -31,11 +31,12 @@ class PostDetailView(DetailView):
 	slug_url_kwarg = 'slug'
 
 
-def author(request):
+def contributor(request):
 	developers = Developer.objects.all()
 	editors = Editor.objects.all()
+	writer = Writer.objects.all()
 
-	return render(request, 'blog/Authors.html', {'developers': developers, 'editors': editors})
+	return render(request, 'blog/Authors.html', {'developers': developers, 'editors': editors, 'writer': writer})
 
 
 class EdiorView(DetailView):
@@ -47,6 +48,13 @@ class EdiorView(DetailView):
 
 class DeveloperView(DetailView):
 	model = Developer
+	template_name = 'blog/profile_page.html'
+	context_object_name = 'me'
+	slug_url_kwarg = 'slug'
+
+
+class WriterView(DetailView):
+	model = Writer
 	template_name = 'blog/profile_page.html'
 	context_object_name = 'me'
 	slug_url_kwarg = 'slug'

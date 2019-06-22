@@ -137,6 +137,9 @@ class Writer(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('writer_info', kwargs={'slug': self.slug})
+
 
 class Subscriber(models.Model):
     name = models.CharField(max_length=30)
