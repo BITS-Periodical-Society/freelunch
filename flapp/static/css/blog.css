@@ -477,10 +477,10 @@ html {
   padding: 0 8px;
 }
 .column2 {
-  float: right;
+  float: center;
   width: 33%;
-  margin-bottom: 13px;
-  padding: 0 4px;
+  margin-bottom: 16px;
+  padding: 0 8px;
 }
 .column3 {
   float: right;
@@ -498,6 +498,10 @@ html {
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  left: 70px;
+
+
 }
 
 
@@ -509,6 +513,8 @@ html {
 
 .title {
   color: grey;
+font-size: fit-height;
+height:45px;
 }
 
 .button {

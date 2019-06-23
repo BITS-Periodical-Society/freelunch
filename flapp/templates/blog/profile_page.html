@@ -8,8 +8,8 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="page-heading">
-            <h1 align="center">Indraneel Ghosh</h1> <!-- Name -->
-            <span class="subheading" align="center">Editor-in-Chief</span> <!-- Position -->
+            <h1 align="center">{{ me.name }}</h1> <!-- Name -->
+            <span class="subheading" align="center">{{ me.get_designation_display }}</span> <!-- Position -->
           </div>
         </div>
       </div>
@@ -28,11 +28,11 @@
 <!-- Description -->
 <div class="card">
       <div class="container overlay1">
-  <img src="{% static 'img/Ghosh.jpg' %}" alt="Avatar" class="image">
+  <img src="{{ me.pic.url }}" alt="Avatar" class="image">
   <div class="overlay">
-    <div class="text">Indraneel Ghosh</div>   <!-- Name hovering over image -->
+    <div class="text">{{ me.name }}</div>   <!-- Name hovering over image -->
   </div>
 </div>
-	<p>Pursuing a double major in B.E(Hons.) Computer Science and MSc. Biological Science, Indraneel is a third-year undergrad at BITS Pilani. A cricket buff, he loves reading about history, South Asian culture and fiction.</p>
+	<p>{{ me.bio }}<p>
 
 {% endblock %}
