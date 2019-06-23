@@ -87,7 +87,7 @@ class Developer(models.Model):
 
     def get_absolute_url(self):
         return reverse('developer_info', kwargs={'slug': self.slug})
-    
+
 
 class Editor(models.Model):
     name = models.CharField(max_length=30)
@@ -143,3 +143,20 @@ class Subscriber(models.Model):
 
     def __str__(self):
         return self.name
+
+class Comment(models.Model):
+    """
+    Displays comments by readers only after they have been approved
+    """
+    post = models.ForeignKey('flapp.Post', on_delete=models.CASCADE, related_name='comments')
+    author = models.CharField(max_length=100)
+    text = models.TextField()
+    created_date = models.DateTimeField(default = timezone.now)
+    approved_comment = models.BooleanField(default=False)
+
+    def approve(self):
+        self.approved_comment = True
+        self.save()
+
+    def __str__(self):
+        return self.text
