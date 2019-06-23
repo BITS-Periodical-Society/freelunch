@@ -14,9 +14,8 @@ class PostListView(ListView):
 
 	def get_queryset(self):
 		try:
-			slug = self.kwargs['slug']
-			section = Section.objects.get(slug=slug)
-			posts = section.post_set.all().order_by('-published_date')
+			section = self.kwargs['section']
+			posts = Post.objects.all().filter(section=section)		
 		except:
 			posts = Post.objects.all()
 		return posts
