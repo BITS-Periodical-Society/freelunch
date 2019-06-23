@@ -1,14 +1,60 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from .models import Post
+from django.views.generic import ListView, DetailView
+from .models import Post, Section, Writer, Developer, Editor
 from .forms import PostForm
 
+class PostListView(ListView):
+	"""
+	Returns posts with category filter.
+	"""
+	context_object_name = 'posts'
+	template_name = 'blog/post_list.html'
+	paginate_by = 2
 
-def post_list(request):
-    return render(request, 'blog/post_list.html')
+	def get_queryset(self):
+		try:
+			slug = self.kwargs['slug']
+			section = Section.objects.get(slug=slug)
+			posts = section.post_set.all().order_by('-published_date')
+		except:
+			posts = Post.objects.all()
+		return posts
 
-def Authors(request):
-    return render(request, 'blog/Authors.html')
+class PostDetailView(DetailView):
+	"""
+	Detail view for a post.
+	"""
+	model = Post
+	context_object_name = 'post'
+	template_name = 'blog/post_detail.html'
+	slug_url_kwarg = 'slug'
 
-def post_detail(request):
-    return render(request, 'blog/post_detail.html')        
+
+def contributor(request):
+	developers = Developer.objects.all()
+	editors = Editor.objects.all()
+	writer = Writer.objects.all()
+
+	return render(request, 'blog/Authors.html', {'developers': developers, 'editors': editors, 'writer': writer})
+
+
+class EdiorView(DetailView):
+	model = Editor
+	template_name = 'blog/profile_page.html'
+	context_object_name = 'me'
+	slug_url_kwarg = 'slug'
+
+
+class DeveloperView(DetailView):
+	model = Developer
+	template_name = 'blog/profile_page.html'
+	context_object_name = 'me'
+	slug_url_kwarg = 'slug'
+
+
+class WriterView(DetailView):
+	model = Writer
+	template_name = 'blog/profile_page.html'
+	context_object_name = 'me'
+	slug_url_kwarg = 'slug'

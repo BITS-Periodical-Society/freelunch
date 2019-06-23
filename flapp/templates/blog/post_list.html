@@ -19,62 +19,34 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
+        {% for post in posts %}
         <div class="post-preview">
-          <a href="{% url 'post_detail' %}">
+          <a href="{{ post.get_absolute_url }}">
             <h2 class="post-title">
-              Man must explore, and this is exploration at its greatest
+              {{ post.title }}
             </h2>
+            {% if post.synopsis %}
             <h3 class="post-subtitle">
-              Problems look mighty small from 150 miles up
+              {{ post.synopsis }}
             </h3>
+            {% endif %}
           </a>
           <p class="post-meta">Posted by
-            <a href="#">Admin</a>
-            on September 24, 2019</p>
+            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name.capitalize }}</a>
+            Written by
+            <a href="{{ post.author.get_absolute_url }}">{{ post.author.name.capitalize }}</a>
+            on {{ post.published_date|date }}</p>
         </div>
         <hr>
-        <div class="post-preview">
-          <a href="post.html">
-            <h2 class="post-title">
-              I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.
-            </h2>
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Admin</a>
-            on September 18, 2019</p>
-        </div>
-        <hr>
-        <div class="post-preview">
-          <a href="post.html">
-            <h2 class="post-title">
-              Science has not yet mastered prophecy
-            </h2>
-            <h3 class="post-subtitle">
-              We predict too much for the next year and yet far too little for the next ten.
-            </h3>
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Admin</a>
-            on August 24, 2019</p>
-        </div>
-        <hr>
-        <div class="post-preview">
-          <a href="post.html">
-            <h2 class="post-title">
-              Failure is not an option
-            </h2>
-            <h3 class="post-subtitle">
-              Many say exploration is part of our destiny, but it’s actually our duty to future generations.
-            </h3>
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Admin</a>
-            on July 8, 2019</p>
-        </div>
-        <hr>
+        {% endfor %}
         <!-- Pager -->
         <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+          {% if page_obj.has_previous %}
+          <a class="btn btn-primary float-right" href="?page={{ page_obj.previous_page_number }}">Newer Posts &rarr;</a>
+          {% endif %}
+          {% if page_obj.has_next %}
+          <a class="btn btn-primary float-left" href="?page={{ page_obj.next_page_number }}">Older Posts &rarr;</a>
+          {% endif %}
         </div>
       </div>
     </div>

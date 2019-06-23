@@ -1,18 +1,20 @@
+from django.conf.urls.static import static
+from django.conf import settings
 from django.urls import path
-from django.conf.urls import url
 from . import views
 
+
 urlpatterns = [
-	path('', views.post_list,name='post_list'),
-    path('', views.post_list, name='Home'),
-    path('Authors', views.Authors, name='Authors'),
-    path('post_detail', views.post_detail, name='post_detail'),
-    #url(r'^about', views.about , name="about"),
-    #url(r'^contributors', views.contributors, name = "contributors" ),
-    #url(r'^contribute', views.contribute, name= "contribute" ),
-    #url(r'^science-technology', views.sciencetechnology, name= "sciencetechnology" ),
-    #url(r'^economics-finanace', views.economicsfinance, name= "economicsfinance" ),
-    #url(r'^world-affairs', views.worldaffairs, name= "worldaffairs" ),
-    #url(r'^editorial', views.editorial, name= "editorial" ),
-    #url(r'^book-reviews', views.bookreviews, name= "book-reviews" ),
+	path('', views.PostListView.as_view(), name='post_list'),
+	path('', views.PostListView.as_view(), name='home'),
+	path('post/<slug:slug>/', views.PostDetailView.as_view(), name='post_detail'),
+	path('authors/', views.contributor, name='contributor_list'),
+	path('editor/<slug:slug>/', views.EdiorView.as_view(), name='editor_info'),
+	path('developer/<slug:slug>/', views.DeveloperView.as_view(), name='developer_info'),
+	path('writer/<slug:slug>/', views.WriterView.as_view(), name='writer_info'),
+	path('section/<slug:slug>/', views.PostListView.as_view(), name="section-post" ),
+
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

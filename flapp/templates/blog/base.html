@@ -13,26 +13,27 @@
   <title>FreeLunch-BITS Academic Periodical Society</title>
 
   <!-- Bootstrap core CSS -->
-  <!--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
-	<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-  <!-- Custom fonts for this template -->
-  <!--<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">-->
+ 	<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap/js/bootstrap.min.js' %}">
+  
+   <!-- Custom fonts for this template -->
   <link href="{% static 'fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
-  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this template -->
   <!--<link href="css/clean-blog.min.css" rel="stylesheet">-->
   <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 
+  {% block head_extra %} {% endblock head_extra %}
+
+  
 </head>
 
 <body>
 
-  <!-- Navigation -->
+  <!-- Navigation Bar-->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand" href="{% url 'Home' %}">Freelunch</a>
+      <a class="navbar-brand" href="{% url 'home' %}">Freelunch</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -40,11 +41,22 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'Home' %}">Home</a>
-          </li>
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'Authors' %}">Authors</a>
+            <a class="nav-link" href="{% url 'section-post' slug='economics-finance' %}">Economics & Finance</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'section-post' slug='editorial' %}">Editorial</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'section-post' slug='science-technology' %}">Science & Technology</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'section-post' slug='world-affairs' %}">World Affairs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contributor_list' %}">Contributors</a>
           </li>
         </ul>
       </div>
@@ -92,13 +104,22 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <!--<script src="vendor/jquery/jquery.min.js"></script>-->
   <script src="{% static 'jquery/jquery.min.js' %}"></script>
-  <!--<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
   <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   <!-- Custom scripts for this template -->
-  <!--<script src="js/clean-blog.min.js"></script>-->
   <script src="{% static 'js/clean-blog.min.js' %}"></script>
+ 
+  <!--Markdown-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.6.2/marked.min.js"></script>
+
+  <!--script to load content of post-->
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".post-detail-item img").each(function(){
+        $(this).addClass("img-responsive text-center");
+      })
+    })
+  </script>
 </body>
 
 </html>
