@@ -477,10 +477,10 @@ html {
   padding: 0 8px;
 }
 .column2 {
-  float: right;
+  float: center;
   width: 33%;
-  margin-bottom: 13px;
-  padding: 0 4px;
+  margin-bottom: 16px;
+  padding: 0 8px;
 }
 .column3 {
   float: right;
@@ -501,6 +501,7 @@ html {
   position: relative;
   left: 70px;
 
+
 }
 
 
@@ -512,6 +513,8 @@ html {
 
 .title {
   color: grey;
+font-size: fit-height;
+height:45px;
 }
 
 .button {
