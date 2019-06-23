@@ -511,11 +511,6 @@ html {
   display: table;
 }
 
-.title {
-  color: grey;
-font-size: fit-height;
-height:45px;
-}
 
 .button {
   border: none;
