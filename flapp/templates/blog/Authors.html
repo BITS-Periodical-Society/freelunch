@@ -27,15 +27,22 @@
     <div class="row">
       {% for editor in editors %}
       <div class="col-sm-4 d-flex align-items-stretch">
-        <div class="border">
-          <div class="container overlay1">    
+        <div class="border">  
+
+      <div class="container overlay1">
             <img class="card-img-top" src="{{ editor.pic.url }}">
+              <div class="overlay overlayr">
+                <div class="text">{{ editor.name }}</div>
+              </div>
+            </div>
             <div class="card-body">
               <h5 class="card-title">{{ editor.name }}</h5>
+               <div class="col-sm-20 d-flex align-items-stretch">  
               <p class="card-text">{{ editor.get_designation_display }}</p>
-              <a href="{{ editor.get_absolute_url }}" class="btn btn-primary">Find Out More</a>
-            </div>
-          </div>
+               </div>
+                <a href="{{ editor.get_absolute_url }}" class="btn btn-primary">Find Out More</a>
+              </div>
+           
         </div>
       </div>
       {% if forloop.counter|divisibleby:"3" %}</div><div class="row">{% endif %}
@@ -52,14 +59,22 @@
       {% for dev in developers %}
       <div class="col-sm-4 d-flex align-items-stretch">
         <div class="border">
-          <div class="container overlay1">    
+   
+      <div class="container overlay1">
             <img class="card-img-top" src="{{ dev.pic.url }}">
+              <div class="overlay overlayr">
+                <div class="text">{{ dev.name }}</div>
+              </div>
+            </div>
+       
             <div class="card-body">
               <h5 class="card-title">{{ dev.name }}</h5>
               <p class="card-text">{{ dev.get_designation_display }}</p>
-              <a href="{{ dev.get_absolute_url }}" class="btn btn-primary">Find Out More</a>
+              <div class="col-sm-8 d-flex align-items-stretch">
+              <a href="{{ dev.get_absolute_url }}" class="btn btn-primary" >Find Out More</a>
             </div>
-          </div>
+            </div>
+          
         </div>
       </div>
       {% if forloop.counter|divisibleby:"3" %}</div><div class="row">{% endif %}

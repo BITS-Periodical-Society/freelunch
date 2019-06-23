@@ -21,7 +21,7 @@ SECRET_KEY = 'va$3qh2l)mu1pt#h#)8f=u670b0mln%(%85r7qddomp17gqqb)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['freelunchadmin.pythonanywhere.com']
+ALLOWED_HOSTS = ['freelunchadmin.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
