@@ -28,15 +28,14 @@
     <div class="row" >
       {% for editor in editors %}
       <div class="{% cycle 'column1' 'column2' 'column3' %}">   <!-- First column of the row -->
+    <!--   <div class="card-group"> -->
        <div class="card h-100">
-        <div class="container overlay1">
           <img class="card-img-top" src="{{ editor.pic.url }}" alt="Avatar">
           <div class="card-body">
             <h5 class="card-title">{{ editor.name }}</h5>
-            <p class="card-text">{{ editor.get_designation_display }}</p>
+            <p class="card-text ">{{ editor.get_designation_display }}</p>
             <a href="{{ editor.get_absolute_url }}" class="btn btn-primary">Find Out More</a>
           </div>
-        </div>
       </div>
     </div>
     {% endfor %}
