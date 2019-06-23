@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Section, Writer, Editor, Developer, Subscriber
+from .models import Post, Writer, Editor, Developer, Subscriber
 from .forms import PostForm
 
 @admin.register(Post)
@@ -13,5 +13,4 @@ class PostModelAdmin(admin.ModelAdmin):
 admin.site.register(Writer)
 admin.site.register(Editor)
 admin.site.register(Developer)
-admin.site.register(Section)
 admin.site.register(Subscriber)

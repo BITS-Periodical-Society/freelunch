@@ -6,6 +6,12 @@ from django.urls import reverse
 from django.utils.safestring import mark_safe
 from markdown_deux import markdown
 
+Section = [
+    ('EF', 'Economics & Finance'),
+    ('E', 'Editorial'),
+    ('ST', 'Science & Technology'),
+    ('WA', 'World Affairs'),
+]
 
 Developer_Designation = [
     ('D', 'Developer'),
@@ -29,29 +35,13 @@ Editor_Designation = [
 ]
 
 
-class Section(models.Model):
-    title = models.CharField(max_length=20)
-    slug = models.SlugField(max_length=20, unique=True, blank=True)
-    on_nav = models.BooleanField(default=False)
-
-    class Meta:
-        ordering = ('title',)
-
-    def __str__(self):
-        return self.title
-
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
-        super(Section, self).save(*args, **kwargs)
-
-
 class Post(models.Model):
     author = models.ForeignKey('Writer', related_name='author', on_delete=models.CASCADE)
     post_editor = models.ForeignKey('Editor', related_name='editor', on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     synopsis = models.CharField(max_length=640)
     content = models.TextField()
-    sections = models.ManyToManyField(Section)
+    section = models.CharField(max_length=2, choices=Section)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     slug = models.SlugField(max_length=150, unique=True, blank=True)
