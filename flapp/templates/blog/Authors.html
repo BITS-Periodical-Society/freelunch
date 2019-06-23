@@ -24,10 +24,10 @@
       <h2 style="margin-top:30px;">Current Writing Team</h2>      <!-- Team Name -->
     </div><hr/>
 
-    <div class="row">
+    <div class="row ">
       {% for editor in editors %}
-      <div class="col-sm-4 d-flex align-items-stretch">
-        <div class="border">  
+      <div class="col-sm-4 d-flex ">
+        <div class="border pad1">  
 
       <div class="container overlay1">
             <img class="card-img-top" src="{{ editor.pic.url }}">
@@ -35,17 +35,19 @@
                 <div class="text">{{ editor.name }}</div>
               </div>
             </div>
-            <div class="card-body">
+            <div class="card-body pad1">
               <h5 class="card-title">{{ editor.name }}</h5>
-               <div class="col-sm-20 d-flex align-items-stretch">  
-              <p class="card-text">{{ editor.get_designation_display }}</p>
-               </div>
-                <a href="{{ editor.get_absolute_url }}" class="btn btn-primary">Find Out More</a>
-              </div>
+              <p class="card-text ">{{ editor.get_designation_display }}</p>
+      <a href="{{ editor.get_absolute_url }}" class="btn  btn-primary" style="margin-top: auto;">Find Out More</a>             
+            </div>
+
+            
+              
+            
            
         </div>
       </div>
-      {% if forloop.counter|divisibleby:"3" %}</div><div class="row">{% endif %}
+      {% if forloop.counter|divisibleby:"3" %}</div><div class="row ">{% endif %}
       {% endfor %}
     </div>
   
@@ -58,7 +60,7 @@
     <div class="row">
       {% for dev in developers %}
       <div class="col-sm-4 d-flex align-items-stretch">
-        <div class="border">
+        <div class="border pad1">
    
       <div class="container overlay1">
             <img class="card-img-top" src="{{ dev.pic.url }}">
@@ -67,12 +69,10 @@
               </div>
             </div>
        
-            <div class="card-body">
+            <div class="card-body pad1">
               <h5 class="card-title">{{ dev.name }}</h5>
               <p class="card-text">{{ dev.get_designation_display }}</p>
-              <div class="col-sm-8 d-flex align-items-stretch">
-              <a href="{{ dev.get_absolute_url }}" class="btn btn-primary" >Find Out More</a>
-            </div>
+              <a href="{{ dev.get_absolute_url }}" class="btn btn-primary" style="margin-top: auto;">Find Out More</a>
             </div>
           
         </div>
