@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.views.generic import ListView, DetailView
 from .models import Post, Section, Writer, Developer, Editor
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 
 class PostListView(ListView):
 	"""
@@ -15,7 +15,7 @@ class PostListView(ListView):
 	def get_queryset(self):
 		try:
 			section = self.kwargs['section']
-			posts = Post.objects.all().filter(section=section)		
+			posts = Post.objects.all().filter(section=section)
 		except:
 			posts = Post.objects.all()
 		return posts

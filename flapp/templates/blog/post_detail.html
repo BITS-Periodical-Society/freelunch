@@ -26,11 +26,27 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-detail-item">
-            {{ post.get_markdown|linebreaks }}  
+            {{ post.get_markdown|linebreaks }}
           </div>
         </div>
       </div>
     </div>
   </article>
+  <hr>
+
+  <!--Comments-->
+  <h5>Comments</h5>
+  {% for comment in post.comments.all %}
+  {% if comment.approved_comment %}
+    <div class="comment">
+        <p><strong>{{ comment.author }}</strong></p>
+        <div class="date_created">
+            <em>{{ comment.created_date }}</em>
+        </div>
+        <p> {{comment.text|linebreaks }} </p>
+    </div>
+
+    {% endif %}
+  {% endfor %}
   <hr>
 {% endblock %}
