@@ -36,6 +36,7 @@
 
   <!--Comments-->
   <h5>Comments</h5>
+  <a class="btn btn-default" href="{% url 'add_comment_to_post' slug=post.slug %}">Add Comment</a>
   {% for comment in post.comments.all %}
   {% if comment.approved_comment %}
     <div class="comment">
