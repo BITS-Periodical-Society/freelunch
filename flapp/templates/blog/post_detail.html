@@ -1,12 +1,15 @@
 {% extends 'blog/base.html' %}
 {% block content %}
 {% load static %}
-    <header class="masthead" style="background-image: url({% static 'img/post-bg.jpg' %}">
+    <header class="masthead" >
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="col-lg-6 col-md-10 mx-auto">
           <div class="post-heading">
+          <div class = "entry-header page-header">
+            <img src="{% static 'img/post-bg.jpg' %}" class="img-thumbnail img-responsive" alt=""> <!-- Cover Image -->
+          </div>        
             <h1>{{ post.title }}</h1>
             <h2 class="subheading">{{ post.synopsis }}</h2>
             <span class="meta">Posted by

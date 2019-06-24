@@ -165,9 +165,8 @@ img::-moz-selection {
 }
 
 header.masthead {
-  margin-bottom: 50px;
-  background: no-repeat center center;
-  background-color: #868e96;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 50%, rgba(181,198,208,1) 51%, rgba(224,239,249,1) 100%);
   background-attachment: scroll;
   position: relative;
   background-size: cover;
@@ -179,7 +178,7 @@ header.masthead .overlay {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: #212529;
+  background-color: #F8F8F8;
   opacity: 0.5;
 }
 
@@ -511,11 +510,6 @@ html {
   display: table;
 }
 
-.title {
-  color: grey;
-font-size: fit-height;
-height:45px;
-}
 
 .button {
   border: none;
@@ -548,5 +542,4 @@ padding-left:20px;
 padding-right:20px;
 padding-bottom:10px;
 }
-
 
