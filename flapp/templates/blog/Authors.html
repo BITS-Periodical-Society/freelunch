@@ -2,76 +2,83 @@
 {% block content %}
 {% load static %}
 
-  <!-- Page Header -->
-  <header class="masthead" style="background-image: url({% static 'img/about-bg.jpg' %}">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="page-heading">
-            <h1>About Us</h1>
-            <span class="subheading">This is our team.</span>
-          </div>
+<!-- Page Header -->
+<header class="masthead" style="background-image: url({% static 'img/about-bg.jpg' %}">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1>About Us</h1>
+          <span class="subheading">This is our team.</span>
         </div>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- Main Content -->
+<!-- Main Content -->
 <div class="row">
   <div class="col-lg-8 col-md-10 mx-auto">
     <div style="text-align:center;">
-    <h2 style="margin-top:30px;">Current Writing Team</h2>      <!-- Team Name -->
+      <h2 style="margin-top:30px;">Current Writing Team</h2>      <!-- Team Name -->
     </div><hr/>
 
-<div class="row" >
-  {% for editor in editors %}
-  <div class="{% cycle 'column1' 'column2' 'column3' %}">   <!-- First column of the row -->
-    <div class="card">
+    <div class="row ">
+      {% for editor in editors %}
+      <div class="col-sm-4 d-flex ">
+        <div class="border pad1 ">  
+
       <div class="container overlay1">
-  <img src="{{ editor.pic.url }}" alt="Avatar" class="image">
-  <div class="overlay">
-    <div class="text">{{ editor.name }}</div>   <!-- Name hovering over image -->
-  </div>
-</div>
-      <div class="details">
-        <h2>{{ editor.name }}</h2>  <!-- Name written below image -->
-        <p class="title">{{ editor.get_designation_display }}</p>
-        
-        <p><button class="button" onclick="window.location.href = '{{ editor.get_absolute_url }}';"> Find Out More </button></p>
+            <img class="card-img-top" src="{{ editor.pic.url }}">
+              <div class="overlay overlayr">
+                <div class="text">{{ editor.name }}</div>
+              </div>
+            </div>
+            <div class="card-body pad1 ">
+              <h5 class="card-title">{{ editor.name }}</h5>
+              <p class="card-text ">{{ editor.get_designation_display }}</p>
+              <a href="{{ editor.get_absolute_url }}" class="col-sm-16 btn  btn-primary" style="margin-top: auto;">Find Out More</a>   
+            
+            </div>  
+                      
+     
+        </div>
       </div>
+      {% if forloop.counter|divisibleby:"3" %}</div><div class="row ">{% endif %}
+      {% endfor %}
     </div>
-  </div>
-  {% endfor %}
-</div>
+  
 
-<!-- Development Team Details -->
-<div style="text-align:center;">
-<h2 style="margin-top:30px;">Development Team</h2>
-</div><hr/>
+ <!-- Development Team Details -->
+  <div style="text-align:center;">
+    <h2 style="margin-top:30px;">Development Team</h2>
+  </div><hr/>
 
-<div class="row"><!--need to add this in for for loop, after 3 cycles-->
-  {% for dev in developers %}
-  <div class="{% cycle 'column1' 'column2' 'column3' %}">
-    <div class="card">
+    <div class="row">
+      {% for dev in developers %}
+      <div class="col-sm-4 d-flex align-items-stretch">
+        <div class="border pad1">
+   
       <div class="container overlay1">
-  <img src="{{ dev.pic.url }}" alt="Avatar" class="image">
-  <div class="overlay">
-    <div class="text">{{ dev.name }}</div>
-  </div>
-</div>
-      <div class="details">
-        <h2> {{ dev.name }} </h2>
-        <p class="title">{{ dev.get_designation_display }}</p>
-        
-        <p><button class="button" onclick="window.location.href = '{{ dev.get_absolute_url }}';">Find Out More</button></p>
+            <img class="card-img-top" src="{{ dev.pic.url }}">
+              <div class="overlay overlayr">
+                <div class="text">{{ dev.name }}</div>
+              </div>
+            </div>
+       
+            <div class="card-body pad1">
+              <h5 class="card-title">{{ dev.name }}</h5>
+              <p class="card-text">{{ dev.get_designation_display }}</p>
+              <a href="{{ dev.get_absolute_url }}" class="col-sm-16 btn btn-primary" style="margin-top: auto;">Find Out More</a>
+            </div>
+          
+        </div>
       </div>
+      {% if forloop.counter|divisibleby:"3" %}</div><div class="row">{% endif %}
+      {% endfor %}
     </div>
-  </div>
-  {% endfor %}
 </div>
-
-  </div>
 </div>
 <hr>
 {% endblock %}
