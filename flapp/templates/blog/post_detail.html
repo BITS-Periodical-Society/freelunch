@@ -8,7 +8,7 @@
         <div class="col-lg-6 col-md-10 mx-auto">
           <div class="post-heading">
           <div class = "entry-header page-header">
-            <img src="{% static 'img/post-bg.jpg' %}" class="img-thumbnail img-responsive" alt=""> <!-- Cover Image -->
+            <img src="{{ post.cover_image }}" class="img-thumbnail img-responsive" alt=""> <!-- Cover Image -->
           </div>        
             <h1>{{ post.title }}</h1>
             <h2 class="subheading">{{ post.synopsis }}</h2>
