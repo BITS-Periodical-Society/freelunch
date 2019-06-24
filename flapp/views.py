@@ -71,4 +71,4 @@ def add_comment_to_post(request, slug):
 
 	else:
 		form = CommentForm()
-	return render(request, 'blog/add_comment.html', {'form': form})
+	return render(request, 'blog/comment_form.html', {'form': form})
