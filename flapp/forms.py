@@ -4,8 +4,8 @@ from pagedown.widgets import AdminPagedownWidget
 
 
 class PostForm(forms.ModelForm):
-	content = forms.CharField(widget=AdminPagedownWidget())
-	
+	content = forms.CharField(widget=AdminPagedownWidget(show_preview=False))
+
 	class Meta:
 		model = Post
 		fields = '__all__'

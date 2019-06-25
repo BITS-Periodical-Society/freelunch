@@ -5,6 +5,7 @@ from django.urls import reverse
 from .models import Post, Section, Writer, Developer, Editor, Comment
 from .forms import PostForm, CommentForm
 
+
 class PostListView(ListView):
 	"""
 	Returns posts with category filter.
@@ -20,6 +21,14 @@ class PostListView(ListView):
 		except:
 			posts = Post.objects.all()
 		return posts
+
+
+class PostCreateView(CreateView):
+	model = Post
+	template_name = 'blog/post_form.html'
+	form_class = PostForm
+	context_object_name = 'form'
+
 
 class PostDetailView(DetailView):
 	"""
