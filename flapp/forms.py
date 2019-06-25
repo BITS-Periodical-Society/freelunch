@@ -1,14 +1,25 @@
 from django import forms
 from .models import Post, Comment
-from pagedown.widgets import AdminPagedownWidget
+from pagedown.widgets import PagedownWidget
 
 
 class PostForm(forms.ModelForm):
-	content = forms.CharField(widget=AdminPagedownWidget(show_preview=False))
+	content = forms.CharField(widget=PagedownWidget())
 
 	class Meta:
 		model = Post
 		fields = '__all__'
+		exclude = ('published_date', 'created_date', 'slug',)
+
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		self.fields['title'].widget.attrs.update({'class': 'form-control'})
+		self.fields['author'].widget.attrs.update({'class': 'form-control'})
+		self.fields['synopsis'].widget.attrs.update({'class': 'form-control'})
+		self.fields['post_editor'].widget.attrs.update({'class': 'form-control'})
+		self.fields['section'].widget.attrs.update({'class': 'form-control'})
+		self.fields['content'].widget.attrs.update({'class': 'form-control'})
+		self.fields['cover_image'].widget.attrs.update({'class': 'form-control-file'})
 
 class CommentForm(forms.ModelForm):
 

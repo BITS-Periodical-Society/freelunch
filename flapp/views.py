@@ -27,7 +27,12 @@ class PostCreateView(CreateView):
 	model = Post
 	template_name = 'blog/post_form.html'
 	form_class = PostForm
-	context_object_name = 'form'
+
+	def form_valid(self, form):
+		post = form.save(commit=False)
+		post.published_date = timezone.now()
+		post.save()
+		return super().form_valid(form)
 
 
 class PostDetailView(DetailView):
