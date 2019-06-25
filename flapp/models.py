@@ -43,6 +43,7 @@ class Post(models.Model):
     content = models.TextField()
     section = models.CharField(max_length=2, choices=Section)
     created_date = models.DateTimeField(default=timezone.now)
+    cover_image = models.ImageField(null=True, blank=True, editable=True,upload_to = 'post_cover/')
     published_date = models.DateTimeField(blank=True, null=True)
     slug = models.SlugField(max_length=150, unique=True, blank=True)
 
@@ -56,6 +57,10 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Post, self).save(*args, **kwargs)
+    def delete_img(self,*args,**kwargs):
+        storage,path=self.cover_image.storage,self.cover_image.path
+        super(ImageModel, self).delete(*args, **kwargs)
+        storage.delete(path)
 
     def get_absolute_url(self):
         return reverse('post_detail', kwargs={'slug': self.slug})
@@ -63,7 +68,7 @@ class Post(models.Model):
     def publish(self):
         self.published_date = timezone.now()
         self.save()
-
+ 
     def __str__(self):
         return self.title
 
@@ -87,7 +92,7 @@ class Developer(models.Model):
 
     def get_absolute_url(self):
         return reverse('developer_info', kwargs={'slug': self.slug})
-    
+
 
 class Editor(models.Model):
     name = models.CharField(max_length=30)
@@ -143,3 +148,17 @@ class Subscriber(models.Model):
 
     def __str__(self):
         return self.name
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    author = models.CharField(max_length=100)
+    text = models.TextField()
+    created_date = models.DateTimeField(default = timezone.now)
+    is_approved = models.BooleanField(default=False)
+
+    def approve(self):
+        self.approved_comment = True
+        self.save()
+
+    def __str__(self):
+        return self.text

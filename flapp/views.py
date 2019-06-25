@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from django.views.generic import ListView, DetailView
-from .models import Post, Section, Writer, Developer, Editor
-from .forms import PostForm
+from django.views.generic import ListView, DetailView, CreateView
+from django.urls import reverse
+from .models import Post, Section, Writer, Developer, Editor, Comment
+from .forms import PostForm, CommentForm
 
 class PostListView(ListView):
 	"""
@@ -15,7 +16,7 @@ class PostListView(ListView):
 	def get_queryset(self):
 		try:
 			section = self.kwargs['section']
-			posts = Post.objects.all().filter(section=section)		
+			posts = Post.objects.all().filter(section=section)
 		except:
 			posts = Post.objects.all()
 		return posts
@@ -57,3 +58,18 @@ class WriterView(DetailView):
 	template_name = 'blog/profile_page.html'
 	context_object_name = 'me'
 	slug_url_kwarg = 'slug'
+
+
+class CommentCreateView(CreateView):
+	model = Comment
+	form_class = CommentForm
+	template_name = 'blog/comment_form.html'
+	context_object_name = 'form'
+
+	def get_success_url(self):
+		return reverse('post_detail', slug=self.kwargs['slug'])
+
+	def form_valid(self, form):
+		post = get_object_or_404(Post, slug=self.kwargs['slug'])
+		comment.post = post
+		return super().form_valid(form)
