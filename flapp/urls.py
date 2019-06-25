@@ -13,7 +13,7 @@ urlpatterns = [
 	path('developer/<slug:slug>/', views.DeveloperView.as_view(), name='developer_info'),
 	path('writer/<slug:slug>/', views.WriterView.as_view(), name='writer_info'),
 	path('section/<slug:section>/', views.PostListView.as_view(), name="section-post" ),
-	path('post/<slug:slug>/comment/', views.add_comment_to_post, name='add_comment_to_post'),
+	path('post/<slug:slug>/comment/', views.CommentCreateView.as_view(), name='post_comment'),
 
 ]
 

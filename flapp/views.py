@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from django.views.generic import ListView, DetailView
-from .models import Post, Section, Writer, Developer, Editor
+from django.views.generic import ListView, DetailView, CreateView
+from django.urls import reverse
+from .models import Post, Section, Writer, Developer, Editor, Comment
 from .forms import PostForm, CommentForm
 
 class PostListView(ListView):
@@ -58,17 +59,17 @@ class WriterView(DetailView):
 	context_object_name = 'me'
 	slug_url_kwarg = 'slug'
 
-def add_comment_to_post(request, slug):
-	post = get_object_or_404(Post, slug=slug)
-	if request.method == 'POST':
-		form = CommentForm(request.POST)
 
-		if form.is_valid():
-			comment = form.save(commit=False)
-			comment.post = post
-			comment.save()
-			return redirect('post_detail', slug=post.slug)
+class CommentCreateView(CreateView):
+	model = Comment
+	form_class = CommentForm
+	template_name = 'blog/comment_form.html'
+	context_object_name = 'form'
 
-	else:
-		form = CommentForm()
-	return render(request, 'blog/comment_form.html', {'form': form})
+	def get_success_url(self):
+		return reverse('post_detail', slug=self.kwargs['slug'])
+
+	def form_valid(self, form):
+		post = get_object_or_404(Post, slug=self.kwargs['slug'])
+		comment.post = post
+		return super().form_valid(form)

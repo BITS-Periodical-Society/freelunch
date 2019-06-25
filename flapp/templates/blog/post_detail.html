@@ -43,19 +43,19 @@
 <div class="row">
   <div class="col-lg-8 col-md-10 mx-auto">
     <div style="text-align:center;">
-      <h2 style="margin-top:30px;">Comments({{ post.comments.count }})</h2>
+      <h2 style="margin-top:30px;">Comments({{ post.comments.all.count }})</h2>
     </div>
     
     <div class="container">
     {% for comment in post.comments.all %}
-      {% if comment.approved_comment %}
+      {% if comment.is_approved %}
       <div class="border text-center">
       <p> {{comment.text|linebreaks }} </p>
       <p>By: <strong>{{ comment.author.capitalize }}</strong><br><em>{{ comment.created_date|date }}</em></p>
       {% endif %}        
       </div>
     {% endfor %}<br>
-    <a class="button" href="{% url 'add_comment_to_post' slug=post.slug %}">Add Comment</a>
+    <a class="button" href="{% url 'post_comment' slug=post.slug %}">Add Comment</a>
     </div>
   </div>
 </div>
