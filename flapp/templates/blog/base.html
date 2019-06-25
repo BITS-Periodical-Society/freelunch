@@ -14,7 +14,7 @@
 
   <!-- Bootstrap core CSS -->
  	<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-  <link rel="stylesheet" href="{% static 'bootstrap/js/bootstrap.min.js' %}">
+  <link rel="text/javascript" href="{% static 'bootstrap/js/bootstrap.min.js' %}">
   
    <!-- Custom fonts for this template -->
   <link href="{% static 'fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -96,6 +96,9 @@
                 </span>
               </a>
             </li>
+            <li style="padding-top: 1em;">
+              <a href="">freelunch@freelunch.co.in</a>
+            </li>
           </ul>
           <p class="copyright text-muted">Copyright &copy; Freelunch 2019</p>
         </div>
@@ -115,11 +118,9 @@
 
   <!--script to load content of post-->
   <script type="text/javascript">
-    $(document).ready(function() {
-      $(".post-detail-item img").each(function(){
-        $(this).addClass("img-responsive text-center");
+    $(document).ready(function(){
+    $('img').parent(".content p").addClass('text-center');
       })
-    })
   </script>
 </body>
 

@@ -1,36 +1,32 @@
 {% extends 'blog/base.html' %}
 {% block content %}
 {% load static %}
-    <header class="masthead" style="background-image: url({% static 'img/post-bg.jpg' %}">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="post-heading">
-            <h1>{{ post.title }}</h1>
-            <h2 class="subheading">{{ post.synopsis }}</h2>
-            <span class="meta">Posted by
-            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name.capitalize }}</a>
-            Written by
-            <a href="{{ post.author.get_absolute_url }}">{{ post.author.name.capitalize }}</a>
-            on {{ post.published_date|date }}</span>
-          </div>
-        </div>
+<br><br>
+  
+<div class="row">
+  <div class="col-lg-8 col-md-10 mx-auto">
+    <div class="post">
+      <div class="post-title">
+        <h1>{{ post.title }}</h1>
+      </div>
+      <div class="post-cover" style="background-image: url('{% static 'img/post-bg.jpg' %}')"></div>
+      <div class="post-detail">
+        <span class="post-credit">
+          <i class="fas fa-feather-alt"></i>
+          <a href="{{ post.author.get_absolute_url }}">{{ post.author.name.capitalize }}</a>
+        </span>
+        <span class="post-credit">
+          <i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name.capitalize }}</a>          
+        </span>
+        <span class="post-date">
+          <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
+        </span>
+      </div>
+      <div class="content">
+        {{ post.get_markdown|linebreaks }}
       </div>
     </div>
-  </header>
-
-  <!-- Post Content -->
-  <article>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="post-detail-item">
-            {{ post.get_markdown|linebreaks }}  
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
-  <hr>
+  </div>
+</div>
+<hr>
 {% endblock %}
