@@ -557,3 +557,13 @@ padding-left:20px;
 padding-right:20px;
 padding-bottom:10px;
 }
+.post-cover{
+  height: 20em;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.post-credit{
+  padding-right: 2em;
+}
