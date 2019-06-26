@@ -5,7 +5,6 @@ from django.urls import reverse
 from .models import Post, Section, Writer, Developer, Editor, Comment
 from .forms import PostForm, CommentForm
 
-
 class PostListView(ListView):
 	"""
 	Returns posts with category filter.

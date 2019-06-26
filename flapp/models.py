@@ -57,6 +57,10 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Post, self).save(*args, **kwargs)
+    def delete_img(self,*args,**kwargs):
+        storage,path=self.cover_image.storage,self.cover_image.path
+        super(ImageModel, self).delete(*args, **kwargs)
+        storage.delete(path)
 
     def delete_img(self, *args, **kwargs):
         storage, path = self.cover_image.storage, self.cover_image.path
