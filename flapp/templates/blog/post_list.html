@@ -1,6 +1,8 @@
 {% extends 'blog/base.html' %}
 {% block content %}
 {% load static %}
+{% load my_filters %}
+
   <header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %}">
     <div class="overlay"></div>
     <div class="container">
@@ -32,9 +34,9 @@
             {% endif %}
           </a>
           <p class="post-meta">Posted by
-            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name.capitalize }}</a>
+            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
             Written by
-            <a href="{{ post.author.get_absolute_url }}">{{ post.author.name.capitalize }}</a>
+            <a href="{{ post.author.get_absolute_url }}">{{ post.author.name|cap }}</a>
             on {{ post.published_date|date }}</p>
         </div>
         <hr>

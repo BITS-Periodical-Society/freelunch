@@ -24,18 +24,18 @@
     </div><hr/>
 
     <div class="row ">
-      {% for editor in editors %}
+      {% for author in writer %}
       <div class="col-sm-4 d-flex ">
         <div class="border text-center" style="padding-bottom: 1em;">  
           <div class="container overlay1">
-            <img class="card-img-top" src="{{ editor.pic.url }}">
+            <img class="card-img-top" src="{{ author.pic.url }}">
               <div class="overlay overlayr">
-                <div class="text">{{ editor.name }}</div>
+                <div class="text">{{ author.name }}</div>
               </div>
             </div>
-          <h5 class="card-title" style="padding-top: 0;margin-bottom: 0">{{ editor.name }}</h5>
-          <p style="height: 6em;margin-top: 0;margin-bottom: 0;padding: 0.5em">{{ editor.get_designation_display }}</p>
-          <a href="{{ editor.get_absolute_url }}" class="col-sm-16 btn btn-primary" style="margin-top: auto;bottom: 0">Find Out More</a>
+          <h5 class="card-title" style="padding-top: 0;margin-bottom: 0">{{ author.name }}</h5>
+          <p style="height: 6em;margin-top: 0;margin-bottom: 0;padding: 0.5em">{{ author.get_designation_display }}</p>
+          <a href="{{ author.get_absolute_url }}" class="col-sm-16 btn btn-primary" style="margin-top: auto;bottom: 0">Find Out More</a>
         </div>
       </div>
       {% if forloop.counter|divisibleby:"3" %}</div><div class="row ">{% endif %}

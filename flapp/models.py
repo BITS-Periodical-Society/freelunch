@@ -23,6 +23,11 @@ Author_Designation = [
     ('F', 'Founder'),
     ('CF', 'Co-Founder'),
     ('GA', 'Guest Author'),
+    ('EC', 'Editor-in-Chief'),
+    ('STE', 'Section Editor: Science & Technology Editor'),
+    ('EFE', 'Section Editor: Economics & Finance Editor'),
+    ('WAE', 'Section Editor: World Affairs Editor'),
+    ('EE', 'Section Editor: Editorial Editor'),
 ]
 
 Editor_Designation = [

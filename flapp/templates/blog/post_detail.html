@@ -1,6 +1,8 @@
 {% extends 'blog/base.html' %}
 {% block content %}
 {% load static %}
+{% load my_filters %}
+
 <br><br>
   
 <div class="row">
@@ -13,10 +15,10 @@
       <div class="post-detail">
         <span class="post-credit">
           <i class="fas fa-feather-alt"></i>
-          <a href="{{ post.author.get_absolute_url }}">{{ post.author.name.capitalize }}</a>
+          <a href="{{ post.author.get_absolute_url }}">{{ post.author.name|cap }}</a>
         </span>
         <span class="post-credit">
-          <i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name.capitalize }}</a>          
+          <i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>          
         </span>
         <span class="post-credit">
           <i class='fas fa-puzzle-piece' style="padding-right: 0.2em;"></i><a href="{% url 'section-post' section=post.section %}">{{ post.get_section_display }}</a>          
@@ -43,7 +45,7 @@
       {% if comment.is_approved %}
       <div class="border text-center">
       <p> {{comment.text|linebreaks }} </p>
-      <p>By: <strong>{{ comment.author.capitalize }}</strong><br><em>{{ comment.created_date|date }}</em></p>
+      <p>By: <strong>{{ comment.author|cap }}</strong><br><em>{{ comment.created_date|date }}</em></p>
       {% endif %}        
       </div>
     {% endfor %}<br>
