@@ -3,6 +3,7 @@ var contentInput = $('#id_content')
 var coverInput = $('#id_cover_image')
 var authorInput = $('#id_author')
 var editorInput = $('#id_post_editor')
+var sectionInput = $('#id_section')
 
 function setContent(value) {
 	$('#preview-content').html(value);
@@ -57,6 +58,15 @@ function setEditor(value){
 editorInput.change(function(){
 	var newContent = $('#id_post_editor option:selected').text()
 	setEditor(newContent)
+})
+
+function setSection(value){
+	$("#preview-section").text(value)
+}
+
+sectionInput.change(function(){
+	var newContent = $('#id_section option:selected').text()
+	setSection(newContent)
 })
 
 var d = new Date();
