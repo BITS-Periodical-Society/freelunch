@@ -66,3 +66,17 @@ var year = d.getFullYear()
 var months    = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 var month = months[month]
 $("#preview-date").text(date+" "+month+", "+year)
+
+$('#form-head').click(function(){
+	$('.post').hide()
+	$('.post-form').show()
+	$('#form-head').css('background-color', 'lightgreen')
+	$('#preview-head').css('background-color', '')
+})
+
+$('#preview-head').click(function(){
+	$('.post-form').hide()
+	$('.post').show()
+	$('#preview-head').css('background-color', 'lightgreen')
+	$('#form-head').css('background-color', '')
+})
