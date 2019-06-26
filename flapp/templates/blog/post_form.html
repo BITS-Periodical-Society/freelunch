@@ -3,47 +3,55 @@
 {% block head_extra %}
 {{ form.media }}
 {% endblock head_extra %}
+
 {% block content %}
 <br><br>
 <div class="row">
-	<div class="col-sm-7">
-		<h4 class="text-center">PREVIEW</h4>
-		<hr>
-    	<div class="post">
-      	<div class="post-title">
-        	<h1 id="preview-title"></h1>
-      	</div>
-      	<div class="post-cover">
-      		<img id="preview-cover">
-      	</div>
-      	<div class="post-detail">
-        	<span class="post-credit">
-          	<i class="fas fa-feather-alt"></i>
-          	<a href="" id="preview-author"></a>
-        	</span>
-        	<span class="post-credit">
-          	<i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="" id="preview-editor"></a>          
-        	</span>
-        	<span class="post-credit">
-          	<i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i><a href="" id="preview-date"></a></span>
-      	</div>
-      	<div class="content" id="preview-content">
-      	</div>
-    </div>
+	<div class="col-sm-6 border" style="padding: 0;">
+		<h4 class="text-center" id="preview-head" style="margin: 0;">PREVIEW</h4>
+  </div>
+  <div class="col-sm-6 border" style="padding: 0;">
+    <h4 class="text-center" id="form-head" style="margin: 0;">FORM</h4>
+  </div>
 </div>
-<div class="col-sm-5">
-    <h4 class="text-center">FORM</h4>
-    <hr>
+
+<div class="row">
+  <div class="col-lg-8 col-md-10 mx-auto">
+    <div class="post">
+    	<div class="post-title">
+      	<h1 id="preview-title"></h1>
+    	</div>
+    	<div class="post-cover">
+    		<img id="preview-cover" style="width: 100%;height: 20em;">
+    	</div>
+    	<div class="post-detail">
+      	<span class="post-credit">
+        	<i class="fas fa-feather-alt"></i>
+        	<a href="" id="preview-author"></a>
+      	</span>
+      	<span class="post-credit">
+        	<i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="" id="preview-editor"></a>          
+      	</span>
+        <span class="post-credit">
+          <i class='fas fa-puzzle-piece' style="padding-right: 0.2em;"></i><a href="" id="preview-section"></a>          
+        </span>
+      	<span class="post-credit">
+        	<i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i><a href="" id="preview-date"></a>
+        </span>
+    	</div>
+    	<div class="content" id="preview-content"></div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-8 col-md-10 mx-auto">
     <form method="POST" class="post-form">
     	{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Save</button>
     </form>	
-	</div>	
+  </div>
 </div>
-<style type="text/css">
-	.wmd-panel{
-		margin: 0;
-	}
-</style>
+
 {% endblock %}

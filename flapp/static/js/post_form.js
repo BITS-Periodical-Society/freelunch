@@ -3,6 +3,7 @@ var contentInput = $('#id_content')
 var coverInput = $('#id_cover_image')
 var authorInput = $('#id_author')
 var editorInput = $('#id_post_editor')
+var sectionInput = $('#id_section')
 
 function setContent(value) {
 	$('#preview-content').html(value);
@@ -59,6 +60,15 @@ editorInput.change(function(){
 	setEditor(newContent)
 })
 
+function setSection(value){
+	$("#preview-section").text(value)
+}
+
+sectionInput.change(function(){
+	var newContent = $('#id_section option:selected').text()
+	setSection(newContent)
+})
+
 var d = new Date();
 var date = d.getDate();
 var month = d.getMonth();
@@ -66,3 +76,17 @@ var year = d.getFullYear()
 var months    = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 var month = months[month]
 $("#preview-date").text(date+" "+month+", "+year)
+
+$('#form-head').click(function(){
+	$('.post').hide()
+	$('.post-form').show()
+	$('#form-head').css('background-color', 'lightgreen')
+	$('#preview-head').css('background-color', '')
+})
+
+$('#preview-head').click(function(){
+	$('.post-form').hide()
+	$('.post').show()
+	$('#preview-head').css('background-color', 'lightgreen')
+	$('#form-head').css('background-color', '')
+})

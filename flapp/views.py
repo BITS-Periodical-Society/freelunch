@@ -81,9 +81,11 @@ class CommentCreateView(CreateView):
 	context_object_name = 'form'
 
 	def get_success_url(self):
-		return reverse('post_detail', slug=self.kwargs['slug'])
+		return reverse('post_detail', kwargs={'slug': self.kwargs['slug']})
 
 	def form_valid(self, form):
 		post = get_object_or_404(Post, slug=self.kwargs['slug'])
+		comment = form.save(commit=False)
 		comment.post = post
+		comment.save()
 		return super().form_valid(form)
