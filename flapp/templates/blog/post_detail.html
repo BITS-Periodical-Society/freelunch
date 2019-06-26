@@ -9,7 +9,7 @@
       <div class="post-title">
         <h1>{{ post.title }}</h1>
       </div>
-      <div class="post-cover" style="background-image: url('{% static 'img/post-bg.jpg' %}')"></div>
+      <div class="post-cover" style="background-image: url({{ post.cover_image.url }})"></div>
       <div class="post-detail">
         <span class="post-credit">
           <i class="fas fa-feather-alt"></i>
