@@ -27,13 +27,13 @@
             <h2 class="post-title">
               {{ post.title }}
             </h2>
+             </a>
             {% if post.synopsis %}
             <h3 class="post-subtitle">
               {{ post.synopsis }}
             </h3>
             {% endif %}
-          </a>
-          <p class="post-meta">Posted by
+                   <p class="post-meta">Posted by
             <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
             Written by
             <a href="{{ post.author.get_absolute_url }}">{{ post.author.name|cap }}</a>
