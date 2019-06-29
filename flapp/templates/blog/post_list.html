@@ -46,6 +46,7 @@
             <h2 class="post-title">
               {{ post.title }}
             </h2>
+             </a>
             {% if post.synopsis %}
             <h3 class="post-subtitle">
               {{ post.synopsis }}
@@ -54,9 +55,10 @@
             {% endif %}
           </a>
           <p class="post-meta">Posted by
-            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name.capitalize }}</a>
+            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
+
             Written by
-            <a href="{{ post.author.get_absolute_url }}">{{ post.author.name.capitalize }}</a>
+            <a href="{{ post.author.get_absolute_url }}">{{ post.author.name|cap }}</a>
             on {{ post.published_date|date }}</p>
         
       </div>
