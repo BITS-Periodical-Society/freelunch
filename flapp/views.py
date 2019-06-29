@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse
 from .models import Post, Section, Writer, Developer, Editor, Comment
 from .forms import PostForm, CommentForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 class PostListView(ListView):

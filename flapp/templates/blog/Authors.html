@@ -3,6 +3,7 @@
 {% load static %}
 
 <!-- Page Header -->
+<div class="testimonial">
 <header class="masthead" style="background-image: url({% static 'img/about-bg.jpg' %}">
   <div class="overlay"></div>
   <div class="container">
@@ -16,55 +17,107 @@
     </div>
   </div>
 </header>
+</div>
 <!-- Main Content -->
-<div class="row">
-  <div class="col-lg-8 col-md-10 mx-auto">
-    <div style="text-align:center;">
-      <h2 style="margin-top:30px;">Current Writing Team</h2>      <!-- Team Name -->
-    </div><hr/>
 
-    <div class="row ">
+<div class="container padding">
+    <div class="row welcome text-center">
+      <div class="col-12">
+      <h3>Current Writing Team<hr/></h3>      
+      <!-- Team Name -->
+    </div>
+  </div>
+</div>
+
+    <section id="info1">
+      <div class="info-right">
+    <div class="container padding">
+      <div class="row padding">
       {% for author in writer %}
-      <div class="col-sm-4 d-flex ">
-        <div class="border text-center" style="padding-bottom: 1em;">  
-          <div class="container overlay1">
-            <img class="card-img-top" src="{{ author.pic.url }}">
-              <div class="overlay overlayr">
-                <div class="text">{{ author.name }}</div>
-              </div>
+       <div class="col-lg-4 d-flex">
+        <div class="box">  
+        <img class="card-img-top" src="{{ author.pic.url }}">
+          <div class="box-content">
+              <h5 class="title" >{{ author.name }}</h5>
+          <p class="post">{{ author.get_designation_display }}</p>
+          <a href="{{ author.get_absolute_url }}" class="btn btn-primary-outline" style=" color: #fff;padding-bottom: 10px; font-size: 10px;">See Profile</a>
+          <ul class="icon">
+            <li>
+              <a href="#">
+                  <i class="fab fa-linkedin"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                  <i class="fab fa-github"></i>
+              </a>
+            </li>
+          </ul>
             </div>
-          <h5 class="card-title" style="padding-top: 0;margin-bottom: 0">{{ author.name }}</h5>
-          <p style="height: 6em;margin-top: 0;margin-bottom: 0;padding: 0.5em">{{ author.get_designation_display }}</p>
-          <a href="{{ author.get_absolute_url }}" class="col-sm-16 btn btn-primary" style="margin-top: auto;bottom: 0">Find Out More</a>
         </div>
       </div>
-      {% if forloop.counter|divisibleby:"3" %}</div><div class="row ">{% endif %}
+      {% if forloop.counter|divisibleby:"3" %}</div><div class="row padding">
+      {% endif %}
       {% endfor %}
     </div>
+  </div>
+    </div>
+</section>
+<hr>
+<!-- Development Team Details -->
+<div class="container padding">
+    <div class="row welcome text-center">
+      <div class="col-12">
+      <h3>Development Team<hr/></h3>      
+      <!-- Team Name -->
+    </div>
+  </div>
+</div>
 
- <!-- Development Team Details -->
-  <div style="text-align:center;">
-    <h2 style="margin-top:30px;">Development Team</h2>
-  </div><hr/>
-    <div class="row ">
+
+<section id="info2">
+  <div class="info-left">
+<div class="container padding">
+      <div class="row padding">
       {% for dev in developers %}
-      <div class="col-sm-4 d-flex ">
-        <div class="border text-center" style="padding-bottom: 1em;">  
-          <div class="container overlay1">
-            <img class="card-img-top" src="{{ dev.pic.url }}">
-              <div class="overlay overlayr">
-                <div class="text">{{ dev.name }}</div>
-              </div>
+       <div class="col-lg-4 d-flex">
+        <div class="box">  
+        <img class="card-img-top" src="{{ dev.pic.url }}">
+          <div class="box-content">
+              <h5 class="title" >{{ dev.name }}</h5>
+          <p class="post">{{ dev.get_designation_display }}</p>
+          <a href="{{ dev.get_absolute_url }}" class="btn btn-primary-outline" style=" color: #fff;padding-bottom: 10px; font-size: 10px;">See Profile</a>
+          <ul class="icon">
+            <li>
+              <a href="#">
+                  <i class="fab fa-linkedin"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                  <i class="fab fa-github"></i>
+              </a>
+            </li>
+          </ul>
             </div>
-          <h5 class="card-title" style="padding-top: 0;margin-bottom: 0">{{ dev.name }}</h5>
-          <p style="height: 6em;margin-top: 0;margin-bottom: 0;padding: 0.5em">{{ dev.get_designation_display }}</p>
-          <a href="{{ dev.get_absolute_url }}" class="col-sm-16 btn btn-primary" style="margin-top: auto;bottom: 0">Find Out More</a>               
         </div>
       </div>
-      {% if forloop.counter|divisibleby:"3" %}</div><div class="row ">{% endif %}
+      {% if forloop.counter|divisibleby:"3" %}</div><div class="row padding">
+      {% endif %}
       {% endfor %}
     </div>
-</div>
-</div>
+  </div>
+  </div>
+</section>
 <hr>
 {% endblock %}
