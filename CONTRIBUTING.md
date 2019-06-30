@@ -24,6 +24,10 @@ To contact us, send a mail to <freelunchbits@gmail.com>
     ```
     git status
     ```
+    - **Note** : Before pushing please ensure that all cache files(like __pycache__) have been removed.
+    ```
+    find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
+    ```
     - Add the changes you have made. You can add a specific chnage or all the changes at once.
     ```
     git add <filename>
