@@ -20,7 +20,7 @@
 </div>
 <!-- Main Content -->
 
-<div class="container padding">
+<div class="container">
     <div class="row welcome text-center">
       <div class="col-12">
       <h3>Current Writing Team<hr/></h3>      
@@ -31,10 +31,10 @@
 
     <section id="info1">
       <div class="info-right">
-    <div class="container padding">
-      <div class="row padding">
+    <div class="container">
+      <div class="row">
       {% for author in writer %}
-       <div class="col-lg-4 d-flex">
+       <div class="col-sm-4 d-flex">
         <div class="box">  
         <img class="card-img-top" src="{{ author.pic.url }}">
           <div class="box-content">
@@ -51,7 +51,7 @@
             </div>
         </div>
       </div>
-      {% if forloop.counter|divisibleby:"3" %}</div><div class="row padding">
+      {% if forloop.counter|divisibleby:"3" %}</div><div class="row">
       {% endif %}
       {% endfor %}
     </div>
@@ -60,7 +60,7 @@
 </section>
 <hr>
 <!-- Development Team Details -->
-<div class="container padding">
+<div class="container">
     <div class="row welcome text-center">
       <div class="col-12">
       <h3>Development Team<hr/></h3>      
@@ -72,10 +72,10 @@
 
 <section id="info2">
   <div class="info-left">
-<div class="container padding">
-      <div class="row padding">
+<div class="container">
+      <div class="row">
       {% for dev in developers %}
-       <div class="col-lg-4 d-flex">
+       <div class="col-sm-4 d-flex">
         <div class="box">  
         <img class="card-img-top" src="{{ dev.pic.url }}">
           <div class="box-content">
@@ -97,7 +97,8 @@
             </div>
         </div>
       </div>
-      {% if forloop.counter|divisibleby:"3" %}</div><div class="row padding">
+      {% if forloop.counter|divisibleby:"3" %}
+          </div><div class="row">
       {% endif %}
       {% endfor %}
     </div>

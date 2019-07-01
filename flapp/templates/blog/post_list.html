@@ -38,25 +38,24 @@
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="infinite-container">
         {% for post in posts %}
-        
+
         <div class="infinite-item">
         <div class="post-preview">
-          <div class="post-cover" style="background-image: url({% static 'img/ishere.jpg' %}"></div>
           <a href="{{ post.get_absolute_url }}">
+            <div class="post-cover" style="background-image: url({{post.cover_image.url}})"></div>
             <h2 class="post-title">
               {{ post.title }}
             </h2>
-             </a>
+          </a>
             <h3 class="post-subtitle">
               {{ post.get_synopsis }}
             </h3>
-          </a>
           <p class="post-meta">Edited by
             <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
             Written by
             <a href="{{ post.author.get_absolute_url }}">{{ post.author.name|cap }}</a>
             on {{ post.published_date|date }}</p>
-        
+
       </div>
       </div>
         <hr>
