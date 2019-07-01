@@ -37,7 +37,7 @@ class PostCreateView(CreateView):
 
 class PostDetailView(View):
 	"""
-	Detail view for a post.
+	View for a post.
 	"""
 	model = Post
 	context_object_name = 'post'
