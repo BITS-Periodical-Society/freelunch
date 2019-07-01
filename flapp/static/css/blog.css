@@ -56,12 +56,12 @@ blockquote {
   color: #868e96;
 }
 
-.box{
+.box {
   position: relative;
   text-align: center;
 }
 
-.box:before{
+.box:before {
   content: "";
   width: 100%;
   height: 100%;
@@ -76,17 +76,17 @@ blockquote {
   transition: 0.3s all ease 0s;
 }
 
-.box:hover:before{
+.box:hover:before {
   opacity: 1;
 
 }
 
-.box img{
+.box img {
   width: 100%;
   height: auto;
 }
 
-.box .box-content{
+.box .box-content {
   width: 100%;
   padding: 20px 0 30px;
   color: #fff;
@@ -100,12 +100,12 @@ blockquote {
   transition: 0.3s all ease 0s;
 }
 
-.box:hover .box-content{
+.box:hover .box-content {
   opacity: 1;
   bottom: 0;
 }
 
-.box .box-content:before{
+.box .box-content:before {
   content: "";
   width: 100px;
   height: 8px;
@@ -121,11 +121,11 @@ blockquote {
   transition: 0.4s all ease-in-out 0s;
 }
 
-.box:hover .box-content:before{
+.box:hover .box-content:before {
   width: 100%;
 }
 
-.box .title{
+.box .title {
   font-size: 20px;
   font-weight: 700;
   text-transform: uppercase;
@@ -133,21 +133,21 @@ blockquote {
   margin: 0 0 0 0;
 }
 
-.box .post{
+.box .post {
   display: block;
   font-size: 14px;
   text-transform: capitalize;
   margin-bottom: 5px;
 }
 
-.box .btn{
+.box .btn {
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;	
   transition: all 0.3s ease 0s;
 }
 
-.box .btn:hover{
+.box .btn:hover {
   background-color: #000;
   -webkit-transition: background-color 2s ease-out;
   -moz-transition: background-color 2s ease-out;
@@ -155,17 +155,17 @@ blockquote {
   transition: background-color 2s ease-out;
 }
 
-.box .icon{
+.box .icon {
   padding: 0;
   margin: 10px;
   list-style-type: none; 
 }
 
-.box .icon li{
+.box .icon li {
   display: inline-block;
 }
 
-.box .icon li a{
+.box .icon li a {
   display: block;
   width: 30px;
   height: 30px;
@@ -180,7 +180,7 @@ blockquote {
   transition: all 0.3s ease 0s;
 }
 
-.box .icon li a:hover{
+.box .icon li a:hover {
   padding-top: 5px;
   background-color: #000;
 }
@@ -549,7 +549,7 @@ height:45px;
 .floating-label-form-group input::-o-input-placeholder,
 .floating-label-form-group textarea::-webkit-input-placeholder,
 .floating-label-form-group textarea::-moz-input-placeholder,
-.floating-label-form-group textarea::-o-input-placeholder  {
+.floating-label-form-group textarea::-o-input-placeholder {
   color: #868e96;
   font-family: 'Lora', 'Times New Roman', serif;
 }
@@ -721,21 +721,22 @@ html {
   background-color: #555;
 }
 
-.row{
+.row {
 padding-top:12px;
 padding-bottom:12px
 }
-.details{
+
+.details {
 padding-left:20px;
 padding-right:20px;
 padding-bottom:10px;
 }
-.button1
-{
+
+.button1 {
 bottom:10px;
 }
-.pad1
-{
+
+.pad1 {
 position: relative;
 bottom:0px;
 display: flex;
@@ -745,14 +746,14 @@ padding-right:20px;
 padding-bottom:10px;
 }
 
-.post-cover{
+.post-cover {
   height: 20em;
   width: 100%;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
-.post-cover:before{
+.post-cover:before {
  -webkit-filter: blur(4px);
  -moz-filter: blur(4px);
  -o-filter: blur(4px);
@@ -764,11 +765,10 @@ padding-bottom:10px;
   background-size: cover;
 }
 
-.post-credit{
+.post-credit {
   padding-right: 2em;
 }
-.post-content
-{
+.post-content {
   text-align: left;
 font-family: 'Cabin', serif;
 }
