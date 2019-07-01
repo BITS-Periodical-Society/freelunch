@@ -332,7 +332,7 @@ header.masthead .overlay {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
+
   width: 100%;
   background-color: #212529;
   opacity: 0.5;
@@ -431,6 +431,8 @@ header.masthead .post-heading .meta a {
   font-size: 24px;
   margin-top: 24px;
   margin-bottom: 10px;
+     white-space:nowrap;
+	display:inline;
 }
 
 .post-preview > .post-subtitle {
