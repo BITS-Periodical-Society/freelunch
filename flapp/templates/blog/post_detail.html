@@ -5,44 +5,21 @@
 
 
 <div class="testimonial">
-
-  <header class="masthead" style="background-image:url({{ post.cover_image.url }});height: 350px; background-size: contain;">
- <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="post-heading">
-            <h1>{{ post.title }}</h1>
-            <!-- <span class="subheading">BITS Academic Periodical Society</span> -->
-            <span class="meta"><span class="post-credit"><i class="fas fa-feather-alt" ></i>
-              <a href="{{ post.author.get_absolute_url }}">{{ post.author.name|cap }}</a></span>
-              <span class="post-credit">
-          <i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="{{ post.post_editor.get_absolute_url }}" style="position: relative;padding-right: 0px;">{{ post.post_editor.name|cap }}</a>
-        </span>
-        <span class="post-credit">
-          <i class='fas fa-puzzle-piece' style="padding-right: 0.2em;"></i><a href="{% url 'section-post' section=post.section %}">{{ post.get_section_display }}</a>
-        </span>
-        <span class="post-date">
-          <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
-        </span>
-              </span>
-          </div>
-        </div>
-      </div>
-    </div>
+  
+  <header class="masthead">
   </header>
   </div>
 <article>
-<div class="showcase-right">
+<div class="showcase-right" style="background-size: contain;">
 <div class="row">
   <div class="col-lg-8 col-md-10 mx-auto">
-    <!-- <div class="post"> -->
-      <!-- <div class="post-title">
+    <div class="post">
+      <div class="post-title">
         <h1>{{ post.title }}</h1>
       </div>
-      <div class="post-cover" style="background-image: url({{ post.cover_image.url }})"></div> -->
+      <div class="post-cover" style="background-image: url({{ post.cover_image.url }})"></div>
       <div class="post-detail">
-        <!-- <span class="post-credit">
+         <span class="post-credit">
           <i class="fas fa-feather-alt"></i>
           <a href="{{ post.author.get_absolute_url }}">{{ post.author.name|cap }}</a>
         </span>
@@ -54,7 +31,7 @@
         </span>
         <span class="post-date">
           <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
-        </span> -->
+        </span> 
       </div>
       <div class="post-content">
         {{ post.get_markdown|linebreaks }}
