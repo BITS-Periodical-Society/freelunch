@@ -40,6 +40,7 @@ a {
   color: #000;
   -webkit-transition: all 0.2s;
   -o-transition: all 0.2s;
+
   -moz-transition: all 0.2s;
   transition: all 0.2s;
   
@@ -229,6 +230,14 @@ img::selection {
   background: transparent;
 }
 
+img::-webkit-selection {
+  color: #3EC294;
+  background: transparent;
+}
+img::-o-selection {
+  color: #3EC294;
+  background: transparent;
+}
 #mainNav {
   position: absolute;
   border-bottom: 1px solid #e9ecef;
@@ -322,6 +331,7 @@ img::selection {
     transition: -webkit-transform 0.2s;
     transition: -moz-transform 0.2s;
     transition: -o-transform 0.2s;
+
     transition: transform 0.2s;
     transition: transform 0.2s, -webkit-transform 0.2s;
     transition: transform 0.2s, -moz-transform 0.2s;
@@ -1043,5 +1053,4 @@ p {
    white-space:nowrap;
 	display:inline;
 }
-
 
