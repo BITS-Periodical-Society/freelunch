@@ -70,6 +70,9 @@ blockquote {
   top: 0;
   left: 0;
   opacity: 0;
+  -webkit-transition: 0.3s all ease 0s;
+  -moz-transition: 0.3s all ease 0s;
+  -o-transition: 0.3s all ease 0s;
   transition: 0.3s all ease 0s;
 }
 
