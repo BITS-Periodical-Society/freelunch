@@ -1,15 +1,16 @@
 {% extends 'blog/base.html' %}
 {% block content %}
 {% load static %}
-<!-- Page Header -->
-<header class="masthead" style="background-image: url({% static 'img/about-bg.jpg' %}">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="page-heading">
-          <h1 align="center">{{ me.name }}</h1> <!-- Name -->
-          <span class="subheading" align="center">{{ me.get_designation_display }}</span> <!-- Position -->
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url({% static 'img/about-bg.jpg' %}">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1 align="center">{{ me.name }}</h1> <!-- Name -->
+            <span class="subheading" align="center">{{ me.get_designation_display }}</span> <!-- Position -->
+          </div>
         </div>
       </div>
     </div>

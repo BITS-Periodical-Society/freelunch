@@ -29,15 +29,15 @@
   </div>
 </div>
 
-<section id="info1">
-  <div class="info-right">
+    <section id="info1">
+      <div class="info-right">
     <div class="container">
       <div class="row">
-        {% for author in writer %}
-        <div class="col-sm-4 d-flex">
-          <div class="box">  
-            <img class="card-img-top" src="{{ author.pic.url }}">
-            <div class="box-content">
+      {% for author in writer %}
+       <div class="col-sm-4 d-flex">
+        <div class="box">  
+        <img class="card-img-top" src="{{ author.pic.url }}">
+          <div class="box-content">
               <h5 class="title" >{{ author.name }}</h5>
               <p class="post">{{ author.get_designation_display }}</p>
               <a href="{{ author.get_absolute_url }}" class="btn btn-primary-outline" style=" color: #fff;padding-bottom: 10px; font-size: 10px;">See Profile</a>
@@ -65,6 +65,7 @@
 <div class="container">
   <div class="row welcome text-center">
     <div class="col-12">
+
       <h3>Development Team<hr/></h3>      
       <!-- Team Name -->
     </div>
