@@ -10,6 +10,9 @@ class PostForm(forms.ModelForm):
 		model = Post
 		fields = '__all__'
 		exclude = ('published_date', 'created_date', 'slug',)
+		help_texts = {
+			'cover_image': 'Please upload a cover image.<br>Otherwise default image will be added to this article',
+		}
 
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)

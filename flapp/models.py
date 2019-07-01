@@ -49,7 +49,7 @@ class Post(models.Model):
     content = models.TextField()
     section = models.CharField(max_length=2, choices=Section)
     created_date = models.DateTimeField(default=timezone.now)
-    cover_image = models.ImageField(editable=True, upload_to = 'post_cover/')
+    cover_image = models.ImageField(editable=True, upload_to = 'post_cover/', default='default_cover.jpeg')
     published_date = models.DateTimeField(blank=True, null=True)
     slug = models.SlugField(max_length=150, unique=True, blank=True)
 
