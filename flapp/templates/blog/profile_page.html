@@ -1,72 +1,81 @@
 {% extends 'blog/base.html' %}
 {% block content %}
 {% load static %}
-  <!-- Page Header -->
-
-
-
-  
-  <header class="masthead" style="background-image: url({% static 'img/about-bg.jpg' %}">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="page-heading">
-            <h1 align="center">{{ me.name }}</h1> <!-- Name -->
-            <span class="subheading" align="center">{{ me.get_designation_display }}</span> <!-- Position -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <div style="text-align:center;">
-    <h2 style="margin-top:30px;">About Me</h2>
-  </div><hr/>
-
-  <div class="row justify-content-center">
-  <!-- Description -->
-    <div class="border" style="box-shadow: 0 0 0.3em green;">
-      <div class="container overlay1">
-      <img class="card-img-top" src="{{ me.pic.url }}" alt="Avatar" class="image">
-        <div class="card-body" style="text-align: center;padding: 1em;padding-top: 0">
-          <h2 class="card-title">{{ me.name|title }}</h2>
-          <h4 class="card-text">{{ me.get_designation_display|title }}</h4>
-          <h5 class="card-text">{{ me.bio }}</</h5>
-        </div>
-        <div>
-          <ul class="list-inline text-center">
-            {% if me.linkedin_url %}
-            <li class="list-inline-item">
-              <a href="{{ me.linkedin_url }}">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            {% endif %}
-            {% if me.github_url %}
-            <li class="list-inline-item">
-              <a href="{{ me.github_url }}">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            {% endif %}
-            {% if me.email %}
-            <li style="padding-top: 1em;">
-              <a href="">{{ me.email }}
-              </a>
-            </li>
-            {% endif %}
-          </ul>
+<!-- Page Header -->
+<header class="masthead" style="background-image: url({% static 'img/about-bg.jpg' %}">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1 align="center">{{ me.name }}</h1> <!-- Name -->
+          <span class="subheading" align="center">{{ me.get_designation_display }}</span> <!-- Position -->
         </div>
       </div>
     </div>
   </div>
+</header>
+
+<div class="section-about" id="about">
+  <div class="container">
+    <!-- Section Title -->
+    <h2 class="title-of-section title-border">About Me</h2>
+    <!-- /Section Title --> 
+  </div>
+  <div class="container about-container">
+    <div class="row contrast">
+      <div class="col-sm-4 col-no-padding">
+        <div class="about-picture" id="about-picture">
+          <img src="{{ me.pic.url }}" alt="Avatar" class="image">            
+        </div>
+      </div>      
+      <div class="col-sm-8"> 
+        <div class="padding-box">
+          <h4>Bio</h1>
+          <p>{{ me.bio }}</p>   
+          
+            <h4>Let's Connect On</h3>
+              <!-- LinkedIn -->
+            <div class="col-sm-6">
+              <ul class="list-inline text-left">
+                {% if me.linkedin_url %}
+                <li class="list-inline-item">
+                  <a href="{{ me.linkedin_url }}">
+                    <span class="fa-stack fa-lg">
+                      <i class="fas fa-circle fa-stack-2x"></i>
+                      <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+                </li>
+                {% endif %}
+                <!-- Github -->
+                {% if me.github_url %}
+                <li class="list-inline-item">
+                  <a href="{{ me.github_url }}">
+                    <span class="fa-stack fa-lg">
+                      <i class="fas fa-circle fa-stack-2x"></i>
+                      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+                </li>
+                {% endif %}
+                <!-- Mail-ID field -->
+                
+                {% if me.email %}
+                <li class="list-inline-item" style="padding-top: 2em;">
+                  <a href="">{{ me.email }}
+                  </a>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <hr>
 
 {% endblock %}
