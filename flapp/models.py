@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.urls import reverse
 from django.utils.safestring import mark_safe
+from django.template.defaultfilters import truncatewords
 from markdown_deux import markdown
 
 Section = [
@@ -44,7 +45,7 @@ class Post(models.Model):
     author = models.ForeignKey('Writer', related_name='author', on_delete=models.CASCADE)
     post_editor = models.ForeignKey('Editor', related_name='editor', on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
-    synopsis = models.CharField(max_length=640)
+    synopsis = models.CharField(max_length=640, blank=True)
     content = models.TextField()
     section = models.CharField(max_length=2, choices=Section)
     created_date = models.DateTimeField(default=timezone.now)
@@ -58,6 +59,16 @@ class Post(models.Model):
     def get_markdown(self):
         content = self.content
         return mark_safe(markdown(content))
+
+    def get_synopsis(self):
+        if self.synopsis == "":
+            s = self.content.split("\n")
+            while (s[0][0:2] == '![' or s[0] == '\r'):
+                s.pop(0)
+            s = s[0]
+            return s
+        else:
+            return self.synopsis
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
