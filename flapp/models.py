@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.urls import reverse
 from django.utils.safestring import mark_safe
+from django.template.defaultfilters import truncatewords
 from markdown_deux import markdown
 
 Section = [
@@ -44,11 +45,15 @@ class Post(models.Model):
     author = models.ForeignKey('Writer', related_name='author', on_delete=models.CASCADE)
     post_editor = models.ForeignKey('Editor', related_name='editor', on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
-    synopsis = models.CharField(max_length=640)
+    synopsis = models.CharField(max_length=640, blank=True)
     content = models.TextField()
     section = models.CharField(max_length=2, choices=Section)
     created_date = models.DateTimeField(default=timezone.now)
+<<<<<<< HEAD
     cover_image = models.ImageField(editable=True, upload_to = 'post_cover/')
+=======
+    cover_image = models.ImageField(editable=True, upload_to = 'post_cover/', default='default_cover.jpeg')
+>>>>>>> 37685bb552162e6fff89747bc31a3e65a3c527f4
     published_date = models.DateTimeField(blank=True, null=True)
     slug = models.SlugField(max_length=150, unique=True, blank=True)
 
@@ -59,10 +64,20 @@ class Post(models.Model):
         content = self.content
         return mark_safe(markdown(content))
 
+    def get_synopsis(self):
+        if self.synopsis == "":
+            s = self.content.split("\n")
+            while (s[0][0:2] == '![' or s[0] == '\r'):
+                s.pop(0)
+            s = s[0]
+            return s
+        else:
+            return self.synopsis
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Post, self).save(*args, **kwargs)
-
+  
     def delete_img(self, *args, **kwargs):
         storage, path = self.cover_image.storage, self.cover_image.path
         super(ImageModel, self).delete(*args, **kwargs)

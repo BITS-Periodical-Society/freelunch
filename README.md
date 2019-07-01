@@ -11,7 +11,7 @@ The website is built on Django framework with HTML5, CSS3, JS, Jquery and AJAX. 
 * Akshay Mittal - [Ak-shay](https://github.com/Ak-shay)
 * Himanshu Agarwal - [HimanshuAgarwal022](https://github.com/HimanshuAgarwal022)
 * Saransh Jindal - [UnlaxedNeurotic](https://github.com/UnlaxedNeurotic)
-* Aditya Choudhary - [JessePinkman7](https://github.com/JessePinkman7)
+
 
 ## Contact us
 Email: [**freelunch@freelunch.co.in**](mailto:freelunch@freelunch.co.in)

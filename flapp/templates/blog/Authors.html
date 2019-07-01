@@ -4,6 +4,7 @@
 
 <!-- Page Header -->
 <div class="testimonial">
+<<<<<<< HEAD
 <header class="masthead" style="background-image: url({% static 'img/about-bg.jpg' %}">
   <div class="overlay"></div>
   <div class="container">
@@ -23,6 +24,27 @@
 <div class="container padding">
     <div class="row welcome text-center">
       <div class="col-12">
+=======
+  <header class="masthead" style="background-image: url({% static 'img/about-bg.jpg' %}">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>About Us</h1>
+            <span class="subheading">This is our team.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+<!-- Main Content -->
+
+<div class="container">
+  <div class="row welcome text-center">
+    <div class="col-12">
+>>>>>>> 37685bb552162e6fff89747bc31a3e65a3c527f4
       <h3>Current Writing Team<hr/></h3>      
       <!-- Team Name -->
     </div>
@@ -31,14 +53,22 @@
 
     <section id="info1">
       <div class="info-right">
+<<<<<<< HEAD
     <div class="container padding">
       <div class="row padding">
       {% for author in writer %}
        <div class="col-lg-4 d-flex">
+=======
+    <div class="container">
+      <div class="row">
+      {% for author in writer %}
+       <div class="col-sm-4 d-flex">
+>>>>>>> 37685bb552162e6fff89747bc31a3e65a3c527f4
         <div class="box">  
         <img class="card-img-top" src="{{ author.pic.url }}">
           <div class="box-content">
               <h5 class="title" >{{ author.name }}</h5>
+<<<<<<< HEAD
           <p class="post">{{ author.get_designation_display }}</p>
           <a href="{{ author.get_absolute_url }}" class="btn btn-primary-outline" style=" color: #fff;padding-bottom: 10px; font-size: 10px;">See Profile</a>
           <ul class="icon">
@@ -59,8 +89,27 @@
             </li>
           </ul>
             </div>
+=======
+              <p class="post">{{ author.get_designation_display }}</p>
+              <a href="{{ author.get_absolute_url }}" class="btn btn-primary-outline" style=" color: #fff;padding-bottom: 10px; font-size: 10px;">See Profile</a>
+              <ul class="icon">
+                {% if author.linkedin_url %}
+                <li>
+                  <a href="{{ author.linkedin_url }}">
+                    <i class="fab fa-linkedin"></i>
+                  </a>
+                </li>
+              </ul>
+              {% endif %}
+            </div>
+          </div>
+>>>>>>> 37685bb552162e6fff89747bc31a3e65a3c527f4
         </div>
+      {% if forloop.counter|divisibleby:"3" %}</div><div class="row">
+        {% endif %}
+        {% endfor %}
       </div>
+<<<<<<< HEAD
       {% if forloop.counter|divisibleby:"3" %}</div><div class="row padding">
       {% endif %}
       {% endfor %}
@@ -110,14 +159,72 @@
             </li>
           </ul>
             </div>
+=======
+    </div>
+  </div>
+</section>
+<hr>
+<!-- Development Team Details -->
+<div class="container">
+  <div class="row welcome text-center">
+    <div class="col-12">
+
+      <h3>Development Team<hr/></h3>      
+      <!-- Team Name -->
+    </div>
+  </div>
+</div>
+
+
+<section id="info2">
+  <div class="info-left">
+    <div class="container">
+      <div class="row">
+        {% for dev in developers %}
+        <div class="col-sm-4 d-flex">
+          <div class="box">  
+            <img class="card-img-top" src="{{ dev.pic.url }}">
+            <div class="box-content">
+              <h5 class="title" >{{ dev.name }}</h5>
+              <p class="post">{{ dev.get_designation_display }}</p>
+              <a href="{{ dev.get_absolute_url }}" class="btn btn-primary-outline" style=" color: #fff;padding-bottom: 10px; font-size: 10px;">See Profile</a>
+              <ul class="icon">
+                {% if dev.linkedin_url %}
+
+                <li>
+                  <a href="{{ dev.linkedin_url }}">
+                    <i class="fab fa-linkedin"></i>
+                  </a>
+                </li>
+                {% endif %}
+                {% if dev.github_url %}
+                <li>
+                  <a href="{{ dev.github_url }}">
+                    <i class="fab fa-github"></i>
+                  </a>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+>>>>>>> 37685bb552162e6fff89747bc31a3e65a3c527f4
         </div>
+        {% if forloop.counter|divisibleby:"3" %}
+      </div><div class="row">
+        {% endif %}
+        {% endfor %}
       </div>
+<<<<<<< HEAD
       {% if forloop.counter|divisibleby:"3" %}</div><div class="row padding">
       {% endif %}
       {% endfor %}
     </div>
   </div>
   </div>
+=======
+    </div>
+  </div>
+>>>>>>> 37685bb552162e6fff89747bc31a3e65a3c527f4
 </section>
 <hr>
 {% endblock %}

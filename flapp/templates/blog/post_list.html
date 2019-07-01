@@ -23,7 +23,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1>Freelunch</h1>
+            <h1>FreeLunch</h1>
             <span class="subheading">BITS Academic Periodical Society</span>
           </div>
         </div>
@@ -38,14 +38,20 @@
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="infinite-container">
         {% for post in posts %}
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 37685bb552162e6fff89747bc31a3e65a3c527f4
         <div class="infinite-item">
         <div class="post-preview">
           <div class="post-cover" style="background-image: url({% static 'img/ishere.jpg' %}"></div>
           <a href="{{ post.get_absolute_url }}">
+            <div class="post-cover" style="background-image: url({{post.cover_image.url}})"></div>
             <h2 class="post-title">
               {{ post.title }}
             </h2>
+<<<<<<< HEAD
              </a>
             {% if post.synopsis %}
             <h3 class="post-subtitle">
@@ -61,6 +67,18 @@
             <a href="{{ post.author.get_absolute_url }}">{{ post.author.name|cap }}</a>
             on {{ post.published_date|date }}</p>
         
+=======
+          </a>
+            <h3 class="post-subtitle">
+              {{ post.get_synopsis }}
+            </h3>
+          <p class="post-meta">Edited by
+            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
+            Written by
+            <a href="{{ post.author.get_absolute_url }}">{{ post.author.name|cap }}</a>
+            on {{ post.published_date|date }}</p>
+
+>>>>>>> 37685bb552162e6fff89747bc31a3e65a3c527f4
       </div>
       </div>
         <hr>

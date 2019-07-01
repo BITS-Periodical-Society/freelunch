@@ -5,6 +5,7 @@
 
 
 <div class="testimonial">
+<<<<<<< HEAD
   
   <header class="masthead" style="background-image:url({{ post.cover_image.url }});height: 350px; background-size: contain;">
  <div class="overlay"></div>
@@ -34,12 +35,19 @@
   </div>
 <article>
 <div class="showcase-right">
+=======
+  <header class="masthead">
+  </header>
+<article>
+<div class="showcase-right" style="background-size: contain;">
+>>>>>>> 37685bb552162e6fff89747bc31a3e65a3c527f4
 <div class="row">
   <div class="col-lg-8 col-md-10 mx-auto">
     <!-- <div class="post"> -->
       <!-- <div class="post-title">
         <h1>{{ post.title }}</h1>
       </div>
+<<<<<<< HEAD
       <div class="post-cover" style="background-image: url({{ post.cover_image.url }})"></div> -->
       <div class="post-detail">
         <!-- <span class="post-credit">
@@ -48,13 +56,30 @@
         </span>
         <span class="post-credit">
           <i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>          
+=======
+      <div class="post-cover" style="background-image: url({{ post.cover_image.url }})"></div>
+      <div class="post-detail">
+         <span class="post-credit">
+          <i class="fas fa-feather-alt"></i>
+          <a href="{{ post.author.get_absolute_url }}">{{ post.author.name|cap }}</a>
+        </span>
+        <span class="post-credit">
+          <i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
+        </span>
+        <span class="post-credit">
+          <i class='fas fa-puzzle-piece' style="padding-right: 0.2em;"></i><a href="{% url 'section-post' section=post.section %}">{{ post.get_section_display }}</a>
+>>>>>>> 37685bb552162e6fff89747bc31a3e65a3c527f4
         </span>
         <span class="post-credit">
           <i class='fas fa-puzzle-piece' style="padding-right: 0.2em;"></i><a href="{% url 'section-post' section=post.section %}">{{ post.get_section_display }}</a>          
         </span>
         <span class="post-date">
           <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
+<<<<<<< HEAD
         </span> -->
+=======
+        </span> 
+>>>>>>> 37685bb552162e6fff89747bc31a3e65a3c527f4
       </div>
       <div class="post-content">
         {{ post.get_markdown|linebreaks }}
@@ -68,22 +93,45 @@
     <div style="text-align:center;">
       <h2 style="margin-top:30px;">Comments({{ post.comments.all.count }})</h2>
     </div>
-    
+
     <div class="container">
     {% for comment in post.comments.all %}
       {% if comment.is_approved %}
       <div class="border text-center">
       <p> {{comment.text|linebreaks }} </p>
       <p>By: <strong>{{ comment.author|cap }}</strong><br><em>{{ comment.created_date|date }}</em></p>
+<<<<<<< HEAD
       {% endif %}        
+=======
+      {% endif %}
+>>>>>>> 37685bb552162e6fff89747bc31a3e65a3c527f4
       </div>
     {% endfor %}<br>
-    <a class="button" href="{% url 'post_comment' slug=post.slug %}">Add Comment</a>
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div style="text-align:center;">
+            <h2 style="margin-top:30px;">New Comment</h2>
+          </div><hr/>
+          <form method="POST" class="post-form">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="button">Send</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+  </div>
+
 <hr>
+<<<<<<< HEAD
 </div>
 </article>
 
 {% endblock %}
+=======
+</article>
+
+{% endblock %}
+>>>>>>> 37685bb552162e6fff89747bc31a3e65a3c527f4

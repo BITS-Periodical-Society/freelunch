@@ -1,11 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, View
 from django.urls import reverse
 from .models import Post, Section, Writer, Developer, Editor, Comment
 from .forms import PostForm, CommentForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+<<<<<<< HEAD
 
+=======
+>>>>>>> 37685bb552162e6fff89747bc31a3e65a3c527f4
 
 class PostListView(ListView):
 	"""
@@ -36,14 +39,37 @@ class PostCreateView(CreateView):
 		return super().form_valid(form)
 
 
-class PostDetailView(DetailView):
+class PostDetailView(View):
 	"""
-	Detail view for a post.
+	View for a post.
 	"""
 	model = Post
 	context_object_name = 'post'
 	template_name = 'blog/post_detail.html'
 	slug_url_kwarg = 'slug'
+
+	def get(self, request, *args, **kwargs):
+		context={}
+		post = get_object_or_404(Post, slug=self.kwargs['slug'])
+		context[self.context_object_name] = post
+		form = CommentForm
+		return render(request,'blog/post_detail.html', {'post':post, 'form':form})
+
+
+	def post(self, request, *args, **kwargs):
+		context={}
+		post = get_object_or_404(Post, slug=self.kwargs['slug'])
+		if request.method == "POST":
+			form = CommentForm(request.POST)
+			if form.is_valid():
+				comment = form.save(commit=False)
+				comment.post = post
+				comment.save()
+			return redirect('post_detail', slug=post.slug)
+		else:
+			form = CommentForm()
+			return render(request, 'blog/post_detail.html', {'form':form})
+
 
 
 def contributor(request):
@@ -73,20 +99,3 @@ class WriterView(DetailView):
 	template_name = 'blog/profile_page.html'
 	context_object_name = 'me'
 	slug_url_kwarg = 'slug'
-
-
-class CommentCreateView(CreateView):
-	model = Comment
-	form_class = CommentForm
-	template_name = 'blog/comment_form.html'
-	context_object_name = 'form'
-
-	def get_success_url(self):
-		return reverse('post_detail', kwargs={'slug': self.kwargs['slug']})
-
-	def form_valid(self, form):
-		post = get_object_or_404(Post, slug=self.kwargs['slug'])
-		comment = form.save(commit=False)
-		comment.post = post
-		comment.save()
-		return super().form_valid(form)

@@ -24,6 +24,10 @@ To contact us, send a mail to <freelunchbits@gmail.com>
     ```
     git status
     ```
+    - **Note** : Before pushing please ensure that all cache files(like __pycache__) have been removed.
+    ```
+    find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
+    ```
     - Add the changes you have made. You can add a specific chnage or all the changes at once.
     ```
     git add <filename>
@@ -37,7 +41,7 @@ To contact us, send a mail to <freelunchbits@gmail.com>
     ```
     git push origin master
     ```
-
+**Note** : If your patch is accepted kindly make necessary changes to the documentation as well it helps us keep a track of the features. Refer to [#48](https://github.com/BITS-Periodical-Society/freelunch/issues/48) for notes on Sphinx.
  ### Reporting a Bug
 We use GitHub [issues](https://github.com/BITS-Periodical-Society/freelunch/issues) to track bugs.  Report a bug by [opening a new issue](https://github.com/BITS-Periodical-Society/freelunch/issues/new)(If a issue doesn't already exist addressing the bug); it's that easy!
 

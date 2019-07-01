@@ -4,4 +4,7 @@ __pycache__
 myvenv
 /static
 .DS_Store
+<<<<<<< HEAD
 /media
+=======
+>>>>>>> 37685bb552162e6fff89747bc31a3e65a3c527f4
