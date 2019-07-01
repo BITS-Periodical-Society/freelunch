@@ -1,57 +1,84 @@
 {% extends 'blog/base.html' %}
 {% block content %}
 {% load static %}
+{% load my_filters %}
+
+{% block javascript %}
+  <script>
+    var infinite = new Waypoint.Infinite({
+      element: $('.infinite-container')[0],
+      // onBeforePageLoad: function () {
+      //   $('.loading').show();
+      // },
+      // onAfterPageLoad: function ($items) {
+      //   $('.loading').hide();
+      // }
+    });
+  </script>
+{% endblock %}
+<div class="testimonial">
   <header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %}">
-    <div class="overlay"></div>
+ <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1>Freelunch</h1>
+            <h1>FreeLunch</h1>
             <span class="subheading">BITS Academic Periodical Society</span>
           </div>
         </div>
       </div>
     </div>
   </header>
+  </div>
+<!-- Main Content -->
 
-  <!-- Main Content -->
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="infinite-container">
         {% for post in posts %}
+
+        <div class="infinite-item">
         <div class="post-preview">
           <a href="{{ post.get_absolute_url }}">
+            <div class="post-cover" style="background-image: url({{post.cover_image.url}})"></div>
             <h2 class="post-title">
               {{ post.title }}
             </h2>
-            {% if post.synopsis %}
-            <h3 class="post-subtitle">
-              {{ post.synopsis }}
-            </h3>
-            {% endif %}
           </a>
-          <p class="post-meta">Posted by
-            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name.capitalize }}</a>
+            <h3 class="post-subtitle">
+              {{ post.get_synopsis }}
+            </h3>
+          <p class="post-meta">Edited by
+            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
             Written by
-            <a href="{{ post.author.get_absolute_url }}">{{ post.author.name.capitalize }}</a>
+            <a href="{{ post.author.get_absolute_url }}">{{ post.author.name|cap }}</a>
             on {{ post.published_date|date }}</p>
-        </div>
+
+      </div>
+      </div>
         <hr>
         {% endfor %}
+      </div>
+
+<!--       <div class="loading">
+      </div> -->
+
         <!-- Pager -->
-        <div class="clearfix">
-          {% if page_obj.has_previous %}
+        <!-- <div class="clearfix"> -->
+          <!-- {% if page_obj.has_previous %}
           <a class="btn btn-primary float-right" href="?page={{ page_obj.previous_page_number }}">Newer Posts &rarr;</a>
-          {% endif %}
+          {% endif %} -->
           {% if page_obj.has_next %}
-          <a class="btn btn-primary float-left" href="?page={{ page_obj.next_page_number }}">Older Posts &rarr;</a>
+          <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">loading...</a>
+          <!-- <a class="btn btn-primary float-left" href="?page={{ page_obj.next_page_number }}">Older Posts &rarr;</a> -->
           {% endif %}
-        </div>
+        <!-- </div> -->
       </div>
     </div>
   </div>
-
+  </div>
   <hr>
 
 {% endblock %}

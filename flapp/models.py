@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.urls import reverse
 from django.utils.safestring import mark_safe
+from django.template.defaultfilters import truncatewords
 from markdown_deux import markdown
 
 Section = [
@@ -23,6 +24,11 @@ Author_Designation = [
     ('F', 'Founder'),
     ('CF', 'Co-Founder'),
     ('GA', 'Guest Author'),
+    ('EC', 'Editor-in-Chief'),
+    ('STE', 'Section Editor: Science & Technology Editor'),
+    ('EFE', 'Section Editor: Economics & Finance Editor'),
+    ('WAE', 'Section Editor: World Affairs Editor'),
+    ('EE', 'Section Editor: Editorial Editor'),
 ]
 
 Editor_Designation = [
@@ -39,11 +45,11 @@ class Post(models.Model):
     author = models.ForeignKey('Writer', related_name='author', on_delete=models.CASCADE)
     post_editor = models.ForeignKey('Editor', related_name='editor', on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
-    synopsis = models.CharField(max_length=640)
+    synopsis = models.CharField(max_length=640, blank=True)
     content = models.TextField()
     section = models.CharField(max_length=2, choices=Section)
     created_date = models.DateTimeField(default=timezone.now)
-    cover_image = models.ImageField(null=True, blank=True, editable=True,upload_to = 'post_cover/')
+    cover_image = models.ImageField(editable=True, upload_to = 'post_cover/', default='default_cover.jpeg')
     published_date = models.DateTimeField(blank=True, null=True)
     slug = models.SlugField(max_length=150, unique=True, blank=True)
 
@@ -53,6 +59,16 @@ class Post(models.Model):
     def get_markdown(self):
         content = self.content
         return mark_safe(markdown(content))
+
+    def get_synopsis(self):
+        if self.synopsis == "":
+            s = self.content.split("\n")
+            while (s[0][0:2] == '![' or s[0] == '\r'):
+                s.pop(0)
+            s = s[0]
+            return s
+        else:
+            return self.synopsis
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
