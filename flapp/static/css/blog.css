@@ -39,6 +39,7 @@ h6 {
 a {
   color: #000;
   -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
   transition: all 0.2s;
   
 }
@@ -206,6 +207,14 @@ img::-moz-selection {
   background: transparent;
 }
 
+img::-webkit-selection {
+  color: #3EC294;
+  background: transparent;
+}
+img::-o-selection {
+  color: #3EC294;
+  background: transparent;
+}
 #mainNav {
   position: absolute;
   border-bottom: 1px solid #e9ecef;
@@ -277,25 +286,31 @@ img::-moz-selection {
 @media only screen and (min-width: 992px) {
   #mainNav {
     -webkit-transition: background-color 0.2s;
-        -moz-transition: background-color 0.2s;
+    -moz-transition: background-color 0.2s;
+    -o-transition: background-color 0.2s;
     transition: background-color 0.2s;
     /* Force Hardware Acceleration in WebKit */
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     -webkit-backface-visibility: hidden;
-        -moz-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
   }
   #mainNav.is-fixed {
     /* when the user scrolls down, we hide the header right above the viewport */
     position: fixed;
     top: -67px;
     -webkit-transition: -webkit-transform 0.2s;
-        -moz-transition: -moz-transform 0.2s;
+    -moz-transition: -moz-transform 0.2s;
+    -o-transition: -moz-transform 0.2s;
     transition: -webkit-transform 0.2s;
+    transition: -moz-transform 0.2s;
     transition: transform 0.2s;
     transition: transform 0.2s, -webkit-transform 0.2s;
-        transition: transform 0.2s, -moz-transform 0.2s;
+    transition: transform 0.2s, -moz-transform 0.2s;
+    transition: transform 0.2s, -o-transform 0.2s;    
     border-bottom: 1px solid white;
     background-color: rgba(255, 255, 255, 0.9);
   }
@@ -314,7 +329,8 @@ img::-moz-selection {
   #mainNav.is-visible {
     /* if the user changes the scrolling direction, we show the header */
     -webkit-transform: translate3d(0, 100%, 0);
-       -moz-transform: translate3d(0, 100%, 0);
+    -moz-transform: translate3d(0, 100%, 0);
+    -o-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
   }
 }
@@ -494,15 +510,18 @@ height:45px;
   border-radius: 0;
   background: none;
   -webkit-box-shadow: none !important;
-    -moz-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  -o-box-shadow: none !important;
   box-shadow: none !important;
   font-family: 'Lora', 'Times New Roman', serif;
 }
 
 .floating-label-form-group input::-webkit-input-placeholder,
 .floating-label-form-group input::-moz-input-placeholder,
+.floating-label-form-group input::-o-input-placeholder,
 .floating-label-form-group textarea::-webkit-input-placeholder,
-.floating-label-form-group textarea::-moz-input-placeholder  {
+.floating-label-form-group textarea::-moz-input-placeholder,
+.floating-label-form-group textarea::-o-input-placeholder  {
   color: #868e96;
   font-family: 'Lora', 'Times New Roman', serif;
 }
@@ -516,7 +535,8 @@ height:45px;
   display: block;
   margin: 0;
   -webkit-transition: top 0.3s ease, opacity 0.3s ease;
-    -moz-transition: top 0.3s ease, opacity 0.3s ease;
+  -moz-transition: top 0.3s ease, opacity 0.3s ease;
+  -o-transition: top 0.3s ease, opacity 0.3s ease;
   transition: top 0.3s ease, opacity 0.3s ease;
   vertical-align: middle;
   vertical-align: baseline;
@@ -614,7 +634,9 @@ footer .copyright {
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
 }
 html {
   box-sizing: border-box;
@@ -704,8 +726,9 @@ padding-bottom:10px;
   background-size: cover;
 }
 .post-cover:before{
-	-webkit-filter: blur(4px);
-		-moz-filter: blur(4px);
+ -webkit-filter: blur(4px);
+ -moz-filter: blur(4px);
+ -o-filter: blur(4px);
 	filter: blur(4px);
   height: 20em;
   width: 100%;
@@ -748,6 +771,7 @@ font-family: 'Cabin', serif;
 .box-shadow {
   -webkit-box-shadow: 0px 2px 6px 0px rgba(50, 50, 50, 0.3);
   -moz-box-shadow: 0px 2px 6px 0px rgba(50, 50, 50, 0.3);
+  -o-box-shadow: 0px 2px 6px 0px rgba(50, 50, 50, 0.3);
   box-shadow: 0px 2px 6px 0px rgba(50, 50, 50, 0.3);
 }
 .responsive-image {
@@ -893,6 +917,7 @@ font-family: 'Cabin', serif;
   border-radius: 6px;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
+  -o-border-radius: 6px;
 }
 .title-of-section.title-border:after {
   content: '';
@@ -930,6 +955,7 @@ p {
   border-radius: 8px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
 }
 .contrast-with-image {
   color: #ffffff !important;
@@ -957,10 +983,12 @@ p {
   background: #09afad;
   border-radius: 100%;
   -moz-border-radius: 100%;
+  -o-border-radius: 100%;
   -webkit-border-radius: 100%;
   color: #ffffff;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 .social-icons a:hover {
@@ -973,6 +1001,7 @@ p {
   border-radius: 8px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
   overflow: hidden;
 }
 .section-about .title1,
@@ -1001,5 +1030,3 @@ p {
 	display:inline;
 
 }
-
-
