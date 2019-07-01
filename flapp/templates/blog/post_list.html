@@ -51,9 +51,8 @@
               {{ post.get_synopsis }}
             </h3>
           </a>
-          <p class="post-meta">Posted by
+          <p class="post-meta">Edited by
             <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
-
             Written by
             <a href="{{ post.author.get_absolute_url }}">{{ post.author.name|cap }}</a>
             on {{ post.published_date|date }}</p>
