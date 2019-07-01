@@ -41,7 +41,7 @@
         
         <div class="infinite-item">
         <div class="post-preview">
-          <div class="post-cover" style="background-image: url({% static 'img/ishere.jpg' %}"></div>
+          <div class="post-cover" style="background-image: url({{ post.cover_image.url }})"></div>
           <a href="{{ post.get_absolute_url }}">
             <h2 class="post-title">
               {{ post.title }}
