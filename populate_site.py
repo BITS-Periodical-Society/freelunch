@@ -87,6 +87,8 @@ print('But since that does not defeat our purpose, we will ignore it to keeep it
 print('All the posts that are added will be published. It is not true for comments.')
 print('Authors and editors already present in th database will also be used')
 print('Last but not the least, all posts will have the default cover image. We are working on it.')
+
+print("\nMake sure you have 'Faker 1.0.7' installed. To install dependencies, check README.md")
 print('\n')
 
 populate()
