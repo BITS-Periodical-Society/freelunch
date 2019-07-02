@@ -19,17 +19,17 @@
       </div>
       <div class="post-cover" style="background-image: url({{ post.cover_image.url }})"></div>
       <div class="post-detail">
-         <span class="post-credit">
+         <span class="post-credit"style="white-space:nowrap;display:inline;">
           <i class="fas fa-feather-alt"></i>
-          <a href="{{ post.author.get_absolute_url }}">{{ post.author.name|cap }}</a>
+          <a href="{{ post.author.get_absolute_url }}" >{{ post.author.name|cap }}</a>
         </span>
-        <span class="post-credit">
+        <span class="post-credit" style="white-space:nowrap;display:inline;">
           <i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
         </span>
-        <span class="post-credit">
+        <span class="post-credit" style="white-space:nowrap;display:inline;">
           <i class='fas fa-puzzle-piece' style="padding-right: 0.2em;"></i><a href="{% url 'section-post' section=post.section %}">{{ post.get_section_display }}</a>
         </span>
-        <span class="post-date">
+        <span class="post-date" style="white-space:nowrap;display:inline;">
           <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
         </span> 
       </div>
