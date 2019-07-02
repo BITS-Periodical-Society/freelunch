@@ -3,17 +3,15 @@
 {% load static %}
 {% load my_filters %}
 
+
+  <!--   infinite scroll scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/shortcuts/infinite.min.js" type="text/javascript"></script>
 {% block javascript %}
   <script>
-    var infinite = new Waypoint.Infinite({
-      element: $('.infinite-container')[0],
-      // onBeforePageLoad: function () {
-      //   $('.loading').show();
-      // },
-      // onAfterPageLoad: function ($items) {
-      //   $('.loading').hide();
-      // }
-    });
+   var infinite = new Waypoint.Infinite({
+  element: $('.infinite-container')[0]
+})
   </script>
 {% endblock %}
 <div class="testimonial">
@@ -31,14 +29,13 @@
     </div>
   </header>
   </div>
-<!-- Main Content -->
 
+<!-- Main Content -->
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="infinite-container">
-        {% for post in posts %}
-        
+        {% for post in posts %}        
         <div class="infinite-item">
         <div class="post-preview">
            <a href="{{ post.get_absolute_url }}">
@@ -55,9 +52,14 @@
           </a>
           <p class="post-meta">Posted by
             <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
-
             Written by
-            <a href="{{ post.author.get_absolute_url }}">{{ post.author.name|cap }}</a>
+            {% for author in post.author.all %}
+              {% if forloop.last and not forloop.first %}&{% endif %}
+              {% if not forloop.first and not forloop.last%},{% endif %}
+            <a href="{{ author.get_absolute_url }}">
+              {{ author.name|cap }}
+            </a>
+            {% endfor %}
             on {{ post.published_date|date }}</p>
         
       </div>

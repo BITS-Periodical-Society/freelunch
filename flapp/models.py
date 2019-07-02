@@ -42,8 +42,8 @@ Editor_Designation = [
 
 
 class Post(models.Model):
-    author = models.ForeignKey('Writer', related_name='author', on_delete=models.CASCADE)
-    post_editor = models.ForeignKey('Editor', related_name='editor', on_delete=models.CASCADE)
+    author = models.ManyToManyField('Writer', blank=False)
+    post_editor = models.ForeignKey('Editor', on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     synopsis = models.CharField(max_length=640, blank=True)
     content = models.TextField()
