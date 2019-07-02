@@ -55,9 +55,14 @@
           </a>
           <p class="post-meta">Posted by
             <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
-
             Written by
-            <a href="{{ post.author.get_absolute_url }}">{{ post.author.name|cap }}</a>
+            {% for author in post.author.all %}
+              {% if forloop.last and not forloop.first %}&{% endif %}
+              {% if not forloop.first and not forloop.last%},{% endif %}
+            <a href="{{ author.get_absolute_url }}">
+              {{ author.name|cap }}
+            </a>
+            {% endfor %}
             on {{ post.published_date|date }}</p>
         
       </div>
