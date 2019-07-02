@@ -33,3 +33,12 @@ You can work on the project by cloning the repository to your local system. The 
 6. Running the website
     * To run the website, go to the project directory `cd freelunch`
     * To run the local server `python manage.py runserver`
+
+### Creating Fake data
+We use the `Faker` library for creating data. Checkout the [repo](https://github.com/joke2k/faker) and [official documentation](https://faker.readthedocs.io/en/master/).
+1. First create the database for the website\
+`python manage.py makemigrations`\
+`python manage.py migrate`
+2. To create fake data, run the `populate_site.py` script\
+`python populate_site.py`
+3. Follow the instructions
