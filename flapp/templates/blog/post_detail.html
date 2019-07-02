@@ -8,16 +8,17 @@
   <header class="masthead">
   </header>
 
-  <article>
+
+    <div class="container" style="box-shadow: 5px 10px 8px 1px #888888;">
 <div class="showcase-right" style="background-size: contain;">
 <div class="row">
-  <div class="col-lg-8 col-md-10 mx-auto">
+  <div class="col-lg-10 col-md-10 mx-auto">
     <div class="post">
       <div>
       <div class="post-title text-center">
         <h1>{{ post.title }}</h1>
       </div>
-      <div class="post-cover" style="background-image: url({{ post.cover_image.url }})"></div>
+      <div class="post-cover" style="background-image: url({{ post.cover_image.url }});width: 100%;"></div>
       <div class="post-detail">
          <span class="post-credit"style="white-space:nowrap;display:inline;">
           <i class="fas fa-feather-alt"></i>
@@ -79,7 +80,7 @@
     </div>
   </div>
 </div>
-</article>
+
   </div>
 
 {% endblock %}
