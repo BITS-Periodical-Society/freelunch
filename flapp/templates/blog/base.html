@@ -27,7 +27,7 @@
   <link href="https://fonts.googleapis.com/css?family=Cabin:m" rel="stylesheet">
 <!--  <link href="https://fonts.googleapis.com/css?family=Lora:m" rel="stylesheet">  -->
 
-
+  <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
   <!-- Custom styles for this template -->
   <!--<link href="css/clean-blog.min.css" rel="stylesheet">-->
   <link rel="stylesheet" href="{% static 'css/blog.css' %}" type="text/css">
@@ -68,7 +68,7 @@
             <a class="nav-link" href="{% url 'contributor_list' %}">Contributors</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'subscribe_form' %}">Subscribe</a>
+            <a class="nav-link" href="{% url 'subscribe_form' %}" target="_blank">Subscribe</a>
           </li>
         </ul>
       </div>
