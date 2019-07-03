@@ -14,6 +14,7 @@ urlpatterns = [
 	path('writer/<slug:slug>/', views.WriterView.as_view(), name='writer_info'),
 	path('section/<slug:section>/', views.PostListView.as_view(), name="section-post" ),
 	path('create/', views.PostCreateView.as_view(), name='post_create'),
+	path('subscribe/', views.SubscribeView, name='subscribe_form'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
