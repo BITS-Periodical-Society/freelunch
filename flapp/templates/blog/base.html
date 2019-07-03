@@ -67,7 +67,11 @@
             <a class="nav-link" href="{% url 'contributor_list' %}">Contributors</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'subscribe_form' %}" target="_blank">Subscribe</a>
+            <a class="nav-link" href="{% url 'subscribe_form' %}"
+                  onclick="window.open('{% url 'subscribe_form' %}',
+                               'newwindow',
+                               'left=1250,top=150,width=300,height=400');
+                    return false;">Subscribe</a>
           </li>
         </ul>
       </div>
