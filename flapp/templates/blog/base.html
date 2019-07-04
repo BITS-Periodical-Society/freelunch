@@ -27,7 +27,6 @@
   <link href="https://fonts.googleapis.com/css?family=Cabin:m" rel="stylesheet">
 <!--  <link href="https://fonts.googleapis.com/css?family=Lora:m" rel="stylesheet">  -->
 
-
   <!-- Custom styles for this template -->
   <!--<link href="css/clean-blog.min.css" rel="stylesheet">-->
   <link rel="stylesheet" href="{% static 'css/blog.css' %}" type="text/css">
@@ -35,7 +34,7 @@
   {% block head_extra %} {% endblock head_extra %}
  <!--  Script for tab icon -->
 <link rel="shortcut icon" href="../static/img/tablogo.ico" type="image/x-icon"/>
-  
+
 </head>
 
 <body>
@@ -66,6 +65,13 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'contributor_list' %}">Contributors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'subscribe_form' %}"
+                  onclick="window.open('{% url 'subscribe_form' %}',
+                               'newwindow',
+                               'left=1250,top=150,width=300,height=400');
+                    return false;">Subscribe</a>
           </li>
         </ul>
       </div>
@@ -117,7 +123,7 @@
 
 
   <script src="{% static 'js/clean-blog.js' %}" type="text/javascript"></script>
- 
+
   <!--Markdown-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.6.2/marked.min.js" type="text/javascript"></script>
 
@@ -180,6 +186,6 @@
         });
     </script>
  </body>
- 
+
 
 </html>
