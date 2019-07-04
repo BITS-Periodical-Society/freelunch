@@ -65,7 +65,7 @@ def populate():
 
     print('Adding fake posts...\nMight take some time')
     for newpost in range(p_num):
-        f_author = random.choice(models.Writer.objects.all())
+        # f_author = random.choice(models.Writer.objects.all())
         f_editor = random.choice(models.Editor.objects.all())
         f_title = fake.sentence()
         f_content = fake.paragraph(40)+'\n\n'+fake.paragraph(70)+'\n\n'+fake.paragraph(30)
@@ -74,8 +74,10 @@ def populate():
         f_cdate = fake.date()
         f_pdate = fake.date()
 
-        post = models.Post.objects.get_or_create(author=f_author,post_editor=f_editor,title=f_title,content=f_content,synopsis=f_synop,section=f_section, created_date=f_cdate, published_date=f_pdate)[0]
-        post.get_synopsis()
+        post = models.Post.objects.get_or_create(post_editor=f_editor,title=f_title,content=f_content,synopsis=f_synop,section=f_section, created_date=f_cdate, published_date=f_pdate)[0]
+        post.author.add(random.choice(models.Writer.objects.all()))
+        if fake.boolean():
+            post.author.add(random.choice(models.Writer.objects.all()))
         post.save()
 
         for newcomment in range(c_num):
