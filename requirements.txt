@@ -1,4 +1,4 @@
-Django==2.2.2
+Django==2.2.3
 Sphinx==2.1.2
 Pillow==6.0.0
 django-markdown-deux==1.0.5
