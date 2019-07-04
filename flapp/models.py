@@ -19,20 +19,12 @@ Developer_Designation = [
     ('HD', 'Head of Web Development'),
 ]
 
-Author_Designation = [
+Writer_Designation = [
     ('A', 'Author'),
-    ('F', 'Founder'),
-    ('CF', 'Co-Founder'),
     ('GA', 'Guest Author'),
-    ('EC', 'Editor-in-Chief'),
-    ('STE', 'Section Editor: Science & Technology Editor'),
-    ('EFE', 'Section Editor: Economics & Finance Editor'),
-    ('WAE', 'Section Editor: World Affairs Editor'),
-    ('EE', 'Section Editor: Editorial Editor'),
 ]
 
 Editor_Designation = [
-    ('E', 'Editor'),
     ('EC', 'Editor-in-Chief'),
     ('STE', 'Section Editor: Science & Technology Editor'),
     ('EFE', 'Section Editor: Economics & Finance Editor'),
@@ -138,7 +130,7 @@ class Editor(models.Model):
 class Writer(models.Model):
     name = models.CharField(max_length=30)
     pic = models.ImageField(upload_to='author/', default='default.png')
-    designation = models.CharField(max_length=2, choices=Author_Designation, default=Author_Designation[0][0])
+    designation = models.CharField(max_length=2, choices=Writer_Designation, default=Writer_Designation[0][0])
     linkedin_url = models.URLField(blank=True)
     email = models.EmailField(blank=True)
     bio = models.CharField(max_length=600)
@@ -179,3 +171,27 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
+
+class Founder(models.Model):
+    name = models.CharField(max_length=30)
+    pic = models.ImageField(upload_to='founder/', default='default.png')
+    designation = models.CharField(max_length=7, default='Founder')
+    linkedin_url = models.URLField(blank=True)
+    email = models.EmailField(blank=True)
+    bio = models.CharField(max_length=600)
+    posts = models.ManyToManyField(Post, blank=True)
+    slug = models.SlugField(max_length=30, unique=True, blank=True)
+
+    class Meta:
+        ordering = ('name',)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Founder, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('founder_info', kwargs={'slug': self.slug})
