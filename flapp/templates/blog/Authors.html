@@ -23,28 +23,28 @@
 <div class="container">
   <div class="row welcome text-center">
     <div class="col-12">
-      <h3>Current Writing Team<hr/></h3>      
+      <h3>Founders<hr/></h3>      
       <!-- Team Name -->
     </div>
   </div>
 </div>
 
-    <section id="info1">
-      <div class="info-right">
+<section id="info1">
+  <div class="info-right">
     <div class="container">
       <div class="row">
-      {% for author in writer %}
+      {% for f in founders %}
        <div class="col-sm-4 d-flex">
         <div class="box">  
-        <img class="card-img-top" src="{{ author.pic.url }}">
+        <img class="card-img-top" src="{{ f.pic.url }}">
           <div class="box-content">
-              <h5 class="title" >{{ author.name }}</h5>
-              <p class="post">{{ author.get_designation_display }}</p>
-              <a href="{{ author.get_absolute_url }}" class="btn btn-primary-outline" style=" color: #fff;padding-bottom: 10px; font-size: 10px;">See Profile</a>
+              <h5 class="title" >{{ f.name }}</h5>
+              <p class="post">{{ f.get_designation_display }}</p>
+              <a href="{{ f.get_absolute_url }}" class="btn btn-primary-outline" style=" color: #fff;padding-bottom: 10px; font-size: 10px;">See Profile</a>
               <ul class="icon">
-                {% if author.linkedin_url %}
+                {% if f.linkedin_url %}
                 <li>
-                  <a href="{{ author.linkedin_url }}">
+                  <a href="{{ f.linkedin_url }}">
                     <i class="fab fa-linkedin"></i>
                   </a>
                 </li>
@@ -53,9 +53,52 @@
             </div>
           </div>
         </div>
-      {% if forloop.counter|divisibleby:"3" %}</div><div class="row">
+        {% if forloop.counter|divisibleby:"3" %}</div><div class="row">
         {% endif %}
-        {% endfor %}
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+<hr>
+
+
+<div class="container">
+  <div class="row welcome text-center">
+    <div class="col-12">
+      <h3>Current Editor Team<hr/></h3>      
+      <!-- Team Name -->
+    </div>
+  </div>
+</div>
+
+<section id="info1">
+  <div class="info-right">
+    <div class="container">
+      <div class="row">
+      {% for e in editors %}
+       <div class="col-sm-4 d-flex">
+        <div class="box">  
+        <img class="card-img-top" src="{{ e.pic.url }}">
+          <div class="box-content">
+              <h5 class="title" >{{ e.name }}</h5>
+              <p class="post">{{ e.get_designation_display }}</p>
+              <a href="{{ e.get_absolute_url }}" class="btn btn-primary-outline" style=" color: #fff;padding-bottom: 10px; font-size: 10px;">See Profile</a>
+              <ul class="icon">
+                {% if e.linkedin_url %}
+                <li>
+                  <a href="{{ e.linkedin_url }}">
+                    <i class="fab fa-linkedin"></i>
+                  </a>
+                </li>
+              </ul>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:"3" %}</div><div class="row">
+        {% endif %}
+      {% endfor %}
       </div>
     </div>
   </div>
@@ -114,4 +157,26 @@
   </div>
 </section>
 <hr>
+
+<div class="container">
+  <div class="row welcome text-center">
+    <div class="col-12">
+      <h3>Current Writing Team<hr/></h3>      
+      <!-- Team Name -->
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="welcome text-center">
+    {% for w in writers %}
+    <ul>
+      <a href="{{ w.get_absolute_url }}">{{ w.name}}</a> ({{ w.get_designation_display }})
+    </ul>
+    {% endfor %}
+  </div>
+</div>
+<hr>
+
+
 {% endblock %}

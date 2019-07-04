@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.views.generic import ListView, DetailView, CreateView, View
 from django.urls import reverse
-from .models import Post, Section, Writer, Developer, Editor, Comment
+from .models import Post, Section, Writer, Developer, Editor, Founder, Comment
 from .forms import PostForm, CommentForm, SubscribeForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -72,8 +72,9 @@ def contributor(request):
 	developers = Developer.objects.all()
 	editors = Editor.objects.all()
 	writer = Writer.objects.all()
+	founder = Founder.objects.all()
 
-	return render(request, 'blog/Authors.html', {'developers': developers, 'editors': editors, 'writer': writer})
+	return render(request, 'blog/Authors.html', {'developers': developers, 'editors': editors, 'writers': writer, 'founders': founder})
 
 
 class EdiorView(DetailView):
@@ -92,6 +93,12 @@ class DeveloperView(DetailView):
 
 class WriterView(DetailView):
 	model = Writer
+	template_name = 'blog/profile_page.html'
+	context_object_name = 'me'
+	slug_url_kwarg = 'slug'
+
+class FounderView(DetailView):
+	model = Founder
 	template_name = 'blog/profile_page.html'
 	context_object_name = 'me'
 	slug_url_kwarg = 'slug'
