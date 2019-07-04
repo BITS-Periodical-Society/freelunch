@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.views.generic import ListView, DetailView, CreateView, View
 from django.urls import reverse
 from .models import Post, Section, Writer, Developer, Editor, Comment
-from .forms import PostForm, CommentForm
+from .forms import PostForm, CommentForm, SubscribeForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 class PostListView(ListView):
@@ -95,3 +95,15 @@ class WriterView(DetailView):
 	template_name = 'blog/profile_page.html'
 	context_object_name = 'me'
 	slug_url_kwarg = 'slug'
+
+def SubscribeView(request):
+	form = SubscribeForm()
+
+	if request.method == 'POST':
+		form = SubscribeForm(request.POST)
+		if form.is_valid():
+			form.save(commit=True)
+		return redirect('post_list')
+	else:
+		form = SubscribeForm()
+	return render(request, 'blog/subscribe.html', {'form':form})
