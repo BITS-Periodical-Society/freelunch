@@ -42,4 +42,4 @@ We use the `Faker` library for creating data. Checkout the [repo](https://github
 2. To create fake data, run the `populate_site.py` script\
 `python populate_site.py`
 3. Follow instructions as they come up
-4. Check issue #157 for more info.
+4. Check issue [#157](https://github.com/BITS-Periodical-Society/freelunch/issues/157) for more info.
