@@ -70,41 +70,8 @@ s.setAttribute('data-timestamp', +new Date());
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<div class="row">
-  <div class="col-lg-16 col-md-10 mx-auto">
-    <div style="text-align:center;">
-      <h2 style="margin-top:30px;">Comments({{ post.comments.all.count }})</h2>
-    </div>
 
-    <div class="container">
-      
-    {% for comment in post.comments.all %}
-      {% if comment.is_approved %}
-      <div class="border text-center">
-      <p> {{comment.text|linebreaks }} </p>
-      <p>By: <strong>{{ comment.author|cap }}</strong><br><em>{{ comment.created_date|date }}</em></p>
-      {% endif %}
-      </div>
-    {% endfor %}<br>
-
-
-                            
-
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div style="text-align:center;">
-            <h2 style="margin-top:30px;">New Comment</h2>
-          </div><hr/>
-          <form method="POST" class="post-form">{% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="button">Send</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
-
-  </div>
+<hr>
 
 {% endblock %}
