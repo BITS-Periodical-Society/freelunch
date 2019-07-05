@@ -40,6 +40,7 @@ class Post(models.Model):
     synopsis = models.CharField(max_length=640, blank=True)
     content = models.TextField()
     section = models.CharField(max_length=2, choices=Section)
+    tag = models.ManyToManyField('Tag', blank=True)
     created_date = models.DateTimeField(default=timezone.now)
     cover_image = models.ImageField(editable=True, upload_to = 'post_cover/', default='default_cover.jpeg')
     published_date = models.DateTimeField(blank=True, null=True)
@@ -80,6 +81,13 @@ class Post(models.Model):
  
     def __str__(self):
         return self.title
+
+
+class Tag(models.Model):
+	name = models.CharField(max_length=20)
+
+	def __str__(self):
+		return self.name
 
 
 class Developer(models.Model):
