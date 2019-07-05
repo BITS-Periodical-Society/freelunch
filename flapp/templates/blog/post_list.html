@@ -48,9 +48,8 @@ function showDivs(n) {
 
 {% endblock %}
 <div class="testimonial">
-  <header class="masthead" >
-  <div class=" w3-section">
-  <!-- <header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %})"> -->
+  <header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %}">
+<!--  <div class=" w3-section">
 <div class="mySlides">
   <img class="w3-animate-opacity w3-opacity"  src="{% static 'img/home-bg.jpg' %}" style="width:100%;height: 500px;">
   <div class="container">
@@ -59,100 +58,28 @@ function showDivs(n) {
       <h1 class="post-title subheading"> 
         <p><span class="w3-tag w3-blue w3-xlarge far fa-paper-plane"> Featured!</span></p>
       </h1>
-      <h2 class="post-title">
+      <h1 class="post-title">
         <a href="#">
               In search of scutoids
               <p><span class="w3-tag w3-teal">Read More!</span></p>
             </a>
-            </h2>
-          
-          <p class="post-meta">Posted by
-            <a href="#">Editor</a>
-            Written by
-            
-            <a href="#">
-              Writer
-            </a>
-            
-            on published date</p>
-          
+            </h2>         
         </div>
         </div>
       </div>
 </div>
- <div class="mySlides"> 
-  <img class="w3-animate-opacity w3-opacity"  src="{% static 'img/ishere.jpg' %}" style="width:100%;height: 500px;">
-  <div class="container">
-  <div class="w3-display-middle">
-    <div class="col-lg-8 col-md-10 mx-auto">
-      <h1 class="post-title subheading"> 
-        <p><span class="w3-tag w3-blue w3-xlarge far fa-paper-plane"> Featured!</span></p>
-      </h1>
-      <h2 class="post-title">
-        <a href="#">
-              Second-Rate Burgers Make for Second-Rate Engineers
-              <p><span class="w3-tag w3-teal">Read More!</span></p>
-            </a>
-            </h2>
-          
-          <p class="post-meta">Posted by
-            <a href="#">Editor</a>
-            Written by
-            
-            <a href="#">
-              Writer
-            </a>
-            
-            on published date</p>
-          
-        </div>
-        </div>
-      </div>
-</div>
-<div class="mySlides">
-  <img class="w3-animate-opacity w3-opacity"  src="{% static 'img/about-bg.jpg' %}"style="width:100%;height: 500px;">
-  <div class="container">
-  <div class="w3-display-middle">
-    <div class="col-lg-8 col-md-10 mx-auto">
-      <h1 class="post-title subheading"> 
-        <p><span class="w3-tag w3-blue w3-xlarge far fa-paper-plane"> Featured!</span></p>
-      </h1>
-      <h2 class="post-title">
-        <a href="#">
-              In search of scutoids2
-              <p><span class="w3-tag w3-teal">Read More!</span></p>
-            </a>
-            </h2>
-          
-          <p class="post-meta">Posted by
-            <a href="#">Editor</a>
-            Written by
-            
-            <a href="#">
-              Writer
-            </a>
-            
-            on published date</p>
-          
-        </div>
-        </div>
-      </div>
-</div>
-
   <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
     <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;
       Slide
     </div>
-    <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">Slide &#10095;
-      
+    <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">Slide &#10095;     
     </div>
     <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
     <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
-    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
-  </div>
-</div>
- <div class="overlay"></div>
-   <!--  <div class="container">
+  </div> 
+</div>-->
+
+     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
@@ -161,7 +88,7 @@ function showDivs(n) {
           </div>
         </div>
       </div>
-    </div> -->
+    </div> 
   </header>
   </div>
 
@@ -178,7 +105,7 @@ function showDivs(n) {
             <h2 class="post-title" style="font-size: 24px">
               {{ post.title }}
             </h2>
-             </a>
+            </a>
             {% if post.synopsis %}
             <h3 class="post-subtitle" style="font-size: 16px">
               {{ post.synopsis }}
