@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Writer, Editor, Developer, Subscriber, Founder, Comment
+from .models import Post, Writer, Editor, Developer, Subscriber, Founder, Comment, Tag
 from .forms import PostForm
 
 
@@ -10,3 +10,4 @@ admin.site.register(Editor)
 admin.site.register(Developer)
 admin.site.register(Subscriber)
 admin.site.register(Comment)
+admin.site.register(Tag)
