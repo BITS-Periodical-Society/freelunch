@@ -2,10 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.views.generic import ListView, DetailView, CreateView, View
 from django.urls import reverse
-from .models import Post, Section, Writer, Developer, Editor, Founder, Comment
-from .forms import PostForm, CommentForm, SubscribeForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
+from .models import Post, Section, Writer, Developer, Editor, Founder, Comment, Tag
+from .forms import PostForm, CommentForm, SubscribeForm
+from .suggest import recommend
 
 class PostListView(ListView):
 	"""
@@ -48,9 +49,10 @@ class PostDetailView(View):
 	def get(self, request, *args, **kwargs):
 		context={}
 		post = get_object_or_404(Post, slug=self.kwargs['slug'])
+		recommends = recommend(post)
 		context[self.context_object_name] = post
 		form = CommentForm
-		return render(request,'blog/post_detail.html', {'post':post, 'form':form})
+		return render(request,'blog/post_detail.html', {'post':post, 'recommends': recommends, 'form':form})
 
 
 	def post(self, request, *args, **kwargs):
