@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView, CreateView, View
 from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post, Section, Writer, Developer, Editor, Founder, Comment, Tag
 from .forms import PostForm, CommentForm, SubscribeForm
 from .suggest import recommend
@@ -25,7 +26,7 @@ class PostListView(ListView):
 		return posts
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
 	model = Post
 	template_name = 'blog/post_form.html'
 	form_class = PostForm

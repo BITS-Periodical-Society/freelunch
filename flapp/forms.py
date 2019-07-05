@@ -21,6 +21,7 @@ class PostForm(forms.ModelForm):
 		self.fields['synopsis'].widget.attrs.update({'class': 'form-control'})
 		self.fields['post_editor'].widget.attrs.update({'class': 'form-control'})
 		self.fields['section'].widget.attrs.update({'class': 'form-control'})
+		self.fields['tag'].widget.attrs.update({'class': 'form-control'})
 		self.fields['content'].widget.attrs.update({'class': 'form-control'})
 		self.fields['cover_image'].widget.attrs.update({'class': 'form-control-file'})
 
