@@ -16,7 +16,7 @@ for i in models.Section:
     sections.append(i[0])
 
 author_designations = []
-for i in models.Author_Designation:
+for i in models.Writer_Designation:
     author_designations.append(i[0])
 
 editor_designations = []
@@ -75,9 +75,13 @@ def populate():
         f_pdate = fake.date()
 
         post = models.Post.objects.get_or_create(post_editor=f_editor,title=f_title,content=f_content,synopsis=f_synop,section=f_section, created_date=f_cdate, published_date=f_pdate)[0]
-        post.author.add(random.choice(models.Writer.objects.all()))
+        f_auth = random.choice(models.Writer.objects.all())
+        post.author.add(f_auth)
+        f_auth.posts.add(post)
         if fake.boolean():
-            post.author.add(random.choice(models.Writer.objects.all()))
+            f_auth = random.choice(models.Writer.objects.all())
+            post.author.add(f_auth)
+            f_auth.posts.add(post)
         post.save()
 
         for newcomment in range(c_num):
