@@ -47,8 +47,18 @@ function setAuthor(value){
 }
 
 authorInput.change(function(){
-	var newContent = $('#id_author option:selected').text()
-	setAuthor(newContent)
+	// var newContent = $('#id_author option:selected').text()
+	author = []
+	$('#id_author option:selected').each(function(){
+		author.push($(this).text())
+		})
+	author = new Set(author)
+	author = Array.from(author)
+	value = author[0]
+	if (author.length > 1){
+		value = author[0] + " & " + author[1]
+	}
+	setAuthor(value)
 })
 
 function setEditor(value){
