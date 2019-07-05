@@ -4,37 +4,37 @@
 {% load my_filters %}
 
 
-  <!--   infinite scroll scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" type="text/javascript"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/shortcuts/infinite.min.js" type="text/javascript"></script>
+<!--   infinite scroll scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/shortcuts/infinite.min.js" type="text/javascript"></script>
 {% block javascript %}
-  <script>
-   var infinite = new Waypoint.Infinite({
-  element: $('.infinite-container')[0],
-  onBeforePageLoad: function () {
-        $('.loading').show();
-      },
-      onAfterPageLoad: function ($items) {
-        $('.loading').hide();
-      }
+<script>
+var infinite = new Waypoint.Infinite({
+element: $('.infinite-container')[0],
+onBeforePageLoad: function () {
+$('.loading').show();
+},
+onAfterPageLoad: function ($items) {
+$('.loading').hide();
+}
 });
 var slideIndex = 1;
 showDivs(slideIndex);
 
 function plusDivs(n) {
-  showDivs(slideIndex += n);
+showDivs(slideIndex += n);
 }
 
 function currentDiv(n) {
-  showDivs(slideIndex = n);
+showDivs(slideIndex = n);
 }
 
 function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
+var i;
+var x = document.getElementsByClassName("mySlides");
+var dots = document.getElementsByClassName("demo");
+if (n > x.length) {slideIndex = 1}
+if (n < 1) {slideIndex = x.length}
   for (i = 0; i < x.length; i++) {
     x[i].style.display = "none";  
   }
@@ -48,107 +48,108 @@ function showDivs(n) {
 
 {% endblock %}
 <div class="testimonial">
-  <header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %}">
+<header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %}">
 <!--  <div class=" w3-section">
 <div class="mySlides">
-  <img class="w3-animate-opacity w3-opacity"  src="{% static 'img/home-bg.jpg' %}" style="width:100%;height: 500px;">
-  <div class="container">
-  <div class="w3-display-middle">
-    <div class="col-lg-8 col-md-10 mx-auto">
-      <h1 class="post-title subheading"> 
-        <p><span class="w3-tag w3-blue w3-xlarge far fa-paper-plane"> Featured!</span></p>
-      </h1>
-      <h1 class="post-title">
-        <a href="#">
-              In search of scutoids
-              <p><span class="w3-tag w3-teal">Read More!</span></p>
-            </a>
-            </h2>         
-        </div>
-        </div>
-      </div>
+<img class="w3-animate-opacity w3-opacity"  src="{% static 'img/home-bg.jpg' %}" style="width:100%;height: 500px;">
+<div class="container">
+<div class="w3-display-middle">
+<div class="col-lg-8 col-md-10 mx-auto">
+  <h1 class="post-title subheading"> 
+    <p><span class="w3-tag w3-blue w3-xlarge far fa-paper-plane"> Featured!</span></p>
+  </h1>
+  <h1 class="post-title">
+    <a href="#">
+          In search of scutoids
+          <p><span class="w3-tag w3-teal">Read More!</span></p>
+        </a>
+        </h2>         
+    </div>
+    </div>
+  </div>
 </div>
-  <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
-    <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;
-      Slide
-    </div>
-    <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">Slide &#10095;     
-    </div>
-    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
-    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
-  </div> 
+<div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+<div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;
+  Slide
+</div>
+<div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">Slide &#10095;     
+</div>
+<span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+<span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+</div> 
 </div>-->
 
-     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1>Freelunch</h1>
-            <span class="subheading">BITS Academic Periodical Society</span>
-          </div>
-        </div>
-      </div>
-    </div> 
-  </header>
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-md-10 mx-auto">
+  <div class="site-heading">
+    <h1>Freelunch</h1>
+    <span class="subheading">BITS Academic Periodical Society</span>
   </div>
+</div>
+</div>
+</div> 
+</header>
+</div>
 
 <!-- Main Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="infinite-container">
-        {% for post in posts %}        
-        <div class="infinite-item">
-        <div class="post-preview">
-           <a href="{{ post.get_absolute_url }}">
-          <div class="post-cover" style="background-image: url({{ post.cover_image.url }})"></div>
-            <h2 class="post-title" style="font-size: 24px">
-              {{ post.title }}
-            </h2>
-            </a>
-            {% if post.synopsis %}
-            <h3 class="post-subtitle" style="font-size: 16px">
-              {{ post.synopsis }}
-            </h3>
-            {% endif %}
-          
-          <p class="post-meta">Posted by
-            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
-            Written by
-            {% for author in post.author.all %}
-              {% if forloop.last and not forloop.first %}&{% endif %}
-              {% if not forloop.first and not forloop.last%},{% endif %}
-            <a href="{{ author.get_absolute_url }}">
-              {{ author.name|cap }}
-            </a>
-            {% endfor %}
-            on {{ post.published_date|date }}</p>
-        
-      </div>
-      </div>
-        <hr>
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-md-10 mx-auto">
+  <div class="infinite-container">
+    {% for post in posts %}        
+    <div class="infinite-item">
+      <div class="post-preview">
+       <a href="{{ post.get_absolute_url }}">
+        <div class="post-cover" style="background-image: url({{ post.cover_image.url }})"></div>
+        <h2 class="post-title" style="font-size: 24px">
+          {{ post.title }}
+        </h2>
+      </a>
+      {% if post.synopsis %}
+      <h3 class="post-subtitle" style="font-size: 16px">
+        {{ post.synopsis }}
+      </h3>
+      {% endif %}
+      
+      <p class="post-meta">Posted by
+        <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
+        Written by
+        {% for author in post.author.all %}
+        {% if forloop.last and not forloop.first %}&{% endif %}
+        {% if not forloop.first and not forloop.last%},{% endif %}
+        <a href="{{ author.get_absolute_url }}">
+          {{ author.name|cap }}
+        </a>
         {% endfor %}
-      </div>
-
-      <div class="loading">
-        <div class="w3-container w3-display-bottommiddle">
-        <p><i class="fa fa-spinner w3-spin" style="font-size:35px; align-items: center;"></i></p>
-      </div>
-      </div> 
-
-        <!-- Pager -->
-        <!-- <div class="clearfix"> -->
-          <!-- {% if page_obj.has_previous %}
-          <a class="btn btn-primary float-right" href="?page={{ page_obj.previous_page_number }}">Newer Posts &rarr;</a>
-          {% endif %} -->
-          {% if page_obj.has_next %}
-          <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}"></a>
-          <!-- <a class="btn btn-primary float-left" href="?page={{ page_obj.next_page_number }}">Older Posts &rarr;</a> -->
-          {% endif %}
-        <!-- </div> -->
-      </div>
+      on {{ post.published_date|date }}</p>
+      
     </div>
   </div>
   <hr>
+  {% endfor %}
+</div>
+
+
+<!-- Pager -->
+<!-- <div class="clearfix"> -->
+      <!-- {% if page_obj.has_previous %}
+      <a class="btn btn-primary float-right" href="?page={{ page_obj.previous_page_number }}">Newer Posts &rarr;</a>
+      {% endif %} -->
+      {% if page_obj.has_next %}
+      <div class="loading">
+        <div class="w3-container w3-display-bottommiddle">
+          <p><i class="fa fa-spinner w3-spin" style="font-size:35px; align-items: center;"></i></p>
+        </div>
+      </div> 
+
+      <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}"></a>
+      <!-- <a class="btn btn-primary float-left" href="?page={{ page_obj.next_page_number }}">Older Posts &rarr;</a> -->
+      {% endif %}
+      <!-- </div> -->
+    </div>
+  </div>
+</div>
+<hr>
 
 {% endblock %}
