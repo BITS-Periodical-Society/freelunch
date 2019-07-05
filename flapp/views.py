@@ -5,6 +5,7 @@ from django.urls import reverse
 from .models import Post, Section, Writer, Developer, Editor, Founder, Comment
 from .forms import PostForm, CommentForm, SubscribeForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponse
 
 class PostListView(ListView):
 	"""
@@ -110,7 +111,7 @@ def SubscribeView(request):
 		form = SubscribeForm(request.POST)
 		if form.is_valid():
 			form.save(commit=True)
-		return redirect('post_list')
+			return HttpResponse('<script type="text/javascript">window.close()</script>')
 	else:
 		form = SubscribeForm()
 	return render(request, 'blog/subscribe.html', {'form':form})
