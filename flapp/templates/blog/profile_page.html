@@ -14,28 +14,27 @@
         </div>
       </div>
     </div>
-  </div>
 </header>
 
 <div class="section-about" id="about">
   <div class="container">
     <!-- Section Title -->
     <h2 class="title-of-section title-border">About Me</h2>
-    <!-- /Section Title --> 
+    <!-- /Section Title -->
   </div>
   <div class="container about-container">
     <div class="row contrast">
       <div class="col-sm-4 col-no-padding">
         <div class="about-picture" id="about-picture">
-          <img src="{{ me.pic.url }}" alt="Avatar" class="image">            
+          <img src="{{ me.pic.url }}" alt="Avatar" class="image">
         </div>
-      </div>      
-      <div class="col-sm-8"> 
+      </div>
+      <div class="col-sm-8">
         <div class="padding-box">
-          <h4>Bio</h1>
-          <p>{{ me.bio }}</p>   
-          
-            <h4>Let's Connect On</h3>
+          <h4>Bio</h4>
+          <p>{{ me.bio }}</p>
+
+            <h4>Let's Connect On</h4>
               <!-- LinkedIn -->
             <div class="col-sm-6">
               <ul class="list-inline text-left">
@@ -61,7 +60,7 @@
                 </li>
                 {% endif %}
                 <!-- Mail-ID field -->
-                
+
                 {% if me.email %}
                 <li class="list-inline-item" style="padding-top: 2em;">
                   <a href="">{{ me.email }}
@@ -70,12 +69,27 @@
                 {% endif %}
               </ul>
             </div>
-          
+            </div>
+
+
+
         </div>
       </div>
     </div>
   </div>
-</div>
+  <div class="container">
+    <h3>All Posts by {{ me.name }}</h3>
+      <div class="list-group">
+      {% for post in me.posts.all %}
+      <a href = "{% url 'post_detail' slug=post.slug %}" class="list-group-item">
+        {{ post.title }}
+      </a>
+      <br>
+      {% endfor %}
+      </div>
+      </div>
+
+  </div>
 
 <hr>
 
