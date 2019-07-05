@@ -10,14 +10,149 @@
 {% block javascript %}
   <script>
    var infinite = new Waypoint.Infinite({
-  element: $('.infinite-container')[0]
-})
-  </script>
+  element: $('.infinite-container')[0],
+  onBeforePageLoad: function () {
+        $('.loading').show();
+      },
+      onAfterPageLoad: function ($items) {
+        $('.loading').hide();
+      }
+});
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-white", "");
+  }
+  x[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " w3-white";
+}
+</script>
+
 {% endblock %}
 <div class="testimonial">
-  <header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %}">
+  <header class="masthead" >
+  <div class=" w3-section">
+  <!-- <header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %})"> -->
+<div class="mySlides">
+  <img class="w3-animate-opacity w3-opacity"  src="{% static 'img/home-bg.jpg' %}" style="width:100%;height: 500px;">
+  <div class="container">
+  <div class="w3-display-middle">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <h1 class="post-title subheading"> 
+        <p><span class="w3-tag w3-blue w3-xlarge far fa-paper-plane"> Featured!</span></p>
+      </h1>
+      <h2 class="post-title">
+        <a href="#">
+              In search of scutoids
+              <p><span class="w3-tag w3-teal">Read More!</span></p>
+            </a>
+            </h2>
+          
+          <p class="post-meta">Posted by
+            <a href="#">Editor</a>
+            Written by
+            
+            <a href="#">
+              Writer
+            </a>
+            
+            on published date</p>
+          
+        </div>
+        </div>
+      </div>
+</div>
+ <div class="mySlides"> 
+  <img class="w3-animate-opacity w3-opacity"  src="{% static 'img/ishere.jpg' %}" style="width:100%;height: 500px;">
+  <div class="container">
+  <div class="w3-display-middle">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <h1 class="post-title subheading"> 
+        <p><span class="w3-tag w3-blue w3-xlarge far fa-paper-plane"> Featured!</span></p>
+      </h1>
+      <h2 class="post-title">
+        <a href="#">
+              Second-Rate Burgers Make for Second-Rate Engineers
+              <p><span class="w3-tag w3-teal">Read More!</span></p>
+            </a>
+            </h2>
+          
+          <p class="post-meta">Posted by
+            <a href="#">Editor</a>
+            Written by
+            
+            <a href="#">
+              Writer
+            </a>
+            
+            on published date</p>
+          
+        </div>
+        </div>
+      </div>
+</div>
+<div class="mySlides">
+  <img class="w3-animate-opacity w3-opacity"  src="{% static 'img/about-bg.jpg' %}"style="width:100%;height: 500px;">
+  <div class="container">
+  <div class="w3-display-middle">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <h1 class="post-title subheading"> 
+        <p><span class="w3-tag w3-blue w3-xlarge far fa-paper-plane"> Featured!</span></p>
+      </h1>
+      <h2 class="post-title">
+        <a href="#">
+              In search of scutoids2
+              <p><span class="w3-tag w3-teal">Read More!</span></p>
+            </a>
+            </h2>
+          
+          <p class="post-meta">Posted by
+            <a href="#">Editor</a>
+            Written by
+            
+            <a href="#">
+              Writer
+            </a>
+            
+            on published date</p>
+          
+        </div>
+        </div>
+      </div>
+</div>
+
+  <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+    <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;
+      Slide
+    </div>
+    <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">Slide &#10095;
+      
+    </div>
+    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+  </div>
+</div>
  <div class="overlay"></div>
-    <div class="container">
+   <!--  <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
@@ -26,7 +161,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </header>
   </div>
 
@@ -40,16 +175,17 @@
         <div class="post-preview">
            <a href="{{ post.get_absolute_url }}">
           <div class="post-cover" style="background-image: url({{ post.cover_image.url }})"></div>
-            <h2 class="post-title">
+            <h2 class="post-title" style="font-size: 24px">
               {{ post.title }}
             </h2>
-             </a>
+             
             {% if post.synopsis %}
-            <h3 class="post-subtitle">
+            <h3 class="post-subtitle" style="font-size: 16px">
               {{ post.synopsis }}
             </h3>
+            </a>
             {% endif %}
-          </a>
+          
           <p class="post-meta">Posted by
             <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
             Written by
@@ -68,8 +204,11 @@
         {% endfor %}
       </div>
 
-<!--       <div class="loading">
-      </div> -->
+      <div class="loading">
+        <div class="w3-container w3-display-bottommiddle">
+        <p><i class="fa fa-spinner w3-spin" style="font-size:35px; align-items: center;"></i></p>
+      </div>
+      </div> 
 
         <!-- Pager -->
         <!-- <div class="clearfix"> -->

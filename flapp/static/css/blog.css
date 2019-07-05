@@ -19,6 +19,7 @@ body {
 p {
   line-height: 1.5;
   margin: 30px 0;
+  margin-left: 10px;
 }
 
 p a {
@@ -135,7 +136,7 @@ blockquote {
 
 .box .post {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: capitalize;
   margin-bottom: 5px;
 }
@@ -478,22 +479,22 @@ header.masthead .post-heading .meta a {
 }
 
 .post-preview > a > .post-title {
-  font-size: 24px;
+  font-size: 21px;
   margin-top: 24px;
   margin-bottom: 10px;
-     white-space:nowrap;
+/*     white-space:nowrap;*/
 	display:inline;
 }
 
 .post-preview > .post-subtitle {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 150;
   margin: 0 0 10px;
   color: #212529;
 }
 
 .post-preview > .post-meta {
-  font-size: 15px;
+  font-size: 14px;
   font-style: italic;
   margin-top: 0;
   color: #868e96;
@@ -511,7 +512,7 @@ header.masthead .post-heading .meta a {
 
 @media only screen and (min-width: 768px) {
   .post-preview > a > .post-title {
-    font-size: 24px;
+    font-size: 21px;
   }
 }
 title { 
@@ -953,7 +954,7 @@ font-family: 'Cabin', serif;
   margin-top: 10px;
 }
 p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 22px;
   margin-bottom: 22px;
 }

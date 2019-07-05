@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Comment
+from .models import Post, Comment, Subscriber
 from pagedown.widgets import PagedownWidget
 
 
@@ -34,4 +34,14 @@ class CommentForm(forms.ModelForm):
 		super().__init__(*args, **kwargs)
 		self.fields['author'].widget.attrs.update({'class': 'form-control'})
 		self.fields['text'].widget.attrs.update({'class': 'form-control'})
-  
+
+class SubscribeForm(forms.ModelForm):
+
+	class Meta:
+		model = Subscriber
+		fields = '__all__'
+
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		self.fields['name'].widget.attrs.update({'class': 'form-control'})
+		self.fields['email'].widget.attrs.update({'class': 'form-control'})
