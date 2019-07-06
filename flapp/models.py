@@ -167,5 +167,5 @@ class Subscriber(models.Model):
 	name = models.CharField(max_length=30)
 	email = models.EmailField()
 
-    def __str__(self):
-        return self.name
+	def __str__(self):
+		return self.name
