@@ -40,6 +40,7 @@ class Post(models.Model):
     synopsis = models.CharField(max_length=640, blank=True)
     content = models.TextField()
     section = models.CharField(max_length=2, choices=Section)
+    tag = models.ManyToManyField('Tag', blank=True)
     created_date = models.DateTimeField(default=timezone.now)
     cover_image = models.ImageField(editable=True, upload_to = 'post_cover/', default='default_cover.jpeg')
     published_date = models.DateTimeField(blank=True, null=True)
@@ -80,6 +81,13 @@ class Post(models.Model):
  
     def __str__(self):
         return self.title
+
+
+class Tag(models.Model):
+	name = models.CharField(max_length=20)
+
+	def __str__(self):
+		return self.name
 
 
 class Developer(models.Model):
@@ -157,20 +165,6 @@ class Subscriber(models.Model):
 
     def __str__(self):
         return self.name
-
-class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
-    author = models.CharField(max_length=100)
-    text = models.TextField()
-    created_date = models.DateTimeField(default = timezone.now)
-    is_approved = models.BooleanField(default=False)
-
-    def approve(self):
-        self.approved_comment = True
-        self.save()
-
-    def __str__(self):
-        return self.text
 
 
 class Founder(models.Model):

@@ -77,10 +77,11 @@
       </div>
     </div>
   </div>
+  {% if me.post_set %}
   <div class="container">
     <h3>All Posts by {{ me.name }}</h3>
       <div class="list-group">
-      {% for post in me.posts.all %}
+      {% for post in me.post_set.all %}
       <a href = "{% url 'post_detail' slug=post.slug %}" class="list-group-item">
         {{ post.title }}
       </a>
@@ -88,7 +89,7 @@
       {% endfor %}
       </div>
       </div>
-
+    {% endif %}
   </div>
 
 <hr>

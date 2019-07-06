@@ -2,10 +2,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.views.generic import ListView, DetailView, CreateView, View
 from django.urls import reverse
-from .models import Post, Section, Writer, Developer, Editor, Founder, Comment
-from .forms import PostForm, CommentForm, SubscribeForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Post, Section, Writer, Developer, Editor, Founder, Tag
+from .forms import PostForm, SubscribeForm
+from .suggest import recommend
 
 class PostListView(ListView):
 	"""
@@ -24,7 +26,7 @@ class PostListView(ListView):
 		return posts
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
 	model = Post
 	template_name = 'blog/post_form.html'
 	form_class = PostForm
@@ -48,25 +50,9 @@ class PostDetailView(View):
 	def get(self, request, *args, **kwargs):
 		context={}
 		post = get_object_or_404(Post, slug=self.kwargs['slug'])
+		recommends = recommend(post)
 		context[self.context_object_name] = post
-		form = CommentForm
-		return render(request,'blog/post_detail.html', {'post':post, 'form':form})
-
-
-	def post(self, request, *args, **kwargs):
-		context={}
-		post = get_object_or_404(Post, slug=self.kwargs['slug'])
-		if request.method == "POST":
-			form = CommentForm(request.POST)
-			if form.is_valid():
-				comment = form.save(commit=False)
-				comment.post = post
-				comment.save()
-			return redirect('post_detail', slug=post.slug)
-		else:
-			form = CommentForm()
-			return render(request, 'blog/post_detail.html', {'form':form})
-
+		return render(request,'blog/post_detail.html', {'post':post, 'recommends': recommends})
 
 
 def contributor(request):
