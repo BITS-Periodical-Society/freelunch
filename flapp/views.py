@@ -58,10 +58,11 @@ class PostDetailView(View):
 def contributor(request):
 	developers = Developer.objects.all()
 	editors = Editor.objects.all()
-	writer = Writer.objects.all()
+	writer = Writer.objects.filter(designation='A')
+	guest_writer = Writer.objects.filter(designation='GA')
 	founder = Founder.objects.all()
 
-	return render(request, 'blog/Authors.html', {'developers': developers, 'editors': editors, 'writers': writer, 'founders': founder})
+	return render(request, 'blog/Authors.html', {'developers': developers, 'editors': editors, 'writers': writer, 'founders': founder, 'guest_writers':guest_writer})
 
 
 class EdiorView(DetailView):

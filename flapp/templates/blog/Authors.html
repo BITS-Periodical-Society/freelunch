@@ -26,7 +26,7 @@
 <div class="container padding">
     <div class="row welcome text-center">
       <div class="col-12">
-      <h3>Current Writing Team<hr/></h3>      
+      <h3>Current Writing Team<hr/></h3>
       <!-- Team Name -->
     </div>
   </div>
@@ -38,7 +38,7 @@
       <div class="row">
      {% for author in writers %}
        <div class="col-sm-4 d-flex">
-        <div class="box">  
+        <div class="box">
         <img class="card-img-top" src="{{ author.pic.url }}">
           <div class="box-content">
               <h5 class="title" >{{ author.name }}</h5>
@@ -70,7 +70,7 @@
   <div class="row welcome text-center">
     <div class="col-12">
 
-      <h3>Development Team<hr/></h3>      
+      <h3>Development Team<hr/></h3>
       <!-- Team Name -->
     </div>
   </div>
@@ -83,7 +83,7 @@
       <div class="row">
         {% for dev in developers %}
         <div class="col-sm-4 d-flex">
-          <div class="box">  
+          <div class="box">
             <img class="card-img-top" src="{{ dev.pic.url }}">
             <div class="box-content">
               <h5 class="title" >{{ dev.name }}</h5>
@@ -119,5 +119,15 @@
 </section>
 <hr>
 <!-- Add Guest authors here -->
+<div class="container" style="text-align:center;">
+  <h3>Guest Authors</h3>
+  <div class="list-group list-group-flush">
+    {% for guest in guest_writers %}
+    <a href="{{ guest.get_absolute_url }}" class="list-group-item list-group-item-action">
+      {{ guest.name }}
+    </a>
+    {% endfor %}
+  </div>
+</div>
 
 {% endblock %}
