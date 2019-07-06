@@ -36,7 +36,7 @@
         </span>
         <span class="post-date" style="white-space:nowrap;display:inline;">
           <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
-        </span> 
+        </span>
       </div>
     </div>
       </div>
@@ -48,7 +48,20 @@
   </div>
 </div>
 <hr>
-{{ recommends }}
+
+<h3>Also read</h3>
+<div class="list-group">
+{% for post in recommends %}
+<a href="{% url 'post_detail' slug=post.slug %}" class="list-group-item list-group-item-action">{{ post.title }}</a>
+{% endfor %}
+</div>
+
+
+
+
+
+
+
 <!-- Comments section -->
 <div id="disqus_thread"></div>
 <script>
