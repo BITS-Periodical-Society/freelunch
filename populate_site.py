@@ -47,11 +47,6 @@ def add_developer():
     d.save()
     return d
 
-def add_founder():
-    f = models.Founder.objects.get_or_create(name=fake.name(), email=fake.email(), bio=fake.paragraph())[0]
-    f.save()
-    return f
-
 def add_tag():
     t = models.Tag.objects.get_or_create(name=fake.word())[0]
     t.save()
@@ -74,6 +69,10 @@ def populate():
     except:
         print("Please use integers.")
         exit(0)
+
+    print('Faking Developers...')
+    for i in range(4):
+        add_developer()
 
     print('Faking authors...')
     for i in range(a_num):
