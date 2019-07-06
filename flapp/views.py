@@ -5,8 +5,9 @@ from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 from .models import Post, Section, Writer, Developer, Editor, Founder, Tag
-from .forms import PostForm, SubscribeForm
+from .forms import PostForm, SubscribeForm, TagForm
 from .suggest import recommend
 
 class PostListView(ListView):
@@ -37,6 +38,16 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 		post.save()
 		return super().form_valid(form)
 
+
+class TagCreateView(LoginRequiredMixin, CreateView):
+	model = Tag
+	template_name = 'blog/tag_form.html'
+	form_class = TagForm
+
+	def form_valid(self, form):
+		tag = form.save(commit=False)
+		tag.save()
+		return HttpResponse('<script type="text/javascript">window.close();</script>')
 
 class PostDetailView(View):
 	"""
