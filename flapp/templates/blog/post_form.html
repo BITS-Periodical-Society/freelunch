@@ -61,6 +61,11 @@
       {% endfor %}
         <button type="submit" class="btn btn-primary">Save</button>
     </form>	
+      <a id="tag" class="text-center" href="" onclick="window.open('{% url 'tag-create' %}',
+                                                                   'newwindow',
+                                                                   'left=1250,top=150,width=full,height=full');
+                                                      return false;">
+        <i class="fas fa-plus"></i></a>
   </div>
 </div>
 
