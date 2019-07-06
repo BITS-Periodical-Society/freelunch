@@ -5,8 +5,8 @@ from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Post, Section, Writer, Developer, Editor, Founder, Comment, Tag
-from .forms import PostForm, CommentForm, SubscribeForm
+from .models import Post, Section, Writer, Developer, Editor, Founder, Tag
+from .forms import PostForm, SubscribeForm
 from .suggest import recommend
 
 class PostListView(ListView):
@@ -52,24 +52,7 @@ class PostDetailView(View):
 		post = get_object_or_404(Post, slug=self.kwargs['slug'])
 		recommends = recommend(post)
 		context[self.context_object_name] = post
-		form = CommentForm
-		return render(request,'blog/post_detail.html', {'post':post, 'recommends': recommends, 'form':form})
-
-
-	def post(self, request, *args, **kwargs):
-		context={}
-		post = get_object_or_404(Post, slug=self.kwargs['slug'])
-		if request.method == "POST":
-			form = CommentForm(request.POST)
-			if form.is_valid():
-				comment = form.save(commit=False)
-				comment.post = post
-				comment.save()
-			return redirect('post_detail', slug=post.slug)
-		else:
-			form = CommentForm()
-			return render(request, 'blog/post_detail.html', {'form':form})
-
+		return render(request,'blog/post_detail.html', {'post':post, 'recommends': recommends})
 
 
 def contributor(request):
