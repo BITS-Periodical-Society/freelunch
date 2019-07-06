@@ -20,8 +20,9 @@ Developer_Designation = [
 ]
 
 Writer_Designation = [
-	('A', 'Author'),
-	('GA', 'Guest Author'),
+    ('A', 'Author'),
+    ('GA', 'Guest Author'),
+    ('FO', 'Founder')
 ]
 
 Editor_Designation = [
@@ -66,7 +67,7 @@ class Post(models.Model):
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.title)
 		super(Post, self).save(*args, **kwargs)
-  
+
 	def delete_img(self, *args, **kwargs):
 		storage, path = self.cover_image.storage, self.cover_image.path
 		super(ImageModel, self).delete(*args, **kwargs)
@@ -78,7 +79,7 @@ class Post(models.Model):
 	def publish(self):
 		self.published_date = timezone.now()
 		self.save()
- 
+
 	def __str__(self):
 		return self.title
 
@@ -168,27 +169,3 @@ class Subscriber(models.Model):
 
 	def __str__(self):
 		return self.name
-
-
-class Founder(models.Model):
-	name = models.CharField(max_length=30)
-	pic = models.ImageField(upload_to='founder/', default='default.png')
-	designation = models.CharField(max_length=7, default='Founder')
-	linkedin_url = models.URLField(blank=True)
-	email = models.EmailField(blank=True)
-	bio = models.CharField(max_length=600)
-	posts = models.ManyToManyField(Post, blank=True)
-	slug = models.SlugField(max_length=30, unique=True, blank=True)
-
-	class Meta:
-		ordering = ('name',)
-
-	def save(self, *args, **kwargs):
-		self.slug = slugify(self.name)
-		super(Founder, self).save(*args, **kwargs)
-
-	def __str__(self):
-		return self.name
-
-	def get_absolute_url(self):
-		return reverse('founder_info', kwargs={'slug': self.slug})

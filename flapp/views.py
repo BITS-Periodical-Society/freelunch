@@ -6,7 +6,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
-from .models import Post, Section, Writer, Developer, Editor, Founder, Tag
+from .models import Post, Section, Writer, Developer, Editor, Tag
 from .forms import PostForm, SubscribeForm, TagForm
 from .suggest import recommend
 
@@ -69,10 +69,10 @@ class PostDetailView(View):
 def contributor(request):
 	developers = Developer.objects.all()
 	editors = Editor.objects.all()
-	writer = Writer.objects.all()
-	founder = Founder.objects.all()
+	writer = Writer.objects.filter(designation='FO') | Writer.objects.filter(designation='A')
+	guest_writer = Writer.objects.filter(designation='GA')
 
-	return render(request, 'blog/Authors.html', {'developers': developers, 'editors': editors, 'writers': writer, 'founders': founder})
+	return render(request, 'blog/Authors.html', {'developers': developers, 'editors': editors, 'writers': writer, 'guest_writers':guest_writer})
 
 
 class EdiorView(DetailView):
@@ -91,12 +91,6 @@ class DeveloperView(DetailView):
 
 class WriterView(DetailView):
 	model = Writer
-	template_name = 'blog/profile_page.html'
-	context_object_name = 'me'
-	slug_url_kwarg = 'slug'
-
-class FounderView(DetailView):
-	model = Founder
 	template_name = 'blog/profile_page.html'
 	context_object_name = 'me'
 	slug_url_kwarg = 'slug'
