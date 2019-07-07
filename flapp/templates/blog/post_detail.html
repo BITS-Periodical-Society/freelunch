@@ -16,7 +16,7 @@
         <h1><strong>{{ post.title|title }}</strong></h1>
         <footer style="padding: 0">
           <p id="grey" style="margin-left: 0">
-              Posted by
+              Edited by
               <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a> |
               Written by
               {% for author in post.author.all %}

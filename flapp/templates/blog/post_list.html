@@ -83,8 +83,6 @@ if (n < 1) {slideIndex = x.length}
         </div>
         <footer style="padding: 0">
           <p style="margin-left: 0">
-            Posted by
-            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a> |
             Written by
             {% for author in post.author.all %}
             {% if forloop.last and not forloop.first %}&{% endif %}
@@ -93,7 +91,10 @@ if (n < 1) {slideIndex = x.length}
               {{ author.name|cap }}
             </a>
             {% endfor %}
-            | {{ post.published_date|date }}
+            |  Edited by
+            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a> 
+          
+            |  {{ post.published_date|date }}
           </p>
         </footer>
       </div>

@@ -1,8 +1,4 @@
-/*!
- * Start Bootstrap - Clean Blog v5.0.5 (https://startbootstrap.com/template-overviews/clean-blog)
- * Copyright 2013-2019 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-clean-blog/blob/master/LICENSE)
- */
+
 *{
 margin:0;
 padding: 0;
@@ -11,9 +7,12 @@ box-sizing: border-box;
 body {
   font-size: 20px;
   color: #000;
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: 'Cabin', 'Times New Roman', serif;
 }
-
+footer
+{
+  font-family: 'Cabin', 'Times New Roman', serif;
+}
 
 
 p {
@@ -459,7 +458,7 @@ header.masthead .post-heading .meta {
   font-size: 20px;
   font-weight: 300;
   font-style: italic;
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: 'Cabin', 'Times New Roman', serif;
 }
 
 header.masthead .post-heading .meta a {
@@ -548,7 +547,7 @@ height:45px;
   -moz-box-shadow: none !important;
   -o-box-shadow: none !important;
   box-shadow: none !important;
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: 'Cabin', 'Times New Roman', serif;
 }
 
 .floating-label-form-group input::-webkit-input-placeholder,
@@ -558,7 +557,7 @@ height:45px;
 .floating-label-form-group textarea::-moz-input-placeholder,
 .floating-label-form-group textarea::-o-input-placeholder {
   color: #868e96;
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: 'Cabin', 'Times New Roman', serif;
 }
 
 .floating-label-form-group label {
