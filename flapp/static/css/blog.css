@@ -44,7 +44,7 @@ a {
 
   -moz-transition: all 0.2s;
   transition: all 0.2s;
-  
+
 }
 
 a:focus, a:hover {
@@ -144,7 +144,7 @@ blockquote {
 .box .btn {
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;	
+  -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
 }
 
@@ -159,7 +159,7 @@ blockquote {
 .box .icon {
   padding: 0;
   margin: 10px;
-  list-style-type: none; 
+  list-style-type: none;
 }
 
 .box .icon li {
@@ -339,7 +339,7 @@ img::-o-selection {
     transition: transform 0.2s;
     transition: transform 0.2s, -webkit-transform 0.2s;
     transition: transform 0.2s, -moz-transform 0.2s;
-    transition: transform 0.2s, -o-transform 0.2s;    
+    transition: transform 0.2s, -o-transform 0.2s;
     border-bottom: 1px solid white;
     background-color: rgba(255, 255, 255, 0.9);
   }
@@ -392,7 +392,7 @@ header.masthead .overlay {
 header.masthead .page-heading,
 header.masthead .post-heading,
 header.masthead .site-heading {
-  padding: 100px 0 100px;
+  padding: 100px 0 50px;
   color: white;
 }
 
@@ -400,7 +400,7 @@ header.masthead .site-heading {
   header.masthead .page-heading,
   header.masthead .post-heading,
   header.masthead .site-heading {
-    padding: 100px 0;
+    padding: 100px 0 50px;
   }
 }
 
@@ -413,6 +413,9 @@ header.masthead .page-heading h1,
 header.masthead .site-heading h1 {
   font-size: 50px;
   margin-top: 0;
+  background: -webkit-linear-gradient(#033, #396);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 header.masthead .page-heading .subheading,
@@ -423,6 +426,9 @@ header.masthead .site-heading .subheading {
   display: block;
   margin: 10px 0 0;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: -webkit-linear-gradient(#033, #396);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @media only screen and (min-width: 768px) {
@@ -515,10 +521,10 @@ header.masthead .post-heading .meta a {
     font-size: 21px;
   }
 }
-title { 
-  color: grey;  
-font-size: fit-height;  
-height:45px;  
+title {
+  color: grey;
+font-size: fit-height;
+height:45px;
 }
 .floating-label-form-group {
   font-size: 14px;
@@ -635,7 +641,7 @@ footer .copyright {
 
 
 .carousel-inner img {
-      filter: grayscale(90%); /* make all photos black and white */ 
+      filter: grayscale(90%); /* make all photos black and white */
       width: 100%; /* Set width to 100% */
       margin: auto;
   }
@@ -646,7 +652,7 @@ footer .copyright {
     .carousel-caption {
       display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
     }
-  } 
+  }
   .image {
 
   width: 100%;
@@ -654,7 +660,7 @@ footer .copyright {
 }
 
 .text {
-  white-space: nowrap; 
+  white-space: nowrap;
   color: white;
   font-size: 20px;
   position: absolute;
@@ -1057,4 +1063,3 @@ p {
    white-space:nowrap;
 	display:inline;
 }
-
