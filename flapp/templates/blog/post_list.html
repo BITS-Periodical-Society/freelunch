@@ -36,88 +36,55 @@ var x = document.getElementsByClassName("mySlides");
 var dots = document.getElementsByClassName("demo");
 if (n > x.length) {slideIndex = 1}
 if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" w3-white", "");
-  }
-  x[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " w3-white";
+for (i = 0; i < x.length; i++) {
+  x[i].style.display = "none";  
+}
+for (i = 0; i < dots.length; i++) {
+  dots[i].className = dots[i].className.replace(" w3-white", "");
+}
+x[slideIndex-1].style.display = "block";  
+dots[slideIndex-1].className += " w3-white";
 }
 </script>
 
 {% endblock %}
 
 <div class="testimonial">
-  <header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %}">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1>Freelunch</h1>
-              <span class="subheading">BITS Academic Periodical Society</span>
-          </div>
-        </div>
+<header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %}">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <div class="site-heading">
+        <h1>Freelunch</h1>
+        <span class="subheading">BITS Academic Periodical Society</span>
       </div>
-    </div> 
-  </header>
+    </div>
+  </div>
+</div> 
+</header>
 </div>
 
 <!-- Main Content -->
 <section>
-  <div class="container">
-    {% for post in posts %}
+<div class="container">
+{% for post in posts %}
 
-    {% if forloop.counter|divisibleby:2 %}
-    <div class="row">
-      <div class="col-md-4 order-md-2 border" style="background-image: url({{ post.cover_image.url }});padding: 0;background-repeat: no-repeat;background-position: center;background-size: cover;">
-      </div>
-      <div class="col-md-8 order-md-1" style="padding-top: 2em;padding-bottom: 2em;padding-right: 1em;padding-left: 1em;background-color: #f7faf5;">
-        <div class="content">
-          <header>
-            <p style="margin: 0;"><strong>{{ post.get_section_display }}</strong></p>
-            <a href="{{ post.get_absolute_url }}"><h3><strong>{{ post.title|title }}</strong></h3></a>
-          </header>
-          <p style="margin-left: 0">{{ post.get_synopsis }}</p>
-        </div>
-        <footer style="padding: 0">
-          <p style="margin-left: 0">
-            Written by
-            {% for author in post.author.all %}
-            {% if forloop.last and not forloop.first %}&{% endif %}
-            {% if not forloop.first and not forloop.last%},{% endif %}
-            <a href="{{ author.get_absolute_url }}">
-              {{ author.name|cap }}
-            </a>
-            {% endfor %}
-            |  Edited by
-            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a> 
-          
-            |  {{ post.published_date|date }}
-          </p>
-        </footer>
-      </div>
+{% if forloop.counter|divisibleby:2 %}
+<div class="row">
+  <div class="col-md-4 order-md-2 border" style="background-image: url({{ post.cover_image.url }});padding: 0;background-repeat: no-repeat;background-position: center;background-size: cover;">
+  </div>
+  <div class="col-md-8 order-md-1" style="padding-top: 2em;padding-bottom: 2em;padding-right: 1em;padding-left: 1em;background-color: #f7faf5;">
+    <div class="content">
+      <header>
+        <p style="margin: 0;"><strong>{{ post.get_section_display }}</strong></p>
+        <a href="{{ post.get_absolute_url }}"><h3><strong>{{ post.title|title }}</strong></h3></a>
+      </header>
+      <p style="margin-left: 0">{{ post.get_synopsis }}</p>
     </div>
-    <hr>
-    
-    {% else %}
-    <div class="row">
-      <div class="col-md-4 border" style="background-image: url({{ post.cover_image.url }});padding: 0;background-repeat: no-repeat;background-position: center;background-size: cover;">
-      </div>
-      <div class="col-md-8" style="padding-top: 2em;padding-bottom: 2em;padding-right: 1em;padding-left: 1em;background-color: #f7faf5;">
-        <div class="content">
-          <header>
-            <p style="margin: 0;"><strong>{{ post.get_section_display }}</strong></p>
-            <a href="{{ post.get_absolute_url }}"><h3><strong>{{ post.title|title }}</strong></h3></a>
-          </header>
-          <p style="margin-left: 0">{{ post.get_synopsis }}</p>
-        </div>
-        <footer style="padding: 0">
-          <p style="margin-left: 0">
-            Posted by
-            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a> |
-            Written by
+    <footer style="padding: 0">
+      <p id="grey" style="margin-left: 0">
+        <span class="meta">
+          <span class="post-credit"><i class="fas fa-feather-alt" ></i>
             {% for author in post.author.all %}
             {% if forloop.last and not forloop.first %}&{% endif %}
             {% if not forloop.first and not forloop.last%},{% endif %}
@@ -125,14 +92,56 @@ if (n < 1) {slideIndex = x.length}
               {{ author.name|cap }}
             </a>
             {% endfor %}
-            | {{ post.published_date|date }}
+          </span>
+          <span class="post-credit">
+            <i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="{{ post.post_editor.get_absolute_url }}" style="position: relative;padding-right: 0px;">{{ post.post_editor.name|cap }}</a>          
+          </span>
+          <span class="post-date">
+            <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
+          </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+  <hr>
+  
+  {% else %}
+  <div class="row">
+    <div class="col-md-4 border" style="background-image: url({{ post.cover_image.url }});padding: 0;background-repeat: no-repeat;background-position: center;background-size: cover;">
+    </div>
+    <div class="col-md-8" style="padding-top: 2em;padding-bottom: 2em;padding-right: 1em;padding-left: 1em;background-color: #f7faf5;">
+      <div class="content">
+        <header>
+          <p style="margin: 0;"><strong>{{ post.get_section_display }}</strong></p>
+          <a href="{{ post.get_absolute_url }}"><h3><strong>{{ post.title|title }}</strong></h3></a>
+        </header>
+        <p style="margin-left: 0">{{ post.get_synopsis }}</p>
+      </div>
+      <footer style="padding: 0">
+        <p id="grey" style="margin-left: 0">
+          <span class="meta">
+            <span class="post-credit"><i class="fas fa-feather-alt" ></i>
+              {% for author in post.author.all %}
+              {% if forloop.last and not forloop.first %}&{% endif %}
+              {% if not forloop.first and not forloop.last%},{% endif %}
+              <a href="{{ author.get_absolute_url }}">
+                {{ author.name|cap }}
+              </a>
+              {% endfor %}
+            </span>
+            <span class="post-credit">
+              <i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="{{ post.post_editor.get_absolute_url }}" style="position: relative;padding-right: 0px;">{{ post.post_editor.name|cap }}</a>          
+            </span>
+            <span class="post-date">
+              <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
+            </span>
           </p>
         </footer>
       </div>
     </div>
     <hr>
     {% endif %}
-  {% endfor %}
+    {% endfor %}
   </div>
 </section>
 

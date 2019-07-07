@@ -16,32 +16,38 @@
         <h1><strong>{{ post.title|title }}</strong></h1>
         <footer style="padding: 0">
           <p id="grey" style="margin-left: 0">
-              Edited by
-              <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a> |
-              Written by
-              {% for author in post.author.all %}
-              {% if forloop.last and not forloop.first %}&{% endif %}
-              {% if not forloop.first and not forloop.last%},{% endif %}
-              <a href="{{ author.get_absolute_url }}">
-                {{ author.name|cap }}
-              </a>
-              {% endfor %}
-              | {{ post.published_date|date }}
+            <span class="meta">
+              <span class="post-credit"><i class="fas fa-feather-alt" ></i>
+                {% for author in post.author.all %}
+                {% if forloop.last and not forloop.first %}&{% endif %}
+                {% if not forloop.first and not forloop.last%},{% endif %}
+                <a href="{{ author.get_absolute_url }}">
+                  {{ author.name|cap }}
+                </a>
+                {% endfor %}
+              </span>
+
+              <span class="post-credit">
+                <i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="{{ post.post_editor.get_absolute_url }}" style="position: relative;padding-right: 0px;">{{ post.post_editor.name|cap }}</a>          
+              </span>
+              <span class="post-date">
+                <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
+              </span>
             </p>
-        </footer>
-        <div class="post-body">
-          {{ post.get_markdown|linebreaks }}
+          </footer>
+          <div class="post-body">
+            {{ post.get_markdown|linebreaks }}
+          </div>
         </div>
+        <hr style="margin-top: 0;">
+        <div id="disqus_thread"></div>
       </div>
-      <hr style="margin-top: 0;">
-      <div id="disqus_thread"></div>
     </div>
-  </div>
-  <div class="col-lg-4" style="padding-right: 3em;padding-left: 3em;">
-    <h4 style="margin-top: 0;">Must Read</h4>
-    {% for post in recommends %}
-    <hr>
-    <a href="{% url 'post_detail' slug=post.slug %}" class="list-group-item-action">
+    <div class="col-lg-4" style="padding-right: 3em;padding-left: 3em;">
+      <h4 style="margin-top: 0;">Must Read</h4>
+      {% for post in recommends %}
+      <hr>
+      <a href="{% url 'post_detail' slug=post.slug %}" class="list-group-item-action">
         <div style="background-image: url({{ post.cover_image.url }});height: 4em;width: 4em;background-size: cover;">
           <p style="margin: 0;width: 15em;padding-left: 6em;"><strong>{{ post.title }}</strong></p>
         </div>
@@ -55,11 +61,11 @@
       {{ form.as_p }}
       <button type="submit" class="button">Submit</button>
     </form>
-  </div>
-</div>
-<hr>
 
-<script>
+  </div>
+  <hr>
+
+  <script>
 /**
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
@@ -70,10 +76,10 @@ this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your pag
 };
 */
 (function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://freelunch-2.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
+  var d = document, s = d.createElement('script');
+  s.src = 'https://freelunch-2.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
