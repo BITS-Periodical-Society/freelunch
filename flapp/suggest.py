@@ -34,4 +34,4 @@ def recommend(post):
 	result = list(chain(__0, __1, __2, __3, __4))
 	seen = set()
 	result =  [x for x in result if not (x in seen or seen.add(x))]
-	return result
+	return result[:8]
