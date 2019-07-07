@@ -71,17 +71,20 @@ if (n < 1) {slideIndex = x.length}
 
     {% if forloop.counter|divisibleby:2 %}
     <div class="row">
-      <div class="col-lg-8" style="padding-top: 2em;padding-bottom: 2em;padding-right: 1em;padding-left: 1em;background-color: #fbfbfb;">
+      <div class="col-md-4 order-md-2 border" style="background-image: url({{ post.cover_image.url }});padding: 0;background-repeat: no-repeat;background-position: center;background-size: cover;">
+      </div>
+      <div class="col-md-8 order-md-1" style="padding-top: 2em;padding-bottom: 2em;padding-right: 1em;padding-left: 1em;background-color: #fbfbfb;">
         <div class="content">
           <header>
             <p style="margin: 0;"><strong>{{ post.get_section_display }}</strong></p>
-            <a href="{{ post.get_absolute_url }}"><h4><strong>{{ post.title }}</strong></h4></a>
+            <a href="{{ post.get_absolute_url }}"><h3><strong>{{ post.title|title }}</strong></h3></a>
           </header>
           <p style="margin-left: 0">{{ post.get_synopsis }}</p>
         </div>
         <footer style="padding: 0">
           <p style="margin-left: 0">
-            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
+            Posted by
+            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a> |
             Written by
             {% for author in post.author.all %}
             {% if forloop.last and not forloop.first %}&{% endif %}
@@ -90,30 +93,29 @@ if (n < 1) {slideIndex = x.length}
               {{ author.name|cap }}
             </a>
             {% endfor %}
-          on {{ post.published_date|date }}
+            | {{ post.published_date|date }}
           </p>
         </footer>
-      </div>
-      <div class="col-lg-4 border" style="background-image: url({{ post.cover_image.url }});padding: 0;background-repeat: no-repeat;background-position: center;">
       </div>
     </div>
     <hr>
     
     {% else %}
     <div class="row">
-      <div class="col-lg-4 border" style="background-image: url({{ post.cover_image.url }});padding: 0;background-repeat: no-repeat;background-position: center;">
+      <div class="col-md-4 border" style="background-image: url({{ post.cover_image.url }});padding: 0;background-repeat: no-repeat;background-position: center;background-size: cover;">
       </div>
-      <div class="col-lg-8" style="padding-top: 2em;padding-bottom: 2em;padding-right: 1em;padding-left: 1em;background-color: #fbfbfb;">
+      <div class="col-md-8" style="padding-top: 2em;padding-bottom: 2em;padding-right: 1em;padding-left: 1em;background-color: #fbfbfb;">
         <div class="content">
           <header>
             <p style="margin: 0;"><strong>{{ post.get_section_display }}</strong></p>
-            <a href="{{ post.get_absolute_url }}"><h4><strong>{{ post.title }}</strong></h4></a>
+            <a href="{{ post.get_absolute_url }}"><h3><strong>{{ post.title|title }}</strong></h3></a>
           </header>
           <p style="margin-left: 0">{{ post.get_synopsis }}</p>
         </div>
         <footer style="padding: 0">
           <p style="margin-left: 0">
-            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
+            Posted by
+            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a> |
             Written by
             {% for author in post.author.all %}
             {% if forloop.last and not forloop.first %}&{% endif %}
@@ -122,7 +124,7 @@ if (n < 1) {slideIndex = x.length}
               {{ author.name|cap }}
             </a>
             {% endfor %}
-          on {{ post.published_date|date }}
+            | {{ post.published_date|date }}
           </p>
         </footer>
       </div>
@@ -142,5 +144,11 @@ if (n < 1) {slideIndex = x.length}
 <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}"></a>
 {% endif %}
 <hr>
-
+<style type="text/css">
+  @media (max-width: 770px){
+    .border{
+      height: 15em;
+    }
+  }
+</style>
 {% endblock %}
