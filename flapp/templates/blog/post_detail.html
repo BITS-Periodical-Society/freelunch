@@ -47,6 +47,14 @@
         </div>
       </a>        
     {% endfor %}
+    <hr>
+    <div style="text-align:center;">
+      <h2 style="margin-top:30px;">Subscribe</h2>
+    </div>
+    <form method="POST" class="post-form">{% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="button">Submit</button>
+    </form>
   </div>
 </div>
 <hr>
