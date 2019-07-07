@@ -83,7 +83,8 @@ if (n < 1) {slideIndex = x.length}
         </div>
         <footer style="padding: 0">
           <p style="margin-left: 0">
-            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
+            Posted by
+            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a> |
             Written by
             {% for author in post.author.all %}
             {% if forloop.last and not forloop.first %}&{% endif %}
@@ -92,7 +93,7 @@ if (n < 1) {slideIndex = x.length}
               {{ author.name|cap }}
             </a>
             {% endfor %}
-          on {{ post.published_date|date }}
+            | {{ post.published_date|date }}
           </p>
         </footer>
       </div>
@@ -113,7 +114,8 @@ if (n < 1) {slideIndex = x.length}
         </div>
         <footer style="padding: 0">
           <p style="margin-left: 0">
-            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
+            Posted by
+            <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a> |
             Written by
             {% for author in post.author.all %}
             {% if forloop.last and not forloop.first %}&{% endif %}
@@ -122,7 +124,7 @@ if (n < 1) {slideIndex = x.length}
               {{ author.name|cap }}
             </a>
             {% endfor %}
-          on {{ post.published_date|date }}
+            | {{ post.published_date|date }}
           </p>
         </footer>
       </div>
