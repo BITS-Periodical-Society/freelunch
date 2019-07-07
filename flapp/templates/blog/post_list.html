@@ -67,10 +67,10 @@ dots[slideIndex-1].className += " w3-white";
 <!-- Main Content -->
 <section>
 <div class="container">
-{% for post in posts %}
-
-{% if forloop.counter|divisibleby:2 %}
 <div class="row">
+ <div class="infinite-container"> 
+{% for post in posts %}
+{% if forloop.counter|divisibleby:2 %}
   <div class="col-md-4 order-md-2 border" style="background-image: url({{ post.cover_image.url }});padding: 0;background-repeat: no-repeat;background-position: center;background-size: cover;">
   </div>
   <div class="col-md-8 order-md-1" style="padding-top: 2em;padding-bottom: 2em;padding-right: 1em;padding-left: 1em;background-color: #f7faf5;">
@@ -99,14 +99,14 @@ dots[slideIndex-1].className += " w3-white";
           <span class="post-date">
             <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
           </span>
+        </span>
         </p>
       </footer>
     </div>
-  </div>
   <hr>
-  
+
   {% else %}
-  <div class="row">
+
     <div class="col-md-4 border" style="background-image: url({{ post.cover_image.url }});padding: 0;background-repeat: no-repeat;background-position: center;background-size: cover;">
     </div>
     <div class="col-md-8" style="padding-top: 2em;padding-bottom: 2em;padding-right: 1em;padding-left: 1em;background-color: #f7faf5;">
@@ -135,6 +135,7 @@ dots[slideIndex-1].className += " w3-white";
             <span class="post-date">
               <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
             </span>
+          </span>
           </p>
         </footer>
       </div>
@@ -143,6 +144,7 @@ dots[slideIndex-1].className += " w3-white";
     {% endif %}
     {% endfor %}
   </div>
+</div>
 </section>
 
 {% if page_obj.has_next %}

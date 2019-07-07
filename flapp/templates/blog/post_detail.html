@@ -3,7 +3,13 @@
 {% load static %}
 {% load my_filters %}
 
-<br><br>
+
+<div class="testimonial">
+  <header class="masthead">
+  </header>
+
+  <article>
+<div class="showcase-right" style="background-size: contain;">
 <div class="row">
   <div class="col-lg-1"></div>
   <div class="col-lg-7">
@@ -33,6 +39,7 @@
               <span class="post-date">
                 <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
               </span>
+            </span>
             </p>
           </footer>
           <div class="post-body">
@@ -55,6 +62,7 @@
       {% endfor %}
     </div>
   </div>
+</div>
   <hr>
 
   <script>
