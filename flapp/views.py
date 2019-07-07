@@ -63,7 +63,16 @@ class PostDetailView(View):
 		post = get_object_or_404(Post, slug=self.kwargs['slug'])
 		recommends = recommend(post)
 		context[self.context_object_name] = post
-		return render(request,'blog/post_detail.html', {'post':post, 'recommends': recommends})
+		form = SubscribeForm
+		return render(request,'blog/post_detail.html', {'post': post, 'recommends': recommends, 'form': form})
+
+	def post(self, request, *args, **kwargs):
+		form = SubscribeForm(request.POST)
+		if form.is_valid():
+			subscriber = form.save(commit=False)
+			subscriber.save()
+			return HttpResponseRedirect(request.path_info)
+
 
 
 def contributor(request):
