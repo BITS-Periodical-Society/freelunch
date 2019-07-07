@@ -77,7 +77,7 @@ if (n < 1) {slideIndex = x.length}
         <div class="content">
           <header>
             <p style="margin: 0;"><strong>{{ post.get_section_display }}</strong></p>
-            <a href="{{ post.get_absolute_url }}"><h4><strong>{{ post.title }}</strong></h4></a>
+            <a href="{{ post.get_absolute_url }}"><h3><strong>{{ post.title|title }}</strong></h3></a>
           </header>
           <p style="margin-left: 0">{{ post.get_synopsis }}</p>
         </div>
@@ -108,7 +108,7 @@ if (n < 1) {slideIndex = x.length}
         <div class="content">
           <header>
             <p style="margin: 0;"><strong>{{ post.get_section_display }}</strong></p>
-            <a href="{{ post.get_absolute_url }}"><h4><strong>{{ post.title }}</strong></h4></a>
+            <a href="{{ post.get_absolute_url }}"><h3><strong>{{ post.title|title }}</strong></h3></a>
           </header>
           <p style="margin-left: 0">{{ post.get_synopsis }}</p>
         </div>
