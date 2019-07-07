@@ -37,8 +37,8 @@
     <div class="container">
       <div class="row">
      {% for author in writers %}
-       <div class="col-sm-4 d-flex">
-        <div class="box">
+       <div class="col-sm-3 d-flex">
+        <div class="box border">
         <img class="card-img-top" src="{{ author.pic.url }}">
           <div class="box-content">
               <h5 class="title" >{{ author.name }}</h5>
@@ -56,7 +56,7 @@
             </div>
           </div>
         </div>
-        {% if forloop.counter|divisibleby:"3" %}</div><div class="row">
+        {% if forloop.counter|divisibleby:"4" %}</div><div class="row">
         {% endif %}
       {% endfor %}
       </div>
@@ -82,8 +82,8 @@
     <div class="container">
       <div class="row">
         {% for dev in developers %}
-        <div class="col-sm-4 d-flex">
-          <div class="box">
+        <div class="col-sm-3 d-flex">
+          <div class="box border">
             <img class="card-img-top" src="{{ dev.pic.url }}">
             <div class="box-content">
               <h5 class="title" >{{ dev.name }}</h5>
@@ -109,7 +109,7 @@
             </div>
           </div>
         </div>
-        {% if forloop.counter|divisibleby:"3" %}
+        {% if forloop.counter|divisibleby:"4" %}
       </div><div class="row">
         {% endif %}
         {% endfor %}
