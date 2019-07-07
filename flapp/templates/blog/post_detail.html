@@ -3,69 +3,56 @@
 {% load static %}
 {% load my_filters %}
 
-
-<div class="testimonial">
-  <header class="masthead">
-  </header>
-
-
-    <div class="container" >
-<div class="showcase-right" style="background-size: contain;">
+<br><br>
 <div class="row">
-  <div class="col-lg-10 col-md-10 mx-auto">
-    <div class="post">
-      <div>
-      <div class="post-title text-center">
-        <h1>{{ post.title }}</h1>
+  <div class="col-lg-1"></div>
+  <div class="col-lg-7">
+    <div class="container">
+      <div class="post-thumbnail">
+        <img class="img-fluid" src="{{ post.cover_image.url }}" style="width: 100%;max-height: 22em;">
       </div>
-      <div class="post-cover" style="background-image: url({{ post.cover_image.url }});width: 100%;"></div>
       <div class="post-detail">
-         <span class="post-credit"style="white-space:nowrap;display:inline;">
-          <i class="fas fa-feather-alt"></i>
-            {% for author in post.author.all %}
+        <p id="grey" style="margin-left: 0;margin-top: 1em;margin-bottom: 1em;"><strong>{{ post.get_section_display }}</strong></p>
+        <h1><strong>{{ post.title|title }}</strong></h1>
+        <footer style="padding: 0">
+          <p id="grey" style="margin-left: 0">
+              Posted by
+              <a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a> |
+              Written by
+              {% for author in post.author.all %}
               {% if forloop.last and not forloop.first %}&{% endif %}
               {% if not forloop.first and not forloop.last%},{% endif %}
-            <a href="{{ author.get_absolute_url }}">{{ author.name|cap }}</a>
-            {% endfor %}
-        </span>
-        <span class="post-credit" style="white-space:nowrap;display:inline;">
-          <i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="{{ post.post_editor.get_absolute_url }}">{{ post.post_editor.name|cap }}</a>
-        </span>
-        <span class="post-credit" style="white-space:nowrap;display:inline;">
-          <i class='fas fa-puzzle-piece' style="padding-right: 0.2em;"></i><a href="{% url 'section-post' section=post.section %}">{{ post.get_section_display }}</a>
-        </span>
-        <span class="post-date" style="white-space:nowrap;display:inline;">
-          <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
-        </span>
+              <a href="{{ author.get_absolute_url }}">
+                {{ author.name|cap }}
+              </a>
+              {% endfor %}
+              | {{ post.published_date|date }}
+            </p>
+        </footer>
+        <div class="post-body">
+          {{ post.get_markdown|linebreaks }}
+        </div>
       </div>
+      <hr style="margin-top: 0;">
+      <div id="disqus_thread"></div>
     </div>
-      </div>
-
-      <div class="post-content">
-        {{ post.get_markdown|linebreaks }}
+  </div>
+  <div class="col-lg-4" style="padding-right: 3em;">
+    <div class="overflow-auto">
+      <div style="position: fixed; padding-right: 2em;">
+        <h3 style="margin-top: 0;">Must Read</h3>
+        <div class="list-group">
+        {% for post in recommends %}
+          <a href="{% url 'post_detail' slug=post.slug %}" class="list-group-item list-group-item-action">{{ post.title }}</a>
+        {% endfor %}
+        </div>      
       </div>
     </div>
   </div>
 </div>
 <hr>
 
-<h3>Also read</h3>
-<div class="list-group">
-{% for post in recommends %}
-<a href="{% url 'post_detail' slug=post.slug %}" class="list-group-item list-group-item-action">{{ post.title }}</a>
-{% endfor %}
-</div>
-
-
-
-
-
-
-
-<!-- Comments section -->
-<div id="disqus_thread"></div>
 <script>
-
 /**
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
@@ -84,7 +71,16 @@ s.setAttribute('data-timestamp', +new Date());
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-</div>
-<hr>
-
+<style type="text/css">
+  p {
+    margin-left: 0;
+    margin-top: 0;
+  }
+  #grey{
+    color: #60635f;
+  }
+  ol, ul {
+    padding-left: 1em;
+  }
+</style>
 {% endblock %}
