@@ -21,15 +21,12 @@ $('.loading').hide();
 });
 var slideIndex = 1;
 showDivs(slideIndex);
-
 function plusDivs(n) {
 showDivs(slideIndex += n);
 }
-
 function currentDiv(n) {
 showDivs(slideIndex = n);
 }
-
 function showDivs(n) {
 var i;
 var x = document.getElementsByClassName("mySlides");
@@ -65,12 +62,12 @@ dots[slideIndex-1].className += " w3-white";
 </div>
 
 <!-- Main Content -->
-<section>
+<article>
 <div class="container">
-<div class="row">
- <div class="infinite-container"> 
+  <div class="infinite-container">
 {% for post in posts %}
 {% if forloop.counter|divisibleby:2 %}
+<div class="row">
   <div class="col-md-4 order-md-2 border" style="background-image: url({{ post.cover_image.url }});padding: 0;background-repeat: no-repeat;background-position: center;background-size: cover;">
   </div>
   <div class="col-md-8 order-md-1" style="padding-top: 2em;padding-bottom: 2em;padding-right: 1em;padding-left: 1em;background-color: #f7faf5;">
@@ -103,10 +100,11 @@ dots[slideIndex-1].className += " w3-white";
         </p>
       </footer>
     </div>
+  </div>
   <hr>
-
+  
   {% else %}
-
+  <div class="row">
     <div class="col-md-4 border" style="background-image: url({{ post.cover_image.url }});padding: 0;background-repeat: no-repeat;background-position: center;background-size: cover;">
     </div>
     <div class="col-md-8" style="padding-top: 2em;padding-bottom: 2em;padding-right: 1em;padding-left: 1em;background-color: #f7faf5;">
@@ -139,13 +137,13 @@ dots[slideIndex-1].className += " w3-white";
           </p>
         </footer>
       </div>
+    </div>
     <hr>
     {% endif %}
     {% endfor %}
   </div>
   </div>
-</div>
-</section>
+</article>
 
 {% if page_obj.has_next %}
 <div class="loading">
@@ -156,7 +154,4 @@ dots[slideIndex-1].className += " w3-white";
 <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}"></a>
 {% endif %}
 <hr>
-
 {% endblock %}
-
-
