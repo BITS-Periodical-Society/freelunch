@@ -80,28 +80,26 @@ dots[slideIndex-1].className += " w3-white";
     </div>
     <footer style="padding: 0">
       <p id="grey" style="margin-left: 0">
-        <span class="meta">
-          <span class="post-credit"><i class="fas fa-feather-alt" ></i>
-            {% for author in post.author.all %}
-            {% if forloop.last and not forloop.first %}&{% endif %}
-            {% if not forloop.first and not forloop.last%},{% endif %}
-            <a href="{{ author.get_absolute_url }}">
-              {{ author.name|cap }}
-            </a>
-            {% endfor %}
-          </span>
-          <span class="post-credit">
-            <i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="{{ post.post_editor.get_absolute_url }}" style="position: relative;padding-right: 0px;">{{ post.post_editor.name|cap }}</a>          
-          </span>
-          <span class="post-date">
-            <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
-          </span>
+        <span class="post-credit"><i class="fas fa-feather-alt" ></i>
+          {% for author in post.author.all %}
+          {% if forloop.last and not forloop.first %}&{% endif %}
+          {% if not forloop.first and not forloop.last%},{% endif %}
+          <a href="{{ author.get_absolute_url }}">
+            {{ author.name|cap }}
+          </a>
+          {% endfor %}
         </span>
-        </p>
-      </footer>
-    </div>
+        <span class="post-credit">
+          <i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="{{ post.post_editor.get_absolute_url }}" style="position: relative;padding-right: 0px;">{{ post.post_editor.name|cap }}</a>          
+        </span>
+        <span class="post-date">
+          <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
+        </span>
+      </p>
+    </footer>
   </div>
-  <hr>
+</div>
+<hr>
   
   {% else %}
   <div class="row">
