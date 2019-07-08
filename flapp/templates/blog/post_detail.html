@@ -16,28 +16,26 @@
         <h1><strong>{{ post.title|title }}</strong></h1>
         <footer style="padding: 0">
           <p id="grey" style="margin-left: 0">
-            <span class="meta">
-              <span class="post-credit"><i class="fas fa-feather-alt" ></i>
-                {% for author in post.author.all %}
-                {% if forloop.last and not forloop.first %}&{% endif %}
-                {% if not forloop.first and not forloop.last%},{% endif %}
+            <span class="post-credit"><i class="fas fa-feather-alt" ></i>
+              {% for author in post.author.all %}
+              {% if forloop.last and not forloop.first %}&{% endif %}
+              {% if not forloop.first and not forloop.last%},{% endif %}
                 <a href="{{ author.get_absolute_url }}">
                   {{ author.name|cap }}
                 </a>
-                {% endfor %}
-              </span>
-
-              <span class="post-credit">
-                <i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="{{ post.post_editor.get_absolute_url }}" style="position: relative;padding-right: 0px;">{{ post.post_editor.name|cap }}</a>          
-              </span>
-              <span class="post-date">
-                <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
-              </span>
-            </p>
-          </footer>
-          <div class="post-body">
-            {{ post.get_markdown|linebreaks }}
-          </div>
+              {% endfor %}
+            </span>
+            <span class="post-credit">
+              <i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="{{ post.post_editor.get_absolute_url }}" style="position: relative;padding-right: 0px;">{{ post.post_editor.name|cap }}</a>          
+            </span>
+            <span class="post-date">
+              <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
+            </span>
+          </p>
+        </footer>
+        <div class="post-body">
+          {{ post.get_markdown|linebreaks }}
+        </div>
         </div>
         <hr style="margin-top: 0;">
         <div id="disqus_thread"></div>
@@ -61,9 +59,9 @@
       {{ form.as_p }}
       <button type="submit" class="button">Submit</button>
     </form>
-
   </div>
-  <hr>
+</div>
+<hr>
 
   <script>
 /**
