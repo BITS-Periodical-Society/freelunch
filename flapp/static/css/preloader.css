@@ -1,0 +1,207 @@
+main {
+  display: block;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+}
+main .preloader {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% - 17px));
+}
+main .preloader #load {
+  display: inline-block;
+  float: left;
+  background: #1ba652;
+  height: 30px;
+  width: 30px;
+  margin: 2px;
+  border-radius: 0;
+  box-sizing: border-box;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+main .preloader #load:nth-of-type(1) {
+  transform: translate(34px, -34px);
+  /*This is to set the starting place above the #2 block*/
+  animation-name: animBlocka;
+}
+main .preloader #load:nth-of-type(2) {
+  animation-name: animBlockb;
+}
+main .preloader #load:nth-of-type(3) {
+  animation-name: animBlockc;
+}
+main .preloader #load:nth-of-type(4) {
+  animation-name: animBlockd;
+}
+main .preloader #load:nth-of-type(5) {
+  animation-name: animBlocke;
+}
+@keyframes animBlocka {
+  4.167% {
+    transform: translate(34px, 0);
+  }
+  50% {
+    transform: translate(34px, 0);
+  }
+  54.67% {
+    transform: translate(34px, 34px);
+  }
+  58.33% {
+    transform: translate(68px, 34px);
+  }
+  62.5% {
+    transform: translate(68px, 0);
+  }
+  91.67% {
+    transform: translate(68px, 0);
+  }
+  95.83% {
+    transform: translate(68px, -34px);
+  }
+  100% {
+    transform: translate(34px, -34px);
+  }
+}
+@keyframes animBlockb {
+  4.167% {
+    transform: translate(0, 34px);
+  }
+  8.33% {
+    transform: translate(34px, 34px);
+  }
+  12.5% {
+    transform: translate(34px, 0);
+  }
+  41.67% {
+    transform: translate(34px, 0);
+  }
+  45.83% {
+    transform: translate(34px, -34px);
+  }
+  50% {
+    transform: translate(0, -34px);
+  }
+  54.167% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes animBlockc {
+  8.33% {
+    transform: translate(0, 0);
+  }
+  12.5% {
+    transform: translate(0, -34px);
+  }
+  16.67% {
+    transform: translate(34px, -34px);
+  }
+  20.83% {
+    transform: translate(34px, 0);
+  }
+  33.33% {
+    transform: translate(34px, 0);
+  }
+  37.5% {
+    transform: translate(34px, 34px);
+  }
+  41.67% {
+    transform: translate(0, 34px);
+  }
+  45.83% {
+    transform: translate(0, 0);
+  }
+  58.33% {
+    transform: translate(0, 0);
+  }
+  62.5% {
+    transform: translate(0, -34px);
+  }
+  66.67% {
+    transform: translate(34px, -34px);
+  }
+  70.83% {
+    transform: translate(34px, 0);
+  }
+  83.33% {
+    transform: translate(34px, 0);
+  }
+  87.5% {
+    transform: translate(34px, 34px);
+  }
+  91.67% {
+    transform: translate(0, 34px);
+  }
+  95.83% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes animBlockd {
+  16.67% {
+    transform: translate(0, 0);
+  }
+  20.83% {
+    transform: translate(0, 34px);
+  }
+  25% {
+    transform: translate(34px, 34px);
+  }
+  29.167% {
+    transform: translate(34px, 0);
+  }
+  75% {
+    transform: translate(34px, 0);
+  }
+  79.167% {
+    transform: translate(34px, -34px);
+  }
+  83.33% {
+    transform: translate(0, -34px);
+  }
+  87.5% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes animBlocke {
+  25% {
+    transform: translate(0, 0);
+  }
+  29.167% {
+    transform: translate(0, -34px);
+  }
+  33.33% {
+    transform: translate(-34px, -34px);
+  }
+  37.5% {
+    transform: translate(-34px, 0);
+  }
+  66.67% {
+    transform: translate(-34px, 0);
+  }
+  70.83% {
+    transform: translate(-34px, 34px);
+  }
+  75% {
+    transform: translate(0, 34px);
+  }
+  79.167% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
