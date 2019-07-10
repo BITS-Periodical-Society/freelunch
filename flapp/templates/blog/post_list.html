@@ -11,13 +11,7 @@
 
 <script>
 var infinite = new Waypoint.Infinite({
-element: $('.container')[0],
-onBeforePageLoad: function () {
-$('.loading').show();
-},
-onAfterPageLoad: function ($items) {
-$('.loading').hide();
-}
+element: $('.container')[1]
 });
 var slideIndex = 1;
 showDivs(slideIndex);
@@ -65,7 +59,9 @@ dots[slideIndex-1].className += " w3-white";
 <article>
 <div class="container">
   <div class="infinite-container">
+    <div class = "infinite-container">
 {% for post in posts %}
+<div class="infinite-item">
 {% if forloop.counter|divisibleby:2 %}
 <div class="row">
   <div class="col-md-4 order-md-2 border" style="background-image: url({{ post.cover_image.url }});padding: 0;background-repeat: no-repeat;background-position: center;background-size: cover;">
@@ -138,17 +134,14 @@ dots[slideIndex-1].className += " w3-white";
     </div>
     <hr>
     {% endif %}
+  </div>
     {% endfor %}
+  </div>
   </div>
   </div>
 </article>
 
-{% if page_obj.has_next %}
-<div class="loading">
-  <div class="w3-container w3-display-bottommiddle">
-    <p><i class="fa fa-spinner w3-spin" style="font-size:35px; align-items: center;"></i></p>
-  </div>
-</div> 
+{% if page_obj.has_next %} 
 <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}"></a>
 {% endif %}
 <hr>
