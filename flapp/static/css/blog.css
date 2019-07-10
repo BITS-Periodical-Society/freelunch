@@ -49,7 +49,17 @@ a {
 a:focus, a:hover {
   color: #1FA67A;
   opacity: 0.85;
+
 }
+a:hover
+{
+    text-decoration: none;
+}
+a:visited {
+  text-decoration: None;
+  color: #000;
+}
+
 
 blockquote {
   font-style: italic;
@@ -1063,6 +1073,8 @@ p {
 	display:inline;
 }
 
-a:hover {
-  text-decoration: none;
-}
+  @media (max-width: 770px){
+    .border{
+      height: 15em;
+    }
+  }

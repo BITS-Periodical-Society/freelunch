@@ -11,25 +11,16 @@
 
 <script>
 var infinite = new Waypoint.Infinite({
-element: $('.container')[0],
-onBeforePageLoad: function () {
-$('.loading').show();
-},
-onAfterPageLoad: function ($items) {
-$('.loading').hide();
-}
+element: $('.container')[1]
 });
 var slideIndex = 1;
 showDivs(slideIndex);
-
 function plusDivs(n) {
 showDivs(slideIndex += n);
 }
-
 function currentDiv(n) {
 showDivs(slideIndex = n);
 }
-
 function showDivs(n) {
 var i;
 var x = document.getElementsByClassName("mySlides");
@@ -65,10 +56,12 @@ dots[slideIndex-1].className += " w3-white";
 </div>
 
 <!-- Main Content -->
-<section>
+<article>
 <div class="container">
+  <div class="infinite-container">
+    <div class = "infinite-container">
 {% for post in posts %}
-
+<div class="infinite-item">
 {% if forloop.counter|divisibleby:2 %}
 <div class="row">
   <div class="col-md-4 order-md-2 border" style="background-image: url({{ post.cover_image.url }});padding: 0;background-repeat: no-repeat;background-position: center;background-size: cover;">
@@ -119,7 +112,7 @@ dots[slideIndex-1].className += " w3-white";
       <footer style="padding: 0">
         <p id="grey" style="margin-left: 0">
           <span class="meta">
-            <span class="post-credit"><i class="fas fa-feather-alt" ></i>
+            <span class="post-credit list-inline-item"><i class="fas fa-feather-alt" ></i>
               {% for author in post.author.all %}
               {% if forloop.last and not forloop.first %}&{% endif %}
               {% if not forloop.first and not forloop.last%},{% endif %}
@@ -128,36 +121,28 @@ dots[slideIndex-1].className += " w3-white";
               </a>
               {% endfor %}
             </span>
-            <span class="post-credit">
+            <span class="post-credit list-inline-item">
               <i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="{{ post.post_editor.get_absolute_url }}" style="position: relative;padding-right: 0px;">{{ post.post_editor.name|cap }}</a>          
             </span>
-            <span class="post-date">
+            <span class="post-date list-inline-item">
               <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
             </span>
+          </span>
           </p>
         </footer>
       </div>
     </div>
     <hr>
     {% endif %}
+  </div>
     {% endfor %}
   </div>
-</section>
-
-{% if page_obj.has_next %}
-<div class="loading">
-  <div class="w3-container w3-display-bottommiddle">
-    <p><i class="fa fa-spinner w3-spin" style="font-size:35px; align-items: center;"></i></p>
   </div>
-</div> 
+  </div>
+</article>
+
+{% if page_obj.has_next %} 
 <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}"></a>
 {% endif %}
 <hr>
-<style type="text/css">
-  @media (max-width: 770px){
-    .border{
-      height: 15em;
-    }
-  }
-</style>
 {% endblock %}

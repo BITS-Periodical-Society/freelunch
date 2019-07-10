@@ -27,9 +27,9 @@ def suggest_by_editor(post):
 
 def recommend(post):
 	__0 = suggest_by_tag(post)
-	__1 = suggest_by_section(post)
-	__2 = suggest_by_author(post)
-	__3 = suggest_by_editor(post)
+	__1 = suggest_by_tag(post)
+	__3 = suggest_by_section(post)
+	__3 = suggest_by_author(post)
 	__4 = Post.objects.all().exclude(title=post.title)
 	result = list(chain(__0, __1, __2, __3, __4))
 	seen = set()

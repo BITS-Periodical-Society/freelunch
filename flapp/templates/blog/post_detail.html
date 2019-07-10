@@ -1,9 +1,17 @@
+
 {% extends 'blog/base.html' %}
 {% block content %}
 {% load static %}
 {% load my_filters %}
 
-<br><br>
+
+
+<div class="testimonial">
+  <header class="masthead">
+  </header>
+
+  <article>
+<div class="showcase-right" style="background-size: contain;">
 <div class="row">
   <div class="col-lg-1"></div>
   <div class="col-lg-7">
@@ -54,6 +62,7 @@
     <hr>
     <div style="text-align:center;">
       <h2 style="margin-top:30px;">Subscribe</h2>
+      <p id="grey" style="margin-left: 0"> To Read all our Latest posts</p>
     </div>
     <form method="POST" class="post-form">{% csrf_token %}
       {{ form.as_p }}
@@ -61,8 +70,9 @@
     </form>
   </div>
 </div>
-<hr>
-
+</div>
+  <hr>
+</article>
   <script>
 /**
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
