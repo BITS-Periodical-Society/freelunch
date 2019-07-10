@@ -102,10 +102,8 @@ $('#preview-head').click(function(){
 })
 
 // Add more tag 
-$('.form-group').children('#id_tag').parent().append('<div class="row">')
+$('.form-group').children('#id_tag').parent().append('<div class="row"><div class="col-sm-11" style="padding: 0";></div><div class="col-sm-1 text-center" style="padding: 0";></div></div>')
 $('.form-group div.row').css({'margin-right': '0px', 'margin-left': '0px', 'padding': '0px'})
-$('.form-group').children('div.row').append('<div class="col-sm-11" style="padding: 0";>')
 var a = $('.form-group').children("#id_tag")
-$('.form-group').children("div.row").children('div').append(a)
-$('.form-group').children('div.row').append('<div class="col-sm-1 text-center" style="padding: 0";>')
-$('.form-group').children('div.row').children('div.col-sm-1').append($('#tag'))
+$('.form-group').children(".row.div.col-sm-11").append(a)
+$('.form-group').children('.row.div.col-sm-1').append($('#tag'))

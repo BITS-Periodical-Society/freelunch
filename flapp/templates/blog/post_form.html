@@ -72,13 +72,14 @@
       {% endfor %}
         <button type="submit" class="btn btn-primary">Save</button>
     </form>	
-      <a id="tag" class="text-center" href="" onclick="window.open('{% url 'tag-create' %}',
-                                                                   'newwindow',
-                                                                   'left=1250,top=150,width=full,height=full');
-                                                      return false;">
-        <i class="fas fa-plus"></i></a>
   </div>
 </div>
+<a id="tag" class="text-center" href="" onclick="window.open('{% url 'tag-create' %}',
+                                                               'newwindow',
+                                                               'left=1250,top=150,width=full,height=full');
+                                                  return false;">
+  <i class="fas fa-plus"></i></a>
+
 <style type="text/css">
   p {
     margin-left: 0;
@@ -91,4 +92,10 @@
     padding-left: 1em;
   }
 </style>
+
+{% block javascript %}
+<!--script for post-form-->
+<script type="text/javascript" src="{% static 'js/post_form.js' %}"></script>
+{% endblock %}
+
 {% endblock %}
