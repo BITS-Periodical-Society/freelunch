@@ -11,7 +11,7 @@
 
 <script>
 var infinite = new Waypoint.Infinite({
-element: $('.container')[1]
+element: $('.container')[0]
 });
 var slideIndex = 1;
 showDivs(slideIndex);
@@ -42,7 +42,6 @@ dots[slideIndex-1].className += " w3-white";
 
 <div class="testimonial">
 <header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %}">
-<div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
       <div class="site-heading">
@@ -51,7 +50,6 @@ dots[slideIndex-1].className += " w3-white";
       </div>
     </div>
   </div>
-</div> 
 </header>
 </div>
 
