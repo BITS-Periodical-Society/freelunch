@@ -39,7 +39,7 @@
      {% for author in writers %}
        <div class="col-sm-3 d-flex">
         <div class="box border">
-        <img class="card-img-top" src="{{ author.pic.url }}">
+        <img class="card-img-top" src="{{ author.pic.url }}" style="height: inherit;">
           <div class="box-content">
               <h5 class="title" >{{ author.name }}</h5>
               <p class="post">{{ author.get_designation_display }}</p>
@@ -84,7 +84,7 @@
         {% for dev in developers %}
         <div class="col-sm-3 d-flex">
           <div class="box border">
-            <img class="card-img-top" src="{{ dev.pic.url }}">
+            <img class="card-img-top" src="{{ dev.pic.url }}" style="height: inherit;">
             <div class="box-content">
               <h5 class="title" >{{ dev.name }}</h5>
               <p class="post">{{ dev.get_designation_display }}</p>
