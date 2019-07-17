@@ -8,6 +8,7 @@ body {
   font-size: 20px;
   color: #000;
   font-family: 'Cabin', 'Times New Roman', serif;
+  background-color: #faf8fa;
 }
 footer
 {
@@ -1084,4 +1085,7 @@ p {
 }
 .button{
   font-family:'Helvetica', sans-serif;
+}
+.post-thumbnail{
+  margin-top: 15px;
 }
