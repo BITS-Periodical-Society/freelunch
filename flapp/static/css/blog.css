@@ -1078,3 +1078,10 @@ p {
       height: 15em;
     }
   }
+
+.masthead-contributors{
+  opacity: 0.75;
+}
+.button{
+  font-family:'Helvetica', sans-serif;
+}

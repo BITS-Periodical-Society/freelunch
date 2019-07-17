@@ -33,7 +33,7 @@
               {% endfor %}
             </span>
             <span class="post-credit">
-              <i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="{{ post.post_editor.get_absolute_url }}" style="position: relative;padding-right: 0px;">{{ post.post_editor.name|cap }}</a>          
+              <i class="fas fa-newspaper" style="padding-right: 0.2em;"></i><a href="{{ post.post_editor.get_absolute_url }}" style="position: relative;padding-right: 0px;">{{ post.post_editor.name|cap }}</a>
             </span>
             <span class="post-date">
               <i class="fas fa-calendar-alt" style="padding-right: 0.2em;"></i>{{ post.published_date|date }}
@@ -56,16 +56,16 @@
         <div style="background-image: url({{ post.cover_image.url }});height: 4em;width: 4em;background-size: cover;">
           <p style="margin: 0;width: 15em;padding-left: 6em;"><strong>{{ post.title }}</strong></p>
         </div>
-      </a>        
+      </a>
     {% endfor %}
     <hr>
-    <div style="text-align:center;">
-      <h2 style="margin-top:30px;">Subscribe</h2>
-      <p id="grey" style="margin-left: 0"> To Read all our Latest posts</p>
+    <div style="text-align:center;font-family:'Helvetica'">
+      <h2 style="margin-top:30px;font-family:'Helvetica', sans-serif;">Subscribe</h2>
+      <p id="grey" style="margin-left: 0"> To read all our latest posts</p>
     </div>
-    <form method="POST" class="post-form">{% csrf_token %}
+    <form method="POST" class="form">{% csrf_token %}
       {{ form.as_p }}
-      <button type="submit" class="button">Submit</button>
+      <button type="submit" class="button">SUBMIT</button>
     </form>
   </div>
 </div>
