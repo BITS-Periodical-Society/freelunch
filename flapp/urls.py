@@ -15,7 +15,8 @@ urlpatterns = [
 	path('section/<slug:section>/', views.PostListView.as_view(), name="section-post" ),
 	path('create/', views.PostCreateView.as_view(), name='post_create'),
 	path('subscribe/', views.SubscribeView, name='subscribe_form'),
-	path('tag-create', views.TagCreateView.as_view(), name='tag-create')
+	path('tag-create', views.TagCreateView.as_view(), name='tag-create'),
+	path('disclaimer-freelunch', views.Disclaimer, name='disclaimer'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -115,3 +115,7 @@ def SubscribeView(request):
 	else:
 		form = SubscribeForm()
 	return render(request, 'blog/subscribe.html', {'form':form})
+
+
+def Disclaimer(request):
+	return render(request, 'blog/disclaimer.html')
