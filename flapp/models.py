@@ -8,7 +8,13 @@ from django.template.defaultfilters import truncatewords
 
 from markdown_deux import markdown
 
-from .email import email_for_subscribers
+import os
+
+from django.conf import settings
+
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+
 
 
 Section = [
@@ -170,7 +176,7 @@ class Writer(models.Model):
 
 class Subscriber(models.Model):
 	name = models.CharField(max_length=30)
-	email = models.EmailField()
+	email =  models.EmailField(blank=True, null= True, unique= True)
 
 	def __str__(self):
 		return self.name
