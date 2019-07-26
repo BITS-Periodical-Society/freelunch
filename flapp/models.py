@@ -1,3 +1,5 @@
+import os
+
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
@@ -5,12 +7,10 @@ from django.utils.text import slugify
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.template.defaultfilters import truncatewords
+from django.template.loader import get_template
+from django.conf import settings
 
 from markdown_deux import markdown
-
-import os
-
-from django.conf import settings
 
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
@@ -29,9 +29,9 @@ Developer_Designation = [
 ]
 
 Writer_Designation = [
-    ('A', 'Author'),
-    ('GA', 'Guest Author'),
-    ('FO', 'Founder')
+	('A', 'Author'),
+	('GA', 'Guest Author'),
+	('FO', 'Founder')
 ]
 
 Editor_Designation = [
@@ -77,14 +77,16 @@ class Post(models.Model):
 		subscribers = [s.email for s in Subscriber.objects.all()]
 		from_email = settings.EMAIL_HOST_USER
 		to_email = subscribers
-		msg = f"{self.title}\nNew Post is uploaded."
+		html = get_template("blog/email.html")
+		html = html.render({'title': self.title,
+							'synopsis': self.synopsis,
+							'url': self.get_absolute_url})
 		sub = "New Article"
-		print("added")
 		message = Mail(
 			from_email=from_email,
 			to_emails=to_email,
 			subject=sub,
-			html_content=msg)
+			html_content=html)
 		try:
 			sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
 			response = sg.send(message)
