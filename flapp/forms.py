@@ -68,4 +68,4 @@ def email_for_subscribers(self):
 		print(response.body)
 		print(response.headers)
 	except Exception as e:
-		print(e)
+		print(e.message)

@@ -16,7 +16,6 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
 
-
 Section = [
 	('EF', 'Economics & Finance'),
 	('E', 'Editorial'),
@@ -74,10 +73,31 @@ class Post(models.Model):
 		else:
 			return self.synopsis
 
+	def email_for_subscribers(self):
+		subscribers = [s.email for s in Subscriber.objects.all()]
+		from_email = settings.EMAIL_HOST_USER
+		to_email = subscribers
+		msg = f"{self.title}\nNew Post is uploaded."
+		sub = "New Article"
+		print("added")
+		message = Mail(
+			from_email=from_email,
+			to_emails=to_email,
+			subject=sub,
+			html_content=msg)
+		try:
+			sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
+			response = sg.send(message)
+			print(response.status_code)
+			print(response.body)
+			print(response.headers)
+		except Exception as e:
+			print(e.message)
+
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.title)
 		super(Post, self).save(*args, **kwargs)
-		email_for_subscribers(self)
+		self.email_for_subscribers()
 
 	def delete_img(self, *args, **kwargs):
 		storage, path = self.cover_image.storage, self.cover_image.path
