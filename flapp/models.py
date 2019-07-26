@@ -5,7 +5,11 @@ from django.utils.text import slugify
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.template.defaultfilters import truncatewords
+
 from markdown_deux import markdown
+
+from .email import email_for_subscribers
+
 
 Section = [
 	('EF', 'Economics & Finance'),
@@ -67,6 +71,7 @@ class Post(models.Model):
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.title)
 		super(Post, self).save(*args, **kwargs)
+		email_for_subscribers(self)
 
 	def delete_img(self, *args, **kwargs):
 		storage, path = self.cover_image.storage, self.cover_image.path
