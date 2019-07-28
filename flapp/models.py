@@ -94,7 +94,7 @@ class Post(models.Model):
 			print(response.body)
 			print(response.headers)
 		except Exception as e:
-			print(e.message)
+			print(e)
 
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.title)
