@@ -1,3 +1,5 @@
+import os
+
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
@@ -5,7 +7,14 @@ from django.utils.text import slugify
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.template.defaultfilters import truncatewords
+from django.template.loader import get_template
+from django.conf import settings
+
 from markdown_deux import markdown
+
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+
 
 Section = [
 	('EF', 'Economics & Finance'),
@@ -20,9 +29,9 @@ Developer_Designation = [
 ]
 
 Writer_Designation = [
-    ('A', 'Author'),
-    ('GA', 'Guest Author'),
-    ('FO', 'Founder')
+	('A', 'Author'),
+	('GA', 'Guest Author'),
+	('FO', 'Founder')
 ]
 
 Editor_Designation = [
@@ -64,9 +73,33 @@ class Post(models.Model):
 		else:
 			return self.synopsis
 
+	def email_for_subscribers(self):
+		subscribers = [s.email for s in Subscriber.objects.all()]
+		from_email = settings.EMAIL_HOST_USER
+		to_email = subscribers
+		html = get_template("blog/email.html")
+		html = html.render({'title': self.title,
+							'synopsis': self.synopsis,
+							'url': self.get_absolute_url})
+		sub = "New Article"
+		message = Mail(
+			from_email=from_email,
+			to_emails=to_email,
+			subject=sub,
+			html_content=html)
+		try:
+			sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
+			response = sg.send(message)
+			print(response.status_code)
+			print(response.body)
+			print(response.headers)
+		except Exception as e:
+			print(e)
+
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.title)
 		super(Post, self).save(*args, **kwargs)
+		self.email_for_subscribers()
 
 	def delete_img(self, *args, **kwargs):
 		storage, path = self.cover_image.storage, self.cover_image.path
@@ -165,7 +198,7 @@ class Writer(models.Model):
 
 class Subscriber(models.Model):
 	name = models.CharField(max_length=30)
-	email = models.EmailField()
+	email =  models.EmailField(blank=True, null= True, unique= True)
 
 	def __str__(self):
 		return self.name

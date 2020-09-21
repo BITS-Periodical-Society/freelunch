@@ -6,9 +6,11 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
+
 from .models import Post, Section, Writer, Developer, Editor, Tag
 from .forms import PostForm, SubscribeForm, TagForm
 from .suggest import recommend
+
 
 class PostListView(ListView):
 	"""
